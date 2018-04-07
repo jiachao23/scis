@@ -11,10 +11,10 @@ import java.util.List;
  * Copyright  : 2017- www.jcohy.com
  * Created by jiac on 18:52 2018/4/6
  * Email: jia_chao23@126.com
- * ClassName: ExpertsService
+ * ClassName: ExpertService
  * Description:
  **/
-public interface ExpertsService {
+public interface ExpertService {
 
     /**
      * 用户登录

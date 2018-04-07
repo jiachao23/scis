@@ -49,14 +49,14 @@
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/teacher/save",
+            url: "/student/save",
             data: data.field,
             success: function(ret){
                 if(ret.isOk){
                     layer.msg("操作成功", {time: 2000},function(){
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                         parent.layer.close(index);
-                        window.parent.location.href="/teacher/index";
+                        window.parent.location.href="/student/index";
                     });
                 }else{
                     layer.msg(ret.msg, {time: 2000});
@@ -66,6 +66,6 @@
         return false;
     });
 
-    exports('teacher/form', {});
+    exports('student/form', {});
 });
 

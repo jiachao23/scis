@@ -1,9 +1,8 @@
 package com.jcohy.scis.controller;
 
 import com.jcohy.scis.common.PageJson;
-import com.jcohy.scis.model.Project;
-import com.jcohy.scis.model.Student;
-import com.jcohy.scis.model.Teacher;
+import com.jcohy.scis.model.*;
+import com.jcohy.scis.service.AllotService;
 import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.StudentService;
 import com.jcohy.scis.service.TeacherService;
@@ -15,16 +14,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * ClassName: TeacherController
+ * Copyright  : 2017- www.jcohy.com
+ * Created by jiac on 20:38 2018/4/7
+ * Email: jia_chao23@126.com
+ * ClassName: ExpertController
  * Description:
  **/
 @Controller
-@RequestMapping("/teacher")
-public class TeacherController {
+@RequestMapping("/expert")
+public class ExpertController {
 
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private AllotService allotService;
 
     @Autowired
     private TeacherService teacherService;
@@ -33,14 +37,14 @@ public class TeacherController {
     private ProjectService projectService;
     @GetMapping("/project/list")
     @ResponseBody
-    public PageJson<Project> all(@SessionAttribute("user") Teacher teacher , ModelMap map){
+    public PageJson<Allot> all(@SessionAttribute("user") Expert expert , ModelMap map){
 //        Student student = studentService.findByNum(num);
-        List<Project> projects = projectService.findByTeacher(teacher.getNum());
-        PageJson<Project> page = new PageJson<>();
+        List<Allot> allots = allotService.findByExpert(expert);
+        PageJson<Allot> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(projects.size());
-        page.setData(projects);
+        page.setCount(allots.size());
+        page.setData(allots);
         return page;
     }
 
@@ -54,5 +58,4 @@ public class TeacherController {
         }
         return "student/form";
     }
-
 }

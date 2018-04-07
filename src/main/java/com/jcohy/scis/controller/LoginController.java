@@ -7,7 +7,7 @@ import com.jcohy.scis.model.Expert;
 import com.jcohy.scis.model.Student;
 import com.jcohy.scis.model.Teacher;
 import com.jcohy.scis.service.AdminService;
-import com.jcohy.scis.service.ExpertsService;
+import com.jcohy.scis.service.ExpertService;
 import com.jcohy.scis.service.StudentService;
 import com.jcohy.scis.service.TeacherService;
 import org.slf4j.Logger;
@@ -39,7 +39,7 @@ public class LoginController {
     private TeacherService teacherService;
 
     @Autowired
-    private ExpertsService expertsService;
+    private ExpertService expertService;
 
 
     /**
@@ -81,7 +81,7 @@ public class LoginController {
                 session.setAttribute("user",login);
                 return JsonResult.ok().set("returnUrl", "/teacher/main");
             }else if(StringUtils.trim(role).equals("expert")){
-                Expert login = expertsService.login(num, password);
+                Expert login = expertService.login(num, password);
                 if(login == null){
                     return JsonResult.fail("登录失败,用户名不存在");
                 }

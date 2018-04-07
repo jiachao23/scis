@@ -3,7 +3,7 @@ package com.jcohy.scis.controller;
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.Expert;
-import com.jcohy.scis.service.ExpertsService;
+import com.jcohy.scis.service.ExpertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,13 +21,13 @@ import java.util.List;
 public class AdminExpertsController {
 
     @Autowired
-    private ExpertsService expertsService;
+    private ExpertService expertService;
 
 
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Expert> all(ModelMap map){
-        List<Expert> experts = expertsService.findAll();
+        List<Expert> experts = expertService.findAll();
         PageJson<Expert> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
@@ -40,7 +40,7 @@ public class AdminExpertsController {
     public String form(@RequestParam(required = false) Integer id, ModelMap map){
 
         if(id != null){
-            Expert expert = expertsService.findById(id);
+            Expert expert = expertService.findById(id);
             map.put("expert", expert);
         }
         return "admin/expert/form";
@@ -50,7 +50,7 @@ public class AdminExpertsController {
     @ResponseBody
     public JsonResult save(Expert expert){
         try {
-            expertsService.saveOrUpdate(expert);
+            expertService.saveOrUpdate(expert);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
@@ -62,7 +62,7 @@ public class AdminExpertsController {
     @ResponseBody
     public JsonResult del(@PathVariable("id") Integer id){
         try {
-            expertsService.delete(id);
+            expertService.delete(id);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail("删除失败");

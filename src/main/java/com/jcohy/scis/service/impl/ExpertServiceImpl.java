@@ -4,7 +4,7 @@ import com.jcohy.lang.StringUtils;
 import com.jcohy.scis.exception.ServiceException;
 import com.jcohy.scis.model.Expert;
 import com.jcohy.scis.repository.ExpertsRepository;
-import com.jcohy.scis.service.ExpertsService;
+import com.jcohy.scis.service.ExpertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,11 +16,11 @@ import java.util.List;
  * Copyright  : 2017- www.jcohy.com
  * Created by jiac on 23:14 2018/4/6
  * Email: jia_chao23@126.com
- * ClassName: ExpertsServiceImpl
+ * ClassName: ExpertServiceImpl
  * Description:
  **/
 @Service
-public class ExpertsServiceImpl implements ExpertsService{
+public class ExpertServiceImpl implements ExpertService {
 
     @Autowired
     private ExpertsRepository expertsRepository;

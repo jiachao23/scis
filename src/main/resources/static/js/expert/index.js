@@ -4,10 +4,10 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         common = layui.common,
         table  = layui.table ;
     table.render({
-        elem: '#teacher'
+        elem: '#student'
         ,height: 'full-200'
         ,method:'GET'
-        ,url: '/teacher/project/list' //数据接口
+        ,url: '/student/project/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
             {type: 'checkbox', align:'center',unresize:true}
@@ -27,7 +27,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         if(obj.event === 'del'){
             del(data.id);
         } else if(obj.event === 'edit'){
-            common.frame_show('编辑','/teacher/form?id='+data.id);
+            common.frame_show('编辑','/student/form?id='+data.id);
         }
     });
 
@@ -36,7 +36,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         var index = layer.load(1);
         setTimeout(function () {
             layer.close(index);
-            common.frame_show('添加','/teacher/form');
+            common.frame_show('添加','/student/form');
             // layer.msg('打开添加窗口');
         }, 500);
     });
@@ -54,7 +54,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             });
         },
         editData: function (id) {
-            common.frame_show('编辑','/teacher/form?id='+id);
+            common.frame_show('编辑','/student/form?id='+id);
         }
     };
     function del(id) {
@@ -62,12 +62,12 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             $.ajax({
                 type: "DELETE",
                 dataType: "json",
-                url: "/teacher/" + id + "/del",
+                url: "/student/" + id + "/del",
                 success: function (ret) {
                     if (ret.isOk) {
                         layer.msg("操作成功", {time: 2000}, function () {
                             layer.close(index);
-                            window.location.href = "/teacher/index";
+                            window.location.href = "/student/index";
                         });
                     } else {
                         layer.msg(ret.msg, {time: 2000});
@@ -76,5 +76,5 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             });
         });
     }
-    exports('teacher/index', datalist);
+    exports('student/index', datalist);
 });

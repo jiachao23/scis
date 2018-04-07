@@ -27,6 +27,12 @@
             <span class="sys-title">双创项目信息管理系统</span>
             <ul class="ht-nav">
                 <li class="ht-nav-item">
+                    <a id="updatePassword"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
+                    <input type="hidden" value="${Session.user.num?c}" id="num">
+                    <input type="hidden" value="${Session.role}" id="role">
+                </li>
+
+                <li class="ht-nav-item">
                     <a href="${ctx!}/logout"><i class="fa fa-power-off fa-fw"></i>注销</a>
                 </li>
             </ul>
@@ -40,11 +46,10 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>用户管理</a>
+                        <a href="javascript:;"><i class="fa fa-user"></i>项目管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/student/index" data-id="1">学生信息管理</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/teacher/index" data-id="2">教师信息管理</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/expert/index" data-id="3">专家信息管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/teacher/index" data-id="1">我的项目</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/project/history" data-id="2">往年项目查看</a></dd>
                         </dl>
                     </li>
 

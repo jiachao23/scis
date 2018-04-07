@@ -27,7 +27,12 @@
             <span class="sys-title">双创项目信息管理系统</span>
             <ul class="ht-nav">
                 <li class="ht-nav-item">
-                    <a href="${ctx!}/logout"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
+                    <a id="updatePassword"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
+                    <input type="hidden" value="${Session.user.num?c}" id="num">
+                    <input type="hidden" value="${Session.role}" id="role">
+                </li>
+
+                <li class="ht-nav-item">
                     <a href="${ctx!}/logout"><i class="fa fa-power-off fa-fw"></i>注销</a>
                 </li>
             </ul>
