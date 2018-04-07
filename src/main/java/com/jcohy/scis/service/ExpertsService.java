@@ -1,7 +1,7 @@
 package com.jcohy.scis.service;
 
 import com.jcohy.scis.exception.ServiceException;
-import com.jcohy.scis.model.Experts;
+import com.jcohy.scis.model.Expert;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -23,7 +23,7 @@ public interface ExpertsService {
      * @return
      * @throws Exception
      */
-    Experts login(Integer num, String password) throws Exception;
+    Expert login(Integer num, String password) throws Exception;
 
 
     /**
@@ -31,14 +31,14 @@ public interface ExpertsService {
      * @param pageable
      * @return
      */
-    Page<Experts> findAll(Pageable pageable);
+    Page<Expert> findAll(Pageable pageable);
 
 
     /**
      *  查询
      * @return
      */
-    List<Experts> findAll();
+    List<Expert> findAll();
 
 
     /**
@@ -46,20 +46,20 @@ public interface ExpertsService {
      * @param id
      * @return
      */
-    Experts findById(Integer id);
+    Expert findById(Integer id);
 
     /**
      * 根据name查询
      * @param name
      * @return
      */
-    Experts findByName(String name);
+    Expert findByName(String name);
 
     /**
      * 新增或者更新用户
      * @param user
      */
-    void saveOrUpdate(Experts user) throws ServiceException;
+    void saveOrUpdate(Expert user) throws ServiceException;
 
     /**
      * 检查用户是否存在
@@ -81,5 +81,5 @@ public interface ExpertsService {
      * @param password1
      * @param password2
      */
-    void updatePassword(Experts user, String oldpassword, String password1, String password2);
+    void updatePassword(Expert user, String oldpassword, String password1, String password2);
 }

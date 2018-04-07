@@ -1,7 +1,12 @@
 package com.jcohy.scis.repository;
 
+import com.jcohy.scis.model.Expert;
 import com.jcohy.scis.model.Project;
+import com.jcohy.scis.model.Student;
+import com.jcohy.scis.model.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 /**
  * Copyright  : 2017- www.jcohy.com
@@ -11,4 +16,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Description:
  **/
 public interface ProjectRepository extends JpaRepository<Project,Integer>{
+
+    Project findAllByName(String name);
+
+    List<Project> findByStudent(Student student);
+
+    List<Project> findByTeacher(Teacher teacher);
+
 }

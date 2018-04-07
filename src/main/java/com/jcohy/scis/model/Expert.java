@@ -7,12 +7,12 @@ import java.io.Serializable;
  * Copyright  : 2017- www.jcohy.com
  * Created by jiac on 15:27 2018/4/6
  * Email: jia_chao23@126.com
- * ClassName: Experts
+ * ClassName: Expert
  * Description:
  **/
 @Entity
 @Table(name = "expert")
-public class Experts implements Serializable {
+public class Expert implements Serializable {
     private static final long serialVersionUID = 4L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

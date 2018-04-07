@@ -48,6 +48,13 @@ public interface StudentService {
     Student findById(Integer id);
 
     /**
+     * 学号
+     * @param num
+     * @return
+     */
+    Student findByNum(Integer num);
+
+    /**
      * 根据name查询
      * @param name
      * @return

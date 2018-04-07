@@ -123,16 +123,22 @@ INSERT INTO `major` VALUES (2, 100107, '信息工程', '123456789', '小倩', 1)
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `pro_resource` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `money_resource` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `desc` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `status` tinyint(1) NULL DEFAULT NULL,
+  `e_status` tinyint(1) NULL DEFAULT NULL,
+  `e_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `a_status` tinyint(1) NULL DEFAULT NULL,
+  `a_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `student_id` int(11) NULL DEFAULT NULL,
   `teacher_id` int(11) NULL DEFAULT NULL,
   `book_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
+  INDEX `pro_student_id`(`student_id`) USING BTREE,
   INDEX `pro_book_id`(`book_id`) USING BTREE,
   INDEX `pro_teacher`(`teacher_id`) USING BTREE,
+  CONSTRAINT `pro_student_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `pro_book_id` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `pro_teacher` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
@@ -140,7 +146,7 @@ CREATE TABLE `project`  (
 -- ----------------------------
 -- Records of project
 -- ----------------------------
-INSERT INTO `project` VALUES (1, '1', '项目来源', '经费来源', '项目描述', 1, 1, 1);
+INSERT INTO `project` VALUES (1, '1', '项目来源', '经费来源', '项目描述', 1, '1', 1, '1', 1,1, 1);
 
 -- ----------------------------
 -- Table structure for student

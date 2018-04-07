@@ -45,6 +45,11 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
+    public Student findByNum(Integer num) {
+        return studentRepository.findAdminByNum(num);
+    }
+
+    @Override
     public Student findByName(String name) {
         return studentRepository.findAdminByName(name);
     }

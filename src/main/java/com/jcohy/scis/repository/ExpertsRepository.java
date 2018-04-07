@@ -1,6 +1,6 @@
 package com.jcohy.scis.repository;
 
-import com.jcohy.scis.model.Experts;
+import com.jcohy.scis.model.Expert;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * ClassName: ExpertsRepository
  * Description:
  **/
-public interface ExpertsRepository extends JpaRepository<Experts,Integer> {
+public interface ExpertsRepository extends JpaRepository<Expert,Integer> {
 
-    Experts findByNum(Integer num);
+    Expert findByNum(Integer num);
 
-    Experts findByName(String name);
+    Expert findByName(String name);
 }

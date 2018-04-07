@@ -31,13 +31,17 @@ public class ScisApplication extends WebMvcConfigurerAdapter{
 
 		registry.addViewController("/").setViewName("login");
 
-		registry.addViewController("/student/index").setViewName("/student/main");
+		registry.addViewController("/student/main").setViewName("/student/main");
+		registry.addViewController("/student/index").setViewName("/student/index");
 
-		registry.addViewController("/teacher/index").setViewName("/teacher/main");
+		registry.addViewController("/expert/main").setViewName("/expert/main");
+		registry.addViewController("/expert/index").setViewName("/expert/index");
 
-		registry.addViewController("/expert/index").setViewName("/expert/main");
+		registry.addViewController("/teacher/main").setViewName("/teacher/main");
+		registry.addViewController("/teacher/index").setViewName("/student/index");
 
-		registry.addViewController("/admin/index").setViewName("/admin/main");
+		registry.addViewController("/admin/main").setViewName("/admin/main");
+		registry.addViewController("/admin/index").setViewName("/admin/index");
 
 		registry.addViewController("/admin/student/index").setViewName("/admin/student/index");
 
