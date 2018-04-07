@@ -38,7 +38,6 @@ public class StudentController {
     @GetMapping("/project/list")
     @ResponseBody
     public PageJson<Project> all(@SessionAttribute("user") Student student , ModelMap map){
-        System.out.println(student.toString());
 //        Student student = studentService.findByNum(num);
         List<Project> projects = projectService.findByStudent(student.getNum());
         PageJson<Project> page = new PageJson<>();

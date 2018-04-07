@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 06/04/2018 15:16:21
+ Date: 07/04/2018 13:59:36
 */
 
 SET NAMES utf8mb4;
@@ -27,14 +27,36 @@ CREATE TABLE `admin`  (
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `sex` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `phone` int(20) NULL DEFAULT NULL,
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES (1, 1001, '管理员', '男', '123456', 123456);
+INSERT INTO `admin` VALUES (1, 1001, '管理员', '男', '123456', '123456');
+
+-- ----------------------------
+-- Table structure for allot
+-- ----------------------------
+DROP TABLE IF EXISTS `allot`;
+CREATE TABLE `allot`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` int(11) NULL DEFAULT NULL,
+  `expert_id` int(11) NULL DEFAULT NULL,
+  `time` datetime(0) NULL DEFAULT NULL,
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `allot_project_id`(`project_id`) USING BTREE,
+  INDEX `allot_expert_id`(`expert_id`) USING BTREE,
+  CONSTRAINT `allot_expert_id` FOREIGN KEY (`expert_id`) REFERENCES `expert` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `allot_project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of allot
+-- ----------------------------
+INSERT INTO `allot` VALUES (1, 1, 1, '2018-04-07 13:58:04', '1111');
 
 -- ----------------------------
 -- Table structure for book
@@ -60,11 +82,11 @@ INSERT INTO `book` VALUES (1, '1', '上传地址', '下载地址', '1');
 DROP TABLE IF EXISTS `dept`;
 CREATE TABLE `dept`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dept_num` int(11) NOT NULL,
-  `dept_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `dept_chairman` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `dept_tel` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `dept_desc` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `num` int(11) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `chairman` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `tel` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `desc` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -76,15 +98,15 @@ INSERT INTO `dept` VALUES (1, 1001, '计算机科学与工程', '小高', '12345
 -- ----------------------------
 -- Table structure for expert
 -- ----------------------------
-DROP TABLE IF EXISTS `experts`;
-CREATE TABLE `experts`  (
+DROP TABLE IF EXISTS `expert`;
+CREATE TABLE `expert`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `num` int(11) NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `birth` datetime(0) NULL DEFAULT NULL,
-  `phone` int(20) NULL DEFAULT NULL,
+  `birth` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `resume` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
@@ -93,7 +115,7 @@ CREATE TABLE `experts`  (
 -- ----------------------------
 -- Records of expert
 -- ----------------------------
-INSERT INTO `experts` VALUES (1, 123456, '专家', '123456', '男', '2018-04-06 15:13:57', 123456, '专家地址', '专家简历');
+INSERT INTO `expert` VALUES (1, 123456, '专家', '123456', '男', '2018-04-06 15:13:57', '123456', '专家地址', '专家简历');
 
 -- ----------------------------
 -- Table structure for major
@@ -101,10 +123,10 @@ INSERT INTO `experts` VALUES (1, 123456, '专家', '123456', '男', '2018-04-06 
 DROP TABLE IF EXISTS `major`;
 CREATE TABLE `major`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `major_num` int(11) NOT NULL,
-  `major_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `major_tel` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `major_assistant` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `num` int(11) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `tel` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `assistant` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dept_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `major_dept_id`(`dept_id`) USING BTREE,
@@ -123,11 +145,14 @@ INSERT INTO `major` VALUES (2, 100107, '信息工程', '123456789', '小倩', 1)
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `pro_resource` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `money_resource` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `desc` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `status` tinyint(1) NULL DEFAULT NULL,
+  `e_status` tinyint(1) NULL DEFAULT NULL,
+  `e_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `a_status` tinyint(1) NULL DEFAULT NULL,
+  `a_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `teacher_id` int(11) NULL DEFAULT NULL,
   `book_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
@@ -140,7 +165,31 @@ CREATE TABLE `project`  (
 -- ----------------------------
 -- Records of project
 -- ----------------------------
-INSERT INTO `project` VALUES (1, '1', '项目来源', '经费来源', '项目描述', 1, 1, 1);
+INSERT INTO `project` VALUES (1, '1', '项目来源', '经费来源', '项目描述', 1, '1', 1, '1', 1, 1);
+
+-- ----------------------------
+-- Table structure for schema_version
+-- ----------------------------
+DROP TABLE IF EXISTS `schema_version`;
+CREATE TABLE `schema_version`  (
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `script` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `checksum` int(11) NULL DEFAULT NULL,
+  `installed_by` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `installed_on` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`installed_rank`) USING BTREE,
+  INDEX `schema_version_s_idx`(`success`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of schema_version
+-- ----------------------------
+INSERT INTO `schema_version` VALUES (1, '1.0.0.20180406.1', 'SCIS DB INIT', 'SQL', 'V1.0.0_20180406_1__SCIS_DB_INIT.sql', -1869221029, 'root', '2018-04-07 01:36:19', 179, 1);
 
 -- ----------------------------
 -- Table structure for student
@@ -152,9 +201,9 @@ CREATE TABLE `student`  (
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `sex` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `birth` datetime(0) NULL DEFAULT NULL,
+  `birth` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sclass` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `phone` int(20) NULL DEFAULT NULL,
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `major_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `student_major_id`(`major_id`) USING BTREE,
@@ -164,7 +213,7 @@ CREATE TABLE `student`  (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES (1, 1306, '我叫学生', '123456', '女', '2018-04-04 10:54:55', '1', 123456, 1);
+INSERT INTO `student` VALUES (1, 1306, '我叫学生', '123456', '女', '2018-04-04 10:54:55', '1', '123456', 1);
 
 -- ----------------------------
 -- Table structure for teacher
@@ -176,8 +225,8 @@ CREATE TABLE `teacher`  (
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `sex` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `birth` datetime(0) NULL DEFAULT NULL,
-  `phone` int(20) NULL DEFAULT NULL,
+  `birth` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `resume` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -190,6 +239,6 @@ CREATE TABLE `teacher`  (
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
-INSERT INTO `teacher` VALUES (1, 1002, '老师', '123456', '女', '2018-04-04 10:28:51', 123456, '老师地址', '教授', '老师简历', 1);
+INSERT INTO `teacher` VALUES (1, 1002, '老师', '123456', '女', '2018-04-04 10:28:51', '123456', '老师地址', '教授', '老师简历', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
