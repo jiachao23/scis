@@ -22,6 +22,15 @@
             padding-top: 4px;
             height: 45px;
         }
+        .star-so{
+             text-align: center;
+             margin-bottom: 10px;
+             margin-top: 40px;
+        }
+        .star-so input.layui-input{
+            width: 200px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -29,6 +38,16 @@
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
     <legend style="text-align:center;">我的项目</legend>
 
+    <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
+        <i class="layui-icon">&#x1002;</i>
+    </button>
+    <div class="layui-row">
+        <div class="layui-form layui-col-md12 star-so">
+            <input class="layui-input" placeholder="请输入关键字" name="keyword">
+
+            <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
+        </div>
+    </div>
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">
             <div class="layui-input-inline" style="width:auto">
@@ -43,6 +62,7 @@
 
             <table class="layui-hide" id="student" lay-filter="table"></table>
             <script type="text/html" id="operator">
+                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 <a class="layui-btn" lay-event="edit">编辑</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
             </script>

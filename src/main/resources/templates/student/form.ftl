@@ -14,7 +14,11 @@
         .layui-form-item{
             margin: 20px 0 0 200px
         }
-
+        .imgbox{
+            margin-top: 20px;
+            font-size: 16px;
+            color: red;
+        }
     </style>
 </head>
 

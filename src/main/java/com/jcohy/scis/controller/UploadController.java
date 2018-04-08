@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
@@ -29,41 +32,35 @@ public class UploadController {
     @PostMapping("/upload")
     @ResponseBody
     public JsonResult upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws FileNotFoundException {
-        //文件夹标号
         //上传到服务器的地址
         File upload = null;
         //上传到服务器的文件名
-        String fileName = null;
-        String url = null;
-        //获取跟目录
-//        File path = new File(ResourceUtils.getURL("classpath:").getPath());
-//        if(type.equals("blog")){
-//            url = "e://";
-            upload = new File(filePath);
-//        }
+        String fileName = file.getOriginalFilename();
+        StringBuffer url = request.getRequestURL();
+        System.out.println("requestUrl----"+url.toString());
+        upload = new File(filePath);
         if(!upload.exists()) upload.mkdirs();
         System.out.println("upload url:"+upload.getAbsolutePath());
-        //在开发测试模式时，得到的地址为：{项目跟目录}/target/static/images/upload/
-        //在打包成jar正式发布时，得到的地址为：{发布jar包目录}/static/images/upload/
-        //获取当前目录下的所有文件
-        File[] files = upload.listFiles();
-        //截取后缀，拼接新的文件名
-        fileName = String.valueOf(files.length+1)+file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."),file.getOriginalFilename().length());
         try {
             FileUtils.copyInputStreamToFile(file.getInputStream(),new File(upload+File.separator+fileName));
         } catch (IOException e) {
             e.printStackTrace();
             return JsonResult.fail(e.getMessage());
         }
-        return JsonResult.ok("url",url+File.separator+fileName);
+        String downloadUrl = StringUtils.replace(url.toString(), "upload", "download");
+        System.out.println("replaceUrl-----"+downloadUrl);
+        Map<String,String> map = new HashMap<>();
+        map.put("url",downloadUrl+"/"+fileName);
+        map.put("name",fileName);
+        return JsonResult.ok("map",map);
     }
 
-    @GetMapping("/download")
-    public void download(@RequestParam("name") String name, HttpServletResponse response) throws IOException {
+    @GetMapping("/download/{name}")
+    public void download(@PathVariable("name") String name, HttpServletResponse response) throws IOException {
 
 
-        File file = new File(filePath,name);
-        System.out.println(filePath);
+        File file = new File(filePath+File.separator+name);
+        System.out.println(file);
         if(file.exists()) {
             // 设置强制下载不打开
             response.setContentType("application/force-download");

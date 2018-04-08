@@ -24,7 +24,16 @@ layui.define([ 'layer',  'table','common'], function (exports) {
     //监听工具条
     table.on('tool(table)', function(obj){
         var data = obj.data;
-        if(obj.event === 'del'){
+        if(obj.event === 'detail'){
+            if($("#detail-view-"+data.id).length > 0){
+                $("#detail-view-"+data.id).hide();
+                $("#detail-view-"+data.id).remove();
+            }else{
+                createHtml(obj);
+                $("#detail-view-"+data.id).show();
+            }
+
+        }else if(obj.event === 'del'){
             del(data.id);
         } else if(obj.event === 'edit'){
             common.frame_show('编辑','/student/form?id='+data.id);
@@ -76,5 +85,37 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             });
         });
     }
+
+    function createHtml(obj) {
+        var packageType;
+        var data = obj.data;
+        var name = data.name;
+        var arr = name.split("-");
+        if(arr[0] == "StarTVUpgrade"){
+            packageType = "智能电视升级包";
+        }
+        var detailHtml = '';
+        detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';
+        detailHtml += '<td colspan="8"><blockquote class="layui-elem-quote" style="line-height: 30px">';
+        detailHtml += '<div class="lay ui-inline layui-word-aux" style="width: 115px">包类型:</div>'+packageType+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">芯片名称/型号:</div>'+arr[1]+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">产品型号:</div>'+arr[2]+"-"+arr[3]+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">屏型号:</div>'+arr[4]+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">屏参:</div>'+arr[5]+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">flash大小:</div>'+arr[6]+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">描述:</div>'+data.description+'</br>';
+        detailHtml += '</blockquote></td></tr>';
+        obj.tr.after(detailHtml);
+    }
+    //搜索
+    $('#search').click(function () {
+
+        table.reload('app', {
+            url: "/appinfo/app/search"
+            ,where: {keyword:keyword} //设定异步数据接口的额外参数
+            //,height: 300
+        });
+    });
+
     exports('student/index', datalist);
 });
