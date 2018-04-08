@@ -62,4 +62,16 @@ public class Book implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Book{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", uploadUrl='").append(uploadUrl).append('\'');
+        sb.append(", downloadUrl='").append(downloadUrl).append('\'');
+        sb.append(", status='").append(status).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

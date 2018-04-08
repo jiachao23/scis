@@ -139,4 +139,23 @@ public class Project implements Serializable{
     public void setBook(Book book) {
         this.book = book;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Project{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", proResource='").append(proResource).append('\'');
+        sb.append(", moneyResource='").append(moneyResource).append('\'');
+        sb.append(", desc='").append(desc).append('\'');
+        sb.append(", EStatus=").append(EStatus);
+        sb.append(", EReason='").append(EReason).append('\'');
+        sb.append(", AStatus=").append(AStatus);
+        sb.append(", AReason='").append(AReason).append('\'');
+        sb.append(", student=").append(student);
+        sb.append(", teacher=").append(teacher);
+        sb.append(", book=").append(book);
+        sb.append('}');
+        return sb.toString();
+    }
 }

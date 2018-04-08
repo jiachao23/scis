@@ -120,18 +120,14 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @GetMapping("/admin/update/{role}/{num}")
-    public String update(@PathVariable String num,@PathVariable String role,ModelMap map){
+
+
+    @PostMapping("/admin/update/{role}/{num}")
+    public String updatePassword(@PathVariable String num,@PathVariable String role, ModelMap map){
         map.put("role",role);
         map.put("num",num);
         return "update";
     }
 
-    @PostMapping("/admin/update/{role}/{num}")
-    public String updatePassword(@PathVariable String num,@PathVariable String role,
-                                 String oldPassword,String newPassword,ModelMap map){
-        map.put("role",role);
-        map.put("num",num);
-        return "update";
-    }
+
 }

@@ -135,7 +135,7 @@
         console.log(num+":"+role);
         setTimeout(function () {
             layer.close(index);
-            common.frame_show('修改密码','/admin/update/'+role+"/"+num,$(window).width()*0.6,$(window).height()*0.6);
+            common.frame_show('修改密码','/admin/update',$(window).width()*0.6,$(window).height()*0.6);
             // layer.msg('打开添加窗口');
         }, 500);
     });

@@ -57,9 +57,9 @@ public interface ProjectService {
     List<Project> findByExpert(Integer num);
     /**
      * 新增或者更新
-     * @param user
+     * @param project
      */
-    Project saveOrUpdate(Project user) throws ServiceException;
+    Project saveOrUpdate(Project project) throws ServiceException;
 
     /**
      * 删除

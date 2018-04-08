@@ -136,4 +136,22 @@ public class Teacher implements Serializable{
     public void setDept(Dept dept) {
         this.dept = dept;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Teacher{");
+        sb.append("id=").append(id);
+        sb.append(", num=").append(num);
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", phone='").append(phone).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", sex='").append(sex).append('\'');
+        sb.append(", birth='").append(birth).append('\'');
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", address='").append(address).append('\'');
+        sb.append(", resume='").append(resume).append('\'');
+        sb.append(", dept=").append(dept);
+        sb.append('}');
+        return sb.toString();
+    }
 }

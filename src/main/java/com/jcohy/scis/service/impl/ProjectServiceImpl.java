@@ -66,8 +66,9 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public Project saveOrUpdate(Project user) throws ServiceException {
-        return null;
+    public Project saveOrUpdate(Project project) throws ServiceException {
+
+        return projectRepository.save(project);
     }
 
     @Override

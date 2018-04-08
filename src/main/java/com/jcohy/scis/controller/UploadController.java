@@ -52,6 +52,9 @@ public class UploadController {
         Map<String,String> map = new HashMap<>();
         map.put("url",downloadUrl+"/"+fileName);
         map.put("name",fileName);
+
+
+
         return JsonResult.ok("map",map);
     }
 

@@ -23,21 +23,18 @@
     <legend style="text-align:center;">修改密码</legend>
 </fieldset>
 <form class="layui-form layui-form-pane"  lay-filter="form">
-    <div class="layui-form-item">
-        <input type="hidden" name="id"  value="${(student.id)!}" >
-    </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">学号</label>
         <div class="layui-input-inline">
-            <input type="text" name="num" lay-verify="required" placeholder="请输入学生学号" value="${(num)!}"
+            <input type="text" name="num" lay-verify="required" placeholder="请输入学生学号" value="${(Session.user.num)?c!}"
                    autocomplete="off" class="layui-input" style="color: #d2d2d2!important" disabled>
-            <input type="hidden" name="num"  value="${(role)!}">
+            <input type="hidden" name="num"  value="${Session.user.num}">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
+        <label class="layui-form-label">原密码</label>
         <div class="layui-input-inline">
             <input type="text" name="oldPassword" lay-verify="oldPassword" placeholder="请输入原密码" value=""
                    autocomplete="off" class="layui-input">
@@ -45,14 +42,14 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
+        <label class="layui-form-label">新密码</label>
         <div class="layui-input-inline">
             <input type="text" name="newPassword" lay-verify="newPassword" placeholder="请输入新密码" value=""
                    autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
+        <label class="layui-form-label">密码确认</label>
         <div class="layui-input-inline">
             <input type="text" name="rePassword" lay-verify="rePassword" placeholder="请再次输入密码" value=""
                    autocomplete="off" class="layui-input">
@@ -77,13 +74,13 @@
         //监听登陆提交
         form.verify({
             rePassword: function(value, item){ //value：表单的值、item：表单的DOM对象
-                var new = $("input['newPassword']").val();
-                if(new !== item){
+                var newPassword = $("input['newPassword']").val();
+                if(newPassword !== item){
                     return '两次密码不一致';
                 }
             }
         });
-        form.on('submit(login)', function (data) {
+        form.on('submit(add)', function (data) {
             $.ajax({
                 type: "POST",
                 dataType: "json",
@@ -92,10 +89,10 @@
                 success: function(ret){
                     console.log(ret);
                     if(ret.isOk){
-                        layer.msg("操作成功", {time: 2000},function(){
+                        layer.msg("修改成功", {time: 2000},function(){
                             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                             parent.layer.close(index);
-                            window.location.href=ret.returnUrl;
+                            window.parent.location.href="/student/index";
                         });
                     }else{
                         layer.msg(ret.msg, {time: 2000});

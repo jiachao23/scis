@@ -40,7 +40,7 @@
                     <div class="layui-form-item" style="margin-top: 10px">
                         <label class="layui-form-label">项目名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="num" lay-verify="number"  placeholder="请输入学号" value="${project.name}"
+                            <input type="text" name="name" lay-verify="required"  placeholder="请输入项目名" value="${project.name}"
                                    autocomplete="off" class="layui-input ">
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                             <button type="button" class="layui-btn" id="upload">
                                 <i class="layui-icon">&#xe67c;</i>创业项目申请书
                             </button>
-                            <input type="hidden" name="uploadUrl">
+                            <input type="hidden" name="book">
                         </div>
                     </div>
 

@@ -1,20 +1,19 @@
 package com.jcohy.scis.controller;
 
-import com.google.gson.Gson;
-import com.jcohy.lang.StringUtils;
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.*;
 import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.StudentService;
 import com.jcohy.scis.service.TeacherService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by jiac on 2018/4/3.
@@ -35,6 +34,7 @@ public class StudentController {
     @Autowired
     private ProjectService projectService;
 
+    private Logger logger = LoggerFactory.getLogger(StudentController.class);
     @GetMapping("/project/list")
     @ResponseBody
     public PageJson<Project> all(@SessionAttribute("user") Student student , ModelMap map){
@@ -81,15 +81,18 @@ public class StudentController {
      * 获取教师信息
      * @return
      */
-    @GetMapping("/teacher/{teacherId}")
-    public JsonResult getteachers(@PathVariable("teacherId") Integer teacherId){
-        Teacher teacher = null;
+    @PostMapping("/save")
+    public JsonResult saveOrUpdate(@SessionAttribute("user") Student student,Project project){
+        logger.error("project {}",project);
+        project.setStudent(student);
+        logger.error("project {}",project);
         try {
-            teacher = teacherService.findById(teacherId);
-        }catch (Exception e){
-            return JsonResult.fail("此教师不存在");
+            projectService.saveOrUpdate(project);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail(e.getMessage());
         }
-        return JsonResult.ok("获取成功").set("data",teacher);
+        return JsonResult.ok();
     }
 
 
