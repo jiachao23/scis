@@ -48,6 +48,12 @@ public interface AdminService {
     Admin findById(Integer id);
 
     /**
+     * 学号
+     * @param num
+     * @return
+     */
+    Admin findByNum(Integer num);
+    /**
      * 根据name查询
      * @param name
      * @return
@@ -76,9 +82,6 @@ public interface AdminService {
     /**
      * 修改用户密码
      * @param user
-     * @param oldpassword
-     * @param password1
-     * @param password2
      */
-    void updatePassword(Admin user, String oldpassword, String password1, String password2);
+    void updatePassword(Admin user);
 }

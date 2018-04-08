@@ -39,6 +39,11 @@ public class TeacherServiceImpl implements TeacherService{
         return teacherRepository.findAll();
     }
 
+    @Override
+    public Teacher findByNum(Integer num) {
+        return teacherRepository.findTeacherByNum(num);
+    }
+
 
     @Override
     public Teacher findById(Integer id) {
@@ -71,19 +76,8 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public void updatePassword(Teacher user, String oldpassword, String password1, String password2) {
-        if(StringUtils.isBlank(oldpassword) || StringUtils.isBlank(password1) || StringUtils.isBlank(password2)){
-            throw new ServiceException("参数不完整");
-        }
+    public void updatePassword(Teacher user) {
 
-        if(!password1.equals(password2)){
-            throw new ServiceException("两次输入密码不一致");
-        }
-        Teacher dbUser = findById(user.getId());
-        if(!user.getPassword().equals(oldpassword)){
-            throw new ServiceException("旧密码不正确");
-        }
-        dbUser.setPassword(password1);
-        teacherRepository.saveAndFlush(dbUser);
+        teacherRepository.saveAndFlush(user);
     }
 }

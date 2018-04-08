@@ -25,11 +25,10 @@
 <form class="layui-form layui-form-pane"  lay-filter="form">
 
     <div class="layui-form-item">
-        <label class="layui-form-label">学号</label>
+        <label class="layui-form-label">帐号</label>
         <div class="layui-input-inline">
             <input type="text" name="num" lay-verify="required" placeholder="请输入学生学号" value="${(Session.user.num)?c!}"
                    autocomplete="off" class="layui-input" style="color: #d2d2d2!important" disabled>
-            <input type="hidden" name="num"  value="${Session.user.num}">
         </div>
     </div>
 
@@ -73,9 +72,9 @@
                 layer = layui.layer;
         //监听登陆提交
         form.verify({
-            rePassword: function(value, item){ //value：表单的值、item：表单的DOM对象
-                var newPassword = $("input['newPassword']").val();
-                if(newPassword !== item){
+            rePassword: function(value, item){ //value：表单的值、item：表单的DOM对象\
+                var newPassword = $("input[name=newPassword]").val();
+                if(newPassword !== value){
                     return '两次密码不一致';
                 }
             }
@@ -92,7 +91,6 @@
                         layer.msg("修改成功", {time: 2000},function(){
                             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                             parent.layer.close(index);
-                            window.parent.location.href="/student/index";
                         });
                     }else{
                         layer.msg(ret.msg, {time: 2000});

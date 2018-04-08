@@ -90,19 +90,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void updatePassword(Student user, String oldpassword, String password1, String password2) {
-        if(StringUtils.isBlank(oldpassword) || StringUtils.isBlank(password1) || StringUtils.isBlank(password2)){
-            throw new ServiceException("参数不完整");
-        }
-
-        if(!password1.equals(password2)){
-            throw new ServiceException("两次输入密码不一致");
-        }
-        Student dbUser = findById(user.getId());
-        if(!user.getPassword().equals(oldpassword)){
-            throw new ServiceException("旧密码不正确");
-        }
-        dbUser.setPassword(password1);
-        studentRepository.saveAndFlush(dbUser);
+    public void updatePassword(Student user) {
+        studentRepository.saveAndFlush(user);
     }
 }

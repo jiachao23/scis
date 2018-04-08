@@ -130,9 +130,6 @@
     }
     $('#updatePassword').click(function () {
         var index = layer.load(1);
-        var num = $("#num").val();
-        var role = $("#role").val();
-        console.log(num+":"+role);
         setTimeout(function () {
             layer.close(index);
             common.frame_show('修改密码','/admin/update',$(window).width()*0.6,$(window).height()*0.6);

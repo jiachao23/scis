@@ -59,23 +59,6 @@ public class StudentController {
         return "student/form";
     }
 
-    /**
-     * 更新学生信息
-     * @param student
-     * @return
-     */
-    @PostMapping("/password/")
-    public JsonResult update(Student student){
-        try {
-            Student stu = studentService.saveOrUpdate(student);
-            return JsonResult.ok().set("data",stu);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JsonResult.fail(e.getMessage());
-        }
-    }
-
-
 
     /**
      * 获取教师信息
@@ -83,9 +66,7 @@ public class StudentController {
      */
     @PostMapping("/save")
     public JsonResult saveOrUpdate(@SessionAttribute("user") Student student,Project project){
-        logger.error("project {}",project);
         project.setStudent(student);
-        logger.error("project {}",project);
         try {
             projectService.saveOrUpdate(project);
         } catch (Exception e) {
@@ -94,7 +75,5 @@ public class StudentController {
         }
         return JsonResult.ok();
     }
-
-
 
 }

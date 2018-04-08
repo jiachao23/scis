@@ -39,7 +39,12 @@ public interface TeacherService {
      */
     List<Teacher> findAll();
 
-
+    /**
+     * 工号
+     * @param num
+     * @return
+     */
+    Teacher findByNum(Integer num);
     /**
      * 根据ID查询
      * @param id
@@ -76,9 +81,6 @@ public interface TeacherService {
     /**
      * 修改用户密码
      * @param user
-     * @param oldpassword
-     * @param password1
-     * @param password2
      */
-    void updatePassword(Teacher user, String oldpassword, String password1, String password2);
+    void updatePassword(Teacher user);
 }

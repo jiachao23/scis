@@ -2,6 +2,7 @@ package com.jcohy.scis.controller;
 
 import com.jcohy.lang.StringUtils;
 import com.jcohy.scis.common.JsonResult;
+import com.jcohy.scis.exception.ServiceException;
 import com.jcohy.scis.model.Admin;
 import com.jcohy.scis.model.Expert;
 import com.jcohy.scis.model.Student;
@@ -122,11 +123,50 @@ public class LoginController {
 
 
 
-    @PostMapping("/admin/update/{role}/{num}")
-    public String updatePassword(@PathVariable String num,@PathVariable String role, ModelMap map){
-        map.put("role",role);
-        map.put("num",num);
-        return "update";
+    @PostMapping("/admin/update/")
+    @ResponseBody
+    public JsonResult updatePassword(@SessionAttribute("role") String role,@RequestParam Integer num,@RequestParam String oldPassword, @RequestParam String newPassword,
+                                 @RequestParam String rePassword, ModelMap map){
+        logger.error("role:{}",role);
+        if(StringUtils.isEmpty(role)){
+            return JsonResult.fail("此用户不存在");
+        }
+        if(StringUtils.isBlank(oldPassword) || StringUtils.isBlank(newPassword) || StringUtils.isBlank(rePassword)){
+            return JsonResult.fail("参数不完整");
+        }
+        if(!newPassword.equals(rePassword)){
+            return JsonResult.fail("两次输入密码不一致");
+        }
+        if(role.equals("student")){
+            Student dbUser = studentService.findByNum(num);
+            if(!dbUser.getPassword().equals(oldPassword)){
+                return JsonResult.fail("旧密码不正确");
+            }
+            dbUser.setPassword(newPassword);
+            studentService.updatePassword(dbUser);
+        }else if(role.equals("teacher")){
+            Teacher dbUser = teacherService.findByNum(num);
+            if(!dbUser.getPassword().equals(oldPassword)){
+                return JsonResult.fail("旧密码不正确");
+            }
+            dbUser.setPassword(newPassword);
+            teacherService.updatePassword(dbUser);
+        }else if(role.equals("expert")){
+            Expert dbUser = expertService.findByNum(num);
+            if(!dbUser.getPassword().equals(oldPassword)){
+                return JsonResult.fail("旧密码不正确");
+            }
+            dbUser.setPassword(newPassword);
+            expertService.updatePassword(dbUser);
+        }else if(role.equals("admin")){
+            Admin dbUser = adminService.findByNum(num);
+            if(!dbUser.getPassword().equals(oldPassword)){
+                return JsonResult.fail("旧密码不正确");
+            }
+            dbUser.setPassword(newPassword);
+            adminService.updatePassword(dbUser);
+        }
+        return JsonResult.ok();
     }
 
 

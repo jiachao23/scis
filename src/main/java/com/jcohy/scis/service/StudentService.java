@@ -83,9 +83,6 @@ public interface StudentService {
     /**
      * 修改用户密码
      * @param user
-     * @param oldpassword
-     * @param password1
-     * @param password2
      */
-    void updatePassword(Student user, String oldpassword, String password1, String password2);
+    void updatePassword(Student user);
 }

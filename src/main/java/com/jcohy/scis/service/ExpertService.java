@@ -40,7 +40,12 @@ public interface ExpertService {
      */
     List<Expert> findAll();
 
-
+    /**
+     * 帐号
+     * @param num
+     * @return
+     */
+    Expert findByNum(Integer num);
     /**
      * 根据ID查询
      * @param id
@@ -77,9 +82,6 @@ public interface ExpertService {
     /**
      * 修改用户密码
      * @param user
-     * @param oldpassword
-     * @param password1
-     * @param password2
      */
-    void updatePassword(Expert user, String oldpassword, String password1, String password2);
+    void updatePassword(Expert user);
 }

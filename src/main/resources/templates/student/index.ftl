@@ -41,13 +41,13 @@
     <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
         <i class="layui-icon">&#x1002;</i>
     </button>
-    <div class="layui-row">
-        <div class="layui-form layui-col-md12 star-so">
-            <input class="layui-input" placeholder="请输入关键字" name="keyword">
+    <#--<div class="layui-row">-->
+        <#--<div class="layui-form layui-col-md12 star-so">-->
+            <#--<input class="layui-input" placeholder="请输入关键字" name="keyword">-->
 
-            <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
-        </div>
-    </div>
+            <#--<button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>-->
+        <#--</div>-->
+    <#--</div>-->
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">
             <div class="layui-input-inline" style="width:auto">
