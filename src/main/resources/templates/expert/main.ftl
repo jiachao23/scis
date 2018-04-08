@@ -68,42 +68,11 @@
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
                         <p style="padding: 10px 15px; margin-bottom: 20px; margin-top: 10px; border:1px solid #ddd;display:inline-block;">
-                            上次登陆
-                            <span style="padding-left:1em;">IP：</span>
-                            <span style="padding-left:1em;">地点：</span>
-                            <span style="padding-left:1em;">时间：</span>
+                            双创项目信息管理系统
+                            <span style="padding-left:1em;">用户帐号：${Session.user.num?c}</span>
+                            <span style="padding-left:1em;">用户姓名：${Session.user.name}</span>
+                            <span style="padding-left:1em;">角色：${Session.role}</span>
                         </p>
-                        <fieldset class="layui-elem-field layui-field-title">
-                            <legend>统计信息</legend>
-                            <div class="layui-field-box">
-                                <div style="display: inline-block; width: 100%;">
-                                    <div class="ht-box layui-bg-blue">
-                                        <p>123</p>
-                                        <p>用户总数</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-red">
-                                        <p>32</p>
-                                        <p>今日注册</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-green">
-                                        <p>55</p>
-                                        <p>今日登陆</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-orange">
-                                        <p>123</p>
-                                        <p>文章总数</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-cyan">
-                                        <p>321</p>
-                                        <p>资源总数</p>
-                                    </div>
-                                    <div class="ht-box layui-bg-black">
-                                        <p>231</p>
-                                        <p>笔记总数</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
                     </div>
                 </div>
             </div>
