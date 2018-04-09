@@ -2,6 +2,7 @@ package com.jcohy.scis.repository;
 
 import com.jcohy.scis.model.Allot;
 import com.jcohy.scis.model.Expert;
+import com.jcohy.scis.model.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -15,5 +16,7 @@ import java.util.List;
  **/
 public interface AllotRepository extends JpaRepository<Allot,Integer>{
 
-    List<Allot> findByExpert(Expert expert);
+    Allot findByExpert(Expert expert);
+
+    Allot findByProject(Project project);
 }

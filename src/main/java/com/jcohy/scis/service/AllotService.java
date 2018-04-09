@@ -1,8 +1,7 @@
 package com.jcohy.scis.service;
 
-import com.jcohy.scis.model.Allot;
-import com.jcohy.scis.model.Dept;
-import com.jcohy.scis.model.Expert;
+import com.jcohy.scis.exception.ServiceException;
+import com.jcohy.scis.model.*;
 
 import java.util.List;
 
@@ -19,5 +18,11 @@ public interface AllotService {
 
     Allot findById(Integer id);
 
-    List<Allot> findByExpert(Expert expert);
+    Allot findByExpert(Expert expert);
+
+    Expert findByProject(Project project);
+
+    Allot saveOrUpdate(Allot allot) throws ServiceException;
+
+    void delete(Integer id);
 }

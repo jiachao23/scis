@@ -56,8 +56,8 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>项目管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/lab/index" data-id="11">实验计划</a></dd>
-                            <dd><a href="javascript:;">黑名单管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/allot/index" data-id="11">评审分配</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/project/index" data-id="11">项目审核</a></dd>
                         </dl>
                     </li>
                 </ul>

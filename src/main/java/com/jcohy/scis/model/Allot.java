@@ -23,7 +23,10 @@ public class Allot {
 
     private String content;
 
-    private Date time;
+    private String start;
+
+    private String end;
+
     @OneToOne
     @JoinColumn(name = "project_id")
     private Project project;
@@ -47,12 +50,20 @@ public class Allot {
         this.content = content;
     }
 
-    public Date getTime() {
-        return time;
+    public String getStart() {
+        return start;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 
     public Project getProject() {

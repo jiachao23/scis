@@ -1,6 +1,8 @@
 package com.jcohy.scis.controller;
 
 import com.jcohy.scis.common.JsonResult;
+import com.jcohy.scis.model.Book;
+import com.jcohy.scis.service.BookService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +27,8 @@ import java.util.Map;
 @Controller
 public class UploadController {
 
+    @Autowired
+    private BookService bookService;
 
     @Value("${file.path}")
     private String filePath;
@@ -53,8 +57,10 @@ public class UploadController {
         map.put("url",downloadUrl+"/"+fileName);
         map.put("name",fileName);
 
-
-
+        Book book = new Book();
+        book.setDownloadUrl(downloadUrl+"/"+fileName);
+        book.setUploadUrl(filePath);
+        bookService.saveOrUpdate(book);
         return JsonResult.ok("map",map);
     }
 

@@ -39,12 +39,12 @@ public class ExpertController {
     @ResponseBody
     public PageJson<Allot> all(@SessionAttribute("user") Expert expert , ModelMap map){
 //        Student student = studentService.findByNum(num);
-        List<Allot> allots = allotService.findByExpert(expert);
+//        Allot allots = allotService.findByExpert(expert);
         PageJson<Allot> page = new PageJson<>();
-        page.setCode(0);
-        page.setMsg("成功");
-        page.setCount(allots.size());
-        page.setData(allots);
+//        page.setCode(0);
+//        page.setMsg("成功");
+//        page.setCount(allots.size());
+//        page.setData(allots);
         return page;
     }
 

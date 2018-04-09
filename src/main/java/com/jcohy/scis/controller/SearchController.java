@@ -1,46 +1,39 @@
 package com.jcohy.scis.controller;
 
 import com.jcohy.scis.common.PageJson;
-import com.jcohy.scis.model.Expert;
 import com.jcohy.scis.model.Project;
-import com.jcohy.scis.service.AllotService;
 import com.jcohy.scis.service.ProjectService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * Copyright  : 2017- www.jcohy.com
- * Created by jiac on 18:07 2018/4/7
- * Email: jia_chao23@126.com
- * ClassName: ProjectController
- * Description:
- **/
+ * Created by jiac on 2018/4/9.
+ * ClassName  : com.jcohy.scis.controller
+ * Description  :
+ */
 @Controller
-@RequestMapping("project")
-public class ProjectController {
+@RequestMapping("/search")
+public class SearchController {
 
+    private Logger logger = LoggerFactory.getLogger(SearchController.class);
     @Autowired
     private ProjectService projectService;
 
-    @Autowired
-    private AllotService allotService;
-
-    @GetMapping("/all")
+    @GetMapping("/project")
     @ResponseBody
-    public PageJson<Project> all(){
-        List<Project> projects = projectService.findAll();
-        for(Project project : projects){
-            Expert expert = allotService.findByProject(project);
-            if(expert == null){
-                project.setExpert(null);
-            }
-            project.setExpert(expert);
-        }
+    public PageJson<Project> search(@PathParam("keyword") String keyword){
+        logger.error("keyword :{}" ,keyword);
+        List<Project> projectList = projectService.findAll();
+        List<Project> projects = projectList.stream().filter(x -> x.getName().contains(keyword)).collect(Collectors.toList());
         PageJson<Project> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
@@ -48,5 +41,4 @@ public class ProjectController {
         page.setData(projects);
         return page;
     }
-
 }

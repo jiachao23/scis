@@ -3,6 +3,7 @@ package com.jcohy.scis.controller;
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.*;
+import com.jcohy.scis.service.AllotService;
 import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.StudentService;
 import com.jcohy.scis.service.TeacherService;
@@ -34,12 +35,22 @@ public class StudentController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private AllotService allotService;
+
     private Logger logger = LoggerFactory.getLogger(StudentController.class);
     @GetMapping("/project/list")
     @ResponseBody
     public PageJson<Project> all(@SessionAttribute("user") Student student , ModelMap map){
 //        Student student = studentService.findByNum(num);
         List<Project> projects = projectService.findByStudent(student.getNum());
+        for(Project project : projects){
+            Expert expert = allotService.findByProject(project);
+            if(expert == null){
+                project.setExpert(null);
+            }
+            project.setExpert(expert);
+        }
         PageJson<Project> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");

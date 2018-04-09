@@ -33,20 +33,21 @@ public class ScisApplication extends WebMvcConfigurerAdapter{
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-
+		//登录首页
 		registry.addViewController("/").setViewName("login");
-
+		//修改密码
 		registry.addViewController("/admin/update").setViewName("/update");
-
+		//学生主页跳转
 		registry.addViewController("/student/main").setViewName("/student/main");
 		registry.addViewController("/student/index").setViewName("/student/index");
-
+		//专家主页跳转
 		registry.addViewController("/expert/main").setViewName("/expert/main");
 		registry.addViewController("/expert/index").setViewName("/expert/index");
-
+		//老师主页跳转
 		registry.addViewController("/teacher/main").setViewName("/teacher/main");
 		registry.addViewController("/teacher/index").setViewName("/student/index");
 
+		//管理员主页，从登录
 		registry.addViewController("/admin/main").setViewName("/admin/main");
 		registry.addViewController("/admin/index").setViewName("/admin/index");
 
@@ -56,6 +57,11 @@ public class ScisApplication extends WebMvcConfigurerAdapter{
 
 		registry.addViewController("/admin/expert/index").setViewName("/admin/expert/index");
 
+		registry.addViewController("/admin/allot/index").setViewName("/admin/allot/index");
+
+		registry.addViewController("/admin/project/index").setViewName("/admin/project/index");
+
+		//历史项目
 		registry.addViewController("/project/history").setViewName("/project/history");
 	}
 

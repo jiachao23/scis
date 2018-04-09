@@ -1,6 +1,7 @@
 package com.jcohy.scis.model;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 
 /**
@@ -43,6 +44,9 @@ public class Project implements Serializable{
     @OneToOne
     @JoinColumn(name = "book_id")
     private Book book;
+
+    @Transient
+    private Expert expert;
 
     public Integer getId() {
         return id;
@@ -140,6 +144,14 @@ public class Project implements Serializable{
         this.book = book;
     }
 
+    public Expert getExpert() {
+        return expert;
+    }
+
+    public void setExpert(Expert expert) {
+        this.expert = expert;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Project{");
@@ -155,6 +167,7 @@ public class Project implements Serializable{
         sb.append(", student=").append(student);
         sb.append(", teacher=").append(teacher);
         sb.append(", book=").append(book);
+        sb.append(", expert=").append(expert);
         sb.append('}');
         return sb.toString();
     }

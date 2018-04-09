@@ -70,14 +70,14 @@
                 <form class="layui-form" action="">
                     <div class="layui-form-item" style="margin:0;">
                         {{#  if(d.estatus == 1){ }}
-                        <input type="checkbox" name="isTop" title="专家审核" value="{{d.id}}" lay-filter="estatus" checked disabled/>
+                        <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-skin="primary" lay-filter="estatus" checked disabled/>
                         {{#  } else { }}
-                        <input type="checkbox" name="isTop" title="专家审核" value="{{d.id}}" lay-filter="estatus" disabled/>
+                        <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
                         {{#  } }}
                         {{#  if(d.astatus == 1){ }}
-                        <input type="checkbox" name="isCommend" title="管理员审核" value="{{d.id}}" lay-filter="astatus" checked disabled/>
+                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary" checked disabled/>
                         {{#  } else { }}
-                        <input type="checkbox" name="isCommend" title="管理员审核" value="{{d.id}}" lay-filter="astatus" disabled/>
+                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary"  disabled/>
                         {{#  } }}
 
                     </div>

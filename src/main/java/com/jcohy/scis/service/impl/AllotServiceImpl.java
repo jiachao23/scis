@@ -1,8 +1,7 @@
 package com.jcohy.scis.service.impl;
 
-import com.jcohy.scis.model.Allot;
-import com.jcohy.scis.model.Dept;
-import com.jcohy.scis.model.Expert;
+import com.jcohy.scis.exception.ServiceException;
+import com.jcohy.scis.model.*;
 import com.jcohy.scis.repository.AllotRepository;
 import com.jcohy.scis.service.AllotService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,37 @@ public class AllotServiceImpl implements AllotService{
     }
 
     @Override
-    public List<Allot> findByExpert(Expert expert) {
+    public Allot findByExpert(Expert expert) {
         return allotRepository.findByExpert(expert);
+    }
+
+    @Override
+    public Expert findByProject(Project project) {
+        Allot allot = allotRepository.findByProject(project);
+        if(allot == null){
+            return new Expert();
+        }
+        return allot.getExpert();
+    }
+
+    @Override
+    public Allot saveOrUpdate(Allot allot) throws ServiceException {
+        Allot dballot =null;
+        if(allot.getId() != null){
+            dballot = findById(allot.getId());
+            if(allot.getExpert() != null ) dballot.setExpert(allot.getExpert());
+            if(allot.getContent() != null ) dballot.setContent(allot.getContent());
+            if(allot.getProject() != null ) dballot.setProject(allot.getProject());
+            if(allot.getStart() != null ) dballot.setStart(allot.getStart());
+            if(allot.getEnd() != null ) dballot.setEnd(allot.getEnd());
+        }else{
+            dballot =allot;
+        }
+        return allotRepository.save(dballot);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        allotRepository.deleteById(id);
     }
 }

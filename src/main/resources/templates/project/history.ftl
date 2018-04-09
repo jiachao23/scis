@@ -44,7 +44,7 @@
     </button>
     <div class="layui-row">
         <div class="layui-form layui-col-md12 star-so">
-            <input class="layui-input" placeholder="请输入关键字" name="keyword">
+            <input class="layui-input" placeholder="请输入关键字" name="keyword" id="keyword">
 
             <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
         </div>
@@ -54,6 +54,25 @@
     <div class="layui-field-box">
         <div id="dataContent" class="">
             <table class="layui-hide" id="history" lay-filter="table"></table>
+            <script type="text/html" id="status">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item" style="margin:0;">
+                        {{#  if(d.estatus == 1){ }}
+                        <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-skin="primary" lay-filter="estatus" checked disabled/>
+                        {{#  } else { }}
+                        <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
+                        {{#  } }}
+                        {{#  if(d.astatus == 1){ }}
+                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary" checked disabled/>
+                        {{#  } else { }}
+                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary"  disabled/>
+                        {{#  } }}
+
+                    </div>
+                </form>
+                <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
+            </script>
+
             <script type="text/html" id="operator">
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看详情</a>
             </script>
@@ -77,10 +96,13 @@
             ,cols: [[ //表头
                 {type: 'checkbox', align:'center',unresize:true}
                 ,{field: 'name', align:'center', title: '项目名',unresize:true}
+                ,{field: 'snum', align:'center', title: '学生学号',unresize:true,templet: '<div>{{d.student.num}}</div>'}
+                ,{field: 'sname', align:'center', title: '学生姓名',unresize:true,templet: '<div>{{d.student.name}}</div>'}
                 ,{field: 'proResource', align:'center', title: '项目来源',unresize:true}
                 ,{field: 'moneyResource', align:'center', title: '经费来源',unresize:true}
                 ,{field: 'desc', align:'center', title: '项目描述',unresize:true}
                 ,{field: 'teacher', title: '指导老师',unresize:true,templet: '<div>{{d.teacher.name}}</div>'}
+                ,{title: '项目状态',templet: '#status',unresize:true}
                 ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}
             ]]
         });
@@ -102,29 +124,26 @@
         function createHtml(obj) {
             var packageType;
             var data = obj.data;
-            var name = data.name;
-            var arr = name.split("-");
-            if(arr[0] == "StarTVUpgrade"){
-                packageType = "智能电视升级包";
-            }
             var detailHtml = '';
             detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';
-            detailHtml += '<td colspan="8"><blockquote class="layui-elem-quote" style="line-height: 30px">';
-            detailHtml += '<div class="lay ui-inline layui-word-aux" style="width: 115px">包类型:</div>'+packageType+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">芯片名称/型号:</div>'+arr[1]+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">产品型号:</div>'+arr[2]+"-"+arr[3]+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">屏型号:</div>'+arr[4]+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">屏参:</div>'+arr[5]+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">flash大小:</div>'+arr[6]+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 115px">描述:</div>'+data.description+'</br>';
+            detailHtml += '<td colspan="10"><blockquote class="layui-elem-quote" style="line-height: 30px;text-align:left;padding-left: 30px;">';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师电话:</div>'+data.teacher.phone+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师地址:</div>'+data.teacher.address+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师简历:</div>'+data.teacher.resume+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家电话:</div>'+data.expert.phone+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家地址:</div>'+data.expert.address+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家简历:</div>'+data.expert.resume+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家意见:</div>'+data.ereason+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">管理员员意见:</div>'+data.areason+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">创意说明书下载地址:</div><a href="'+data.book.downloadUrl+'">'+data.book.downloadUrl+'</a></br>';
             detailHtml += '</blockquote></td></tr>';
             obj.tr.after(detailHtml);
         }
         //搜索
         $('#search').click(function () {
-
-            table.reload('app', {
-                url: "/appinfo/app/search"
+            var keyword = $("#keyword").val();
+            table.reload('history', {
+                url: "/search/project"
                 ,where: {keyword:keyword} //设定异步数据接口的额外参数
                 //,height: 300
             });
