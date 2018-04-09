@@ -46,7 +46,7 @@ public class AllotServiceImpl implements AllotService{
     @Override
     public Expert findByProject(Project project) {
         List<Allot> allots = allotRepository.findByProject(project);
-        if(allots == null){
+        if(allots == null || allots.size() == 0 ){
             return new Expert();
         }
         return allots.get(0).getExpert();

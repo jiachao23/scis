@@ -87,7 +87,6 @@ layui.define([ 'layer',  'table','common'], function (exports) {
     }
 
     function createHtml(obj) {
-        var packageType;
         var data = obj.data;
         var detailHtml = '';
         detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';

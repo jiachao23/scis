@@ -24,8 +24,8 @@ public class Project implements Serializable{
     private String proResource;
     @Column(name = "money_resource")
     private String moneyResource;
-    @Column(name = "desc")
-    private String desc;
+    @Column(name = "description")
+    private String desc = " ";
     @Column(name = "e_status")
     private Integer EStatus;
     @Column(name = "e_reason")

@@ -56,7 +56,7 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>项目管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/lab/index" data-id="11">实验计划</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/lab/index" data-id="3">实验计划</a></dd>
                             <dd><a href="javascript:;">黑名单管理</a></dd>
                         </dl>
                     </li>

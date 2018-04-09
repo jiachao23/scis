@@ -64,7 +64,7 @@ CREATE TABLE `dept`  (
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `chairman` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `tel` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `desc` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -93,7 +93,7 @@ CREATE TABLE `expert`  (
 -- ----------------------------
 -- Records of expert
 -- ----------------------------
-INSERT INTO `expert` VALUES (1, 123456, '专家', '123456', '男', '2018-04-06 15:13:57', 123456, '专家地址', '专家简历');
+INSERT INTO `expert` VALUES (1, 123456, '专家', '123456', '男', '2018-04-06', 123456, '专家地址', '专家简历');
 
 -- ----------------------------
 -- Table structure for major
@@ -126,7 +126,7 @@ CREATE TABLE `project`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `pro_resource` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `money_resource` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `desc` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `description`  varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `e_status` tinyint(1) NULL DEFAULT NULL,
   `e_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `a_status` tinyint(1) NULL DEFAULT NULL,
@@ -170,7 +170,7 @@ CREATE TABLE `student`  (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES (1, 1306, '我叫学生', '123456', '女', '2018-04-04 10:54:55', '1', 123456, 1);
+INSERT INTO `student` VALUES (1, 1306, '我叫学生', '123456', '女', '2018-04-04', '1', 123456, 1);
 
 -- ----------------------------
 -- Table structure for teacher
@@ -196,6 +196,6 @@ CREATE TABLE `teacher`  (
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
-INSERT INTO `teacher` VALUES (1, 1002, '老师', '123456', '女', '2018-04-04 10:28:51', 123456, '老师地址', '教授', '老师简历', 1);
+INSERT INTO `teacher` VALUES (1, 1002, '老师', '123456', '女', '2018-04-04', 123456, '老师地址', '教授', '老师简历', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

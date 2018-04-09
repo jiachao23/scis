@@ -13,7 +13,6 @@
         .layui-form-item{
             margin: 50px 0 0 200px
         }
-
     </style>
 </head>
 

@@ -54,14 +54,14 @@ public class UploadController {
         String downloadUrl = StringUtils.replace(url.toString(), "upload", "download");
         System.out.println("replaceUrl-----"+downloadUrl);
         Map<String,String> map = new HashMap<>();
-        map.put("url",downloadUrl+"/"+fileName);
-        map.put("name",fileName);
 
         Book book = new Book();
+        book.setName(fileName);
         book.setDownloadUrl(downloadUrl+"/"+fileName);
         book.setUploadUrl(filePath);
-        bookService.saveOrUpdate(book);
-        return JsonResult.ok("map",map);
+        book.setStatus("1");
+        Book book1 = bookService.saveOrUpdate(book);
+        return JsonResult.ok("book",book1);
     }
 
     @GetMapping("/download/{name}")

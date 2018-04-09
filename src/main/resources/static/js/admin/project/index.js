@@ -66,25 +66,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "/project/change" + id + "?advise="+val,
-                success: function (ret) {
-                    if (ret.isOk) {
-                        layer.msg("操作成功", {time: 2000}, function () {
-                            layer.close(index);
-                            window.location.href = "/admin/project/index";
-                        });
-                    } else {
-                        layer.msg(ret.msg, {time: 2000});
-                    }
-                }
-            });
-        });
-
-        layer.confirm('真的删除行么', function (index) {
-            $.ajax({
-                type: "DELETE",
-                dataType: "json",
-                url: "/admin/project/" + id + "/del",
+                url: "/project/change/" + id + "?advise="+val,
                 success: function (ret) {
                     if (ret.isOk) {
                         layer.msg("操作成功", {time: 2000}, function () {
@@ -100,7 +82,6 @@ layui.define([ 'layer',  'table','common'], function (exports) {
     }
 
     function createHtml(obj) {
-        var packageType;
         var data = obj.data;
         var detailHtml = '';
         detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';

@@ -37,8 +37,8 @@
         },
         done: function(res) {
             if (res.isOk) {
-                box.next('div').find('div.imgbox').html('<p>下载地址：<a href="' + res.map.url + '">' + res.map.name + '</a></p>');
-                box.find('input[type=hidden]').val(res.map.url);
+                box.next('div').find('div.imgbox').html('<p>下载地址：<a href="' + res.book.url + '">' + res.book.name + '</a></p>');
+                box.find('input[type=hidden]').val(res.book.id);
             } else {
                 box.next('div').find('p').html('上传失败...')
             }

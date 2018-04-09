@@ -76,7 +76,12 @@ public class StudentController {
      * @return
      */
     @PostMapping("/save")
+    @ResponseBody
     public JsonResult saveOrUpdate(@SessionAttribute("user") Student student,Project project){
+        Project ret = projectService.findByName(project.getName());
+        if(ret != null){
+            return JsonResult.fail("此项目已经申报，请不要重复申报！");
+        }
         project.setStudent(student);
         try {
             projectService.saveOrUpdate(project);

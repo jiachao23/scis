@@ -13,8 +13,9 @@ CREATE TABLE `allot`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` int(11) NULL DEFAULT NULL,
   `expert_id` int(11) NULL DEFAULT NULL,
-  `time` datetime(0) NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `start` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `end` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `allot_project_id`(`project_id`) USING BTREE,
   INDEX `allot_expert_id`(`expert_id`) USING BTREE,
@@ -25,4 +26,4 @@ CREATE TABLE `allot`  (
 -- ----------------------------
 -- Records of allot
 -- ----------------------------
-INSERT INTO `allot` VALUES (1, 1, 1, '2018-04-07 13:58:04', '1111');
+INSERT INTO `allot` VALUES (1, 1, 1, '1111', '2018-04-07', '2018-04-07');

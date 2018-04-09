@@ -29,7 +29,7 @@ public class Dept implements Serializable{
     @Column(name = "tel")
     private String tel;
     //简介
-    @Column(name = "desc")
+    @Column(name = "description")
     private String desc;
 
     public Integer getId() {

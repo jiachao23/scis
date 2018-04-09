@@ -27,7 +27,7 @@
             <span class="sys-title">双创项目信息管理系统</span>
             <ul class="ht-nav">
                 <li class="ht-nav-item">
-                    <a id="updatePassword"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
+                    <a id="updatePassword" style="cursor: pointer"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
                     <input type="hidden" value="${Session.user.num?c}" id="num">
                     <input type="hidden" value="${Session.role}" id="role">
                 </li>
@@ -56,8 +56,8 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>项目管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/allot/index" data-id="11">评审分配</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/project/index" data-id="11">项目审核</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/allot/index" data-id="4">评审分配</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/project/index" data-id="5">项目审核</a></dd>
                         </dl>
                     </li>
                 </ul>
