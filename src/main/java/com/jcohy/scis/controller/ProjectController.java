@@ -1,16 +1,18 @@
 package com.jcohy.scis.controller;
 
+import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.Expert;
 import com.jcohy.scis.model.Project;
 import com.jcohy.scis.service.AllotService;
 import com.jcohy.scis.service.ProjectService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -24,6 +26,8 @@ import java.util.List;
 @RequestMapping("project")
 public class ProjectController {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
     @Autowired
     private ProjectService projectService;
 
@@ -48,5 +52,28 @@ public class ProjectController {
         page.setData(projects);
         return page;
     }
+    @DeleteMapping("{id}/del")
+    @ResponseBody
+    public JsonResult del(@PathVariable("id") Integer id){
+        try {
+            allotService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail("删除失败");
+        }
+        return JsonResult.ok();
+    }
 
+    @GetMapping("/change/{id}")
+    @ResponseBody
+    public JsonResult change(@SessionAttribute("role")String role,@PathVariable("id") Integer id,@PathParam("advise") String advise){
+        logger.error("role:{} id: {} advice: {}",role,id,advise);
+        try {
+            projectService.changeStatus(id,role,advise);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail("修改失败");
+        }
+        return JsonResult.ok();
+    }
 }

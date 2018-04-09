@@ -75,4 +75,22 @@ public class ProjectServiceImpl implements ProjectService{
     public void delete(Integer id) {
 
     }
+
+    @Override
+    public Project changeStatus(Integer id,String role,String advise) {
+        Project project = projectRepository.findById(id).get();
+        switch (role){
+            case "admin" :
+
+                project.setAStatus(project.getAStatus() == 0 ? 1:0);
+                project.setAReason(advise);
+                break;
+            case "expert":
+                project.setEStatus(project.getAStatus() == 0 ? 1:0);
+                project.setEReason(advise);
+            default:
+                break;
+        }
+        return projectRepository.save(project);
+    }
 }

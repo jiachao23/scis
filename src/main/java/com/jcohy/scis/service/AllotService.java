@@ -18,9 +18,9 @@ public interface AllotService {
 
     Allot findById(Integer id);
 
-    Allot findByExpert(Expert expert);
+    List<Project> findByExpert(Expert expert);
 
-    Expert findByProject(Project project);
+    List<Expert> findByProject(Project project);
 
     Allot saveOrUpdate(Allot allot) throws ServiceException;
 

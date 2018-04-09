@@ -7,6 +7,7 @@ import com.jcohy.scis.service.AllotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,17 +34,23 @@ public class AllotServiceImpl implements AllotService{
     }
 
     @Override
-    public Allot findByExpert(Expert expert) {
-        return allotRepository.findByExpert(expert);
+    public List<Project> findByExpert(Expert expert) {
+        List<Allot> allots = allotRepository.findByExpert(expert);
+        List<Project> experts = new ArrayList<>();
+        for(Allot allot:allots){
+            experts.add(allot.getProject());
+        }
+        return experts;
     }
 
     @Override
-    public Expert findByProject(Project project) {
-        Allot allot = allotRepository.findByProject(project);
-        if(allot == null){
-            return new Expert();
+    public List<Expert> findByProject(Project project) {
+        List<Allot> allots = allotRepository.findByProject(project);
+        List<Expert> experts = new ArrayList<>();
+        for(Allot allot:allots){
+            experts.add(allot.getExpert());
         }
-        return allot.getExpert();
+        return experts;
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.jcohy.scis.model;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * ClassName: Project
@@ -46,7 +47,7 @@ public class Project implements Serializable{
     private Book book;
 
     @Transient
-    private Expert expert;
+    private List<Expert> expert;
 
     public Integer getId() {
         return id;
@@ -144,11 +145,11 @@ public class Project implements Serializable{
         this.book = book;
     }
 
-    public Expert getExpert() {
+    public List<Expert> getExpert() {
         return expert;
     }
 
-    public void setExpert(Expert expert) {
+    public void setExpert(List<Expert> expert) {
         this.expert = expert;
     }
 

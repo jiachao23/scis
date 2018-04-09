@@ -67,4 +67,5 @@ public interface ProjectService {
      */
     void delete(Integer id);
 
+    Project changeStatus(Integer id,String role,String advise);
 }

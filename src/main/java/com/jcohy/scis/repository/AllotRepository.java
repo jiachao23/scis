@@ -16,7 +16,7 @@ import java.util.List;
  **/
 public interface AllotRepository extends JpaRepository<Allot,Integer>{
 
-    Allot findByExpert(Expert expert);
+    List<Allot> findByExpert(Expert expert);
 
-    Allot findByProject(Project project);
+    List<Allot> findByProject(Project project);
 }
