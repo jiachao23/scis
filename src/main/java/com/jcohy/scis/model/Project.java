@@ -47,7 +47,7 @@ public class Project implements Serializable{
     private Book book;
 
     @Transient
-    private List<Expert> expert;
+    private Expert expert;
 
     public Integer getId() {
         return id;
@@ -145,11 +145,11 @@ public class Project implements Serializable{
         this.book = book;
     }
 
-    public List<Expert> getExpert() {
+    public Expert getExpert() {
         return expert;
     }
 
-    public void setExpert(List<Expert> expert) {
+    public void setExpert(Expert expert) {
         this.expert = expert;
     }
 

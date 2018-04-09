@@ -5,7 +5,10 @@ import com.jcohy.scis.model.Project;
 import com.jcohy.scis.model.Student;
 import com.jcohy.scis.model.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -23,4 +26,13 @@ public interface ProjectRepository extends JpaRepository<Project,Integer>{
 
     List<Project> findByTeacher(Teacher teacher);
 
+    @Transactional
+    @Modifying
+    @Query("update Project p set p.AStatus = ?1,p.AReason = ?2 where p.id = ?3")
+    int changeAdminStatus(Integer status,String advise,Integer id);
+
+    @Transactional
+    @Modifying
+    @Query("update Project p set p.EStatus = ?1,p.EReason = ?2 where p.id = ?3")
+    int changeExpertStatus(Integer status,String advise,Integer id);
 }

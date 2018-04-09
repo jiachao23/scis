@@ -20,7 +20,7 @@ public interface AllotService {
 
     List<Project> findByExpert(Expert expert);
 
-    List<Expert> findByProject(Project project);
+    Expert findByProject(Project project);
 
     Allot saveOrUpdate(Allot allot) throws ServiceException;
 

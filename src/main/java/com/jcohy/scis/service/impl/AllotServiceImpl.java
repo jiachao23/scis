@@ -44,13 +44,12 @@ public class AllotServiceImpl implements AllotService{
     }
 
     @Override
-    public List<Expert> findByProject(Project project) {
+    public Expert findByProject(Project project) {
         List<Allot> allots = allotRepository.findByProject(project);
-        List<Expert> experts = new ArrayList<>();
-        for(Allot allot:allots){
-            experts.add(allot.getExpert());
+        if(allots == null){
+            return new Expert();
         }
-        return experts;
+        return allots.get(0).getExpert();
     }
 
     @Override
@@ -58,6 +57,7 @@ public class AllotServiceImpl implements AllotService{
         Allot dballot =null;
         if(allot.getId() != null){
             dballot = findById(allot.getId());
+            if(allot.getProject() != null ) dballot.setProject(allot.getProject());
             if(allot.getExpert() != null ) dballot.setExpert(allot.getExpert());
             if(allot.getContent() != null ) dballot.setContent(allot.getContent());
             if(allot.getProject() != null ) dballot.setProject(allot.getProject());
@@ -65,6 +65,9 @@ public class AllotServiceImpl implements AllotService{
             if(allot.getEnd() != null ) dballot.setEnd(allot.getEnd());
         }else{
             dballot =allot;
+        }
+        if(allotRepository.findByProject(dballot.getProject()).size() > 1){
+            throw new ServiceException("此项目已存在专家");
         }
         return allotRepository.save(dballot);
     }

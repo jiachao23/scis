@@ -38,7 +38,7 @@ public class AdminProjectController {
     public PageJson<Project> all(ModelMap map){
         List<Project> projects = projectService.findAll();
         for(Project project : projects){
-            List<Expert> experts = allotService.findByProject(project);
+            Expert experts = allotService.findByProject(project);
             if(experts == null){
                 project.setExpert(null);
             }
