@@ -27,10 +27,10 @@ public interface TeacherService {
 
     /**
      * 分页查询
-     * @param Pageable
+     * @param pageable
      * @return
      */
-    Page<Teacher> findAll(Pageable Pageable);
+    Page<Teacher> findAll(Pageable pageable);
 
 
     /**

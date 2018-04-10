@@ -9,6 +9,8 @@ import com.jcohy.scis.service.AllotService;
 import com.jcohy.scis.service.ExpertService;
 import com.jcohy.scis.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/admin/project")
-public class AdminProjectController {
+public class AdminProjectController extends BaseController{
 
     @Autowired
     private AllotService allotService;
@@ -33,24 +35,6 @@ public class AdminProjectController {
     @Autowired
     private ProjectService projectService;
 
-    @GetMapping("/list")
-    @ResponseBody
-    public PageJson<Project> all(ModelMap map){
-        List<Project> projects = projectService.findAll();
-        for(Project project : projects){
-            Expert experts = allotService.findByProject(project);
-            if(experts == null){
-                project.setExpert(null);
-            }
-            project.setExpert(experts);
-        }
-        PageJson<Project> page = new PageJson<>();
-        page.setCode(0);
-        page.setMsg("成功");
-        page.setCount(projects.size());
-        page.setData(projects);
-        return page;
-    }
 
 //    @DeleteMapping("{id}/del")
 //    @ResponseBody

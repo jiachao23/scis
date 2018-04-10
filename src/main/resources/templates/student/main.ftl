@@ -30,6 +30,8 @@
                     <a id="updatePassword"><i class="fa fa-power-off fa-fw"></i>修改密码</a>
                     <input type="hidden" value="${Session.user.num?c}" id="num">
                     <input type="hidden" value="${Session.role}" id="role">
+                    <input type="hidden" value="${size}" id="size">
+                    <input type="hidden" value="${url}" id="url">
                 </li>
                 <li class="ht-nav-item">
                     <a href="${ctx!}/logout"><i class="fa fa-power-off fa-fw"></i>注销</a>
@@ -55,7 +57,7 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>我的消息</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/lab/index" data-id="3">我的消息</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/student/notice" data-id="3">我的消息</a></dd>
                         </dl>
                     </li>
                 </ul>
@@ -79,7 +81,6 @@
                             <span style="padding-left:1em;">用户姓名：${Session.user.name}</span>
                             <span style="padding-left:1em;">角色：${Session.role}</span>
                         </p>
-
                     </div>
                 </div>
             </div>

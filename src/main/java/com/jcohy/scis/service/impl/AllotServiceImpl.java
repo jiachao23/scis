@@ -5,6 +5,8 @@ import com.jcohy.scis.model.*;
 import com.jcohy.scis.repository.AllotRepository;
 import com.jcohy.scis.service.AllotService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +24,11 @@ public class AllotServiceImpl implements AllotService{
 
     @Autowired
     private AllotRepository allotRepository;
+
+    @Override
+    public Page<Allot> findAll(Pageable pageable) {
+        return allotRepository.findAll(pageable);
+    }
 
     @Override
     public List<Allot> findAll() {

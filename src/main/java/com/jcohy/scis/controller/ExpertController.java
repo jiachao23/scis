@@ -7,10 +7,12 @@ import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.StudentService;
 import com.jcohy.scis.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ import java.util.List;
  **/
 @Controller
 @RequestMapping("/expert")
-public class ExpertController {
+public class ExpertController extends BaseController{
 
     @Autowired
     private StudentService studentService;
@@ -38,10 +40,18 @@ public class ExpertController {
     @GetMapping("/project/list")
     @ResponseBody
     public PageJson<Project> all(@SessionAttribute("user") Expert expert , ModelMap map){
+        PageRequest pageRequest = getPageRequest();
+
         List<Project> projects = allotService.findByExpert(expert);
         projects.stream().forEach(string ->{
             string.setExpert(expert);
         });
+
+        if(projects.size()>((pageRequest.getPageNumber()+1)*pageRequest.getPageSize())){
+            List<Project> projects1 = projects.subList(0, pageRequest.getPageSize());
+            projects.clear();
+            projects.addAll(projects1);
+        }
         PageJson<Project> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");

@@ -5,6 +5,8 @@ import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.*;
 import com.jcohy.scis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/admin/allot")
-public class AdminAllotController {
+public class AdminAllotController extends BaseController{
 
     @Autowired
     private AllotService allotService;
@@ -32,12 +34,14 @@ public class AdminAllotController {
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Allot> all(ModelMap map){
-        List<Allot> allots = allotService.findAll();
+        PageRequest request = getPageRequest();
+
+        Page<Allot> allots = allotService.findAll(request);
         PageJson<Allot> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(allots.size());
-        page.setData(allots);
+        page.setCount(allots.getContent().size());
+        page.setData(allots.getContent());
         return page;
     }
 

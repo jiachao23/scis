@@ -1,8 +1,7 @@
 package com.jcohy.scis.service;
 
 import com.jcohy.scis.model.Allot;
-import com.jcohy.scis.model.Dept;
-import com.jcohy.scis.model.Major;
+import com.jcohy.scis.model.Notice;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,23 +9,25 @@ import java.util.List;
 
 /**
  * Copyright  : 2017- www.jcohy.com
- * Created by jiac on 22:10 2018/4/6
+ * Created by jiac on 0:15 2018/4/11
  * Email: jia_chao23@126.com
- * ClassName: MajorService
+ * ClassName: NoticeService
  * Description:
  **/
-public interface MajorService {
+public interface NoticeService {
 
     /**
      * 分页查询
      * @param pageable
      * @return
      */
-    Page<Major> findAll(Pageable pageable);
+    Page<Notice> findAll(Pageable pageable);
 
-    List<Major> findAll();
+    List<Notice> findAll();
 
-    Major findById(Integer id);
+    Notice save(Notice notice);
 
-    List<Major> findByDept(Dept dept);
+    void delete(Integer id);
+
+    List<Notice> findbyNum(Integer name);
 }

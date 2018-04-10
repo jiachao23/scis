@@ -4,6 +4,8 @@ import com.jcohy.scis.model.Dept;
 import com.jcohy.scis.repository.DeptRepository;
 import com.jcohy.scis.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,11 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private DeptRepository deptRepository;
 
+
+    @Override
+    public Page<Dept> findAll(Pageable pageable) {
+        return deptRepository.findAll(pageable);
+    }
 
     @Override
     public List<Dept> findAll() {

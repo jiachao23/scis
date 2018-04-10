@@ -5,6 +5,8 @@ import com.jcohy.scis.model.Major;
 import com.jcohy.scis.repository.MajorRepository;
 import com.jcohy.scis.service.MajorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,11 @@ public class MajorServiceImpl implements MajorService {
     @Autowired
     private MajorRepository majorRepository;
 
+
+    @Override
+    public Page<Major> findAll(Pageable pageable) {
+        return majorRepository.findAll(pageable);
+    }
 
     @Override
     public List<Major> findAll() {

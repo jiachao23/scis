@@ -7,6 +7,8 @@ import com.jcohy.scis.service.DeptService;
 import com.jcohy.scis.service.MajorService;
 import com.jcohy.scis.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/admin/student")
-public class AdminStudentController {
+public class AdminStudentController extends BaseController{
 
     @Autowired
     private StudentService studentService;
@@ -34,12 +36,13 @@ public class AdminStudentController {
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Student> all(ModelMap map){
-        List<Student> labs = studentService.findAll();
+        PageRequest pageRequest = getPageRequest();
+        Page<Student> students = studentService.findAll(pageRequest);
         PageJson<Student> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(labs.size());
-        page.setData(labs);
+        page.setCount(students.getContent().size());
+        page.setData(students.getContent());
         return page;
     }
 

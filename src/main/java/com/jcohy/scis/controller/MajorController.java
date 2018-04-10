@@ -23,7 +23,7 @@ import java.util.List;
  **/
 @Controller
 @RequestMapping("/major/")
-public class MajorController {
+public class MajorController extends BaseController{
 
     @Autowired
     private MajorService majorService;

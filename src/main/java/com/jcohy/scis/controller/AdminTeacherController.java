@@ -7,6 +7,8 @@ import com.jcohy.scis.service.DeptService;
 import com.jcohy.scis.service.MajorService;
 import com.jcohy.scis.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/admin/teacher")
-public class AdminTeacherController {
+public class AdminTeacherController extends BaseController{
 
     @Autowired
     private TeacherService teacherService;
@@ -28,12 +30,13 @@ public class AdminTeacherController {
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Teacher> all(ModelMap map){
-        List<Teacher> labs = teacherService.findAll();
+        PageRequest pageRequest = getPageRequest();
+        Page<Teacher> teachers = teacherService.findAll(pageRequest);
         PageJson<Teacher> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(labs.size());
-        page.setData(labs);
+        page.setCount(teachers.getContent().size());
+        page.setData(teachers.getContent());
         return page;
     }
 

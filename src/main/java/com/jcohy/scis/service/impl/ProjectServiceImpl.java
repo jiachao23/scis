@@ -9,6 +9,8 @@ import com.jcohy.scis.repository.TeacherRepository;
 import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -74,6 +76,11 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public void delete(Integer id) {
 
+    }
+
+    @Override
+    public Page<Project> findAll(Pageable pageable) {
+        return projectRepository.findAll(pageable);
     }
 
     @Override

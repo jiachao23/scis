@@ -150,7 +150,11 @@
 
         function getNotReplyLeaveMessage() {
             clearInterval(interval); //停止计时器
+            var size = $("#size").val();
+            var url = $("#url").val();
+
             var content = '<p>目前有<span>${size!}</span>条留言未回复<a href="javascript:layer.msg(\'跳转到相应页面\')">点击查看</a></p>';
+            // var content = '<p>目前有<span>'+size+'</span>条留言未回复<a href="'+url+'">点击查看</a></p>';
             content += '<div class="notnotice" >不再提醒</div>';
             layerSteward = layer.open({
                 type: 1,

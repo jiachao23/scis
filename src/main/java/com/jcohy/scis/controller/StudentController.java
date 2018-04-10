@@ -4,13 +4,11 @@ import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.*;
 import com.jcohy.scis.repository.NoticeRepository;
-import com.jcohy.scis.service.AllotService;
-import com.jcohy.scis.service.ProjectService;
-import com.jcohy.scis.service.StudentService;
-import com.jcohy.scis.service.TeacherService;
+import com.jcohy.scis.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +22,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/student")
-public class StudentController {
+public class StudentController extends BaseController{
 
     @Autowired
     private StudentService studentService;
@@ -40,17 +38,43 @@ public class StudentController {
     private AllotService allotService;
 
     @Autowired
-    private NoticeRepository noticeRepository;
+    private NoticeService noticeService;
+
     private Logger logger = LoggerFactory.getLogger(StudentController.class);
 
     @GetMapping("/main")
     public String main(ModelMap map){
-        List<Notice> notices = noticeRepository.findAll();
+        List<Notice> notices = noticeService.findAll();
         map.put("size",notices.size());
         map.put("url","/notice/list");
         return "/student/main";
     }
 
+    @GetMapping("/notice/all")
+    @ResponseBody
+    public PageJson<Notice> notice(@SessionAttribute("user") Student student , ModelMap map){
+
+        List<Notice> notices = noticeService.findbyNum(student.getNum());
+
+        PageJson<Notice> page = new PageJson<>();
+        page.setCode(0);
+        page.setMsg("成功");
+        page.setCount(notices.size());
+        page.setData(notices);
+        return page;
+    }
+
+    @DeleteMapping("/notice/{id}/del")
+    @ResponseBody
+    public JsonResult del(@PathVariable("id") Integer id){
+        try {
+            noticeService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail("删除失败");
+        }
+        return JsonResult.ok();
+    }
 
     @GetMapping("/project/list")
     @ResponseBody

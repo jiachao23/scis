@@ -7,7 +7,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         elem: '#project'
         ,height: 'full-200'
         ,method:'GET'
-        ,url: '/admin/project/list' //数据接口
+        ,url: '/project/all' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
             {type: 'checkbox', align:'center',unresize:true}

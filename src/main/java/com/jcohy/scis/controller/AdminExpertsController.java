@@ -5,6 +5,8 @@ import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.Expert;
 import com.jcohy.scis.service.ExpertService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/admin/expert")
-public class AdminExpertsController {
+public class AdminExpertsController extends BaseController{
 
     @Autowired
     private ExpertService expertService;
@@ -27,12 +29,13 @@ public class AdminExpertsController {
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Expert> all(ModelMap map){
-        List<Expert> experts = expertService.findAll();
+        PageRequest pageRequest = getPageRequest();
+        Page<Expert> experts = expertService.findAll(pageRequest);
         PageJson<Expert> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(experts.size());
-        page.setData(experts);
+        page.setCount(experts.getContent().size());
+        page.setData(experts.getContent());
         return page;
     }
 

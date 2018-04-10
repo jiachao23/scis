@@ -1,7 +1,10 @@
 package com.jcohy.scis.service;
 
 import com.jcohy.scis.exception.ServiceException;
+import com.jcohy.scis.model.Allot;
 import com.jcohy.scis.model.Project;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -66,6 +69,13 @@ public interface ProjectService {
      * @param id
      */
     void delete(Integer id);
+
+    /**
+     * 分页查询
+     * @param pageable
+     * @return
+     */
+    Page<Project> findAll(Pageable pageable);
 
     void changeStatus(Integer id,String role,String advise);
 }

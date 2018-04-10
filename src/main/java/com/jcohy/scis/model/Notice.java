@@ -17,6 +17,9 @@ public class Notice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "student_num")
+    private Integer studentNum;
+
     @Column(name = "project_name")
     private String projectName;
 
@@ -32,12 +35,32 @@ public class Notice {
     @Column(name = "operation_date")
     private String date;
 
+    public Notice() {
+    }
+
+    public Notice(Integer studentNum, String projectName, String operation, String status, String content, String date) {
+        this.studentNum = studentNum;
+        this.projectName = projectName;
+        this.operation = operation;
+        this.status = status;
+        this.content = content;
+        this.date = date;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getStudentNum() {
+        return studentNum;
+    }
+
+    public void setStudentNum(Integer studentNum) {
+        this.studentNum = studentNum;
     }
 
     public String getProjectName() {

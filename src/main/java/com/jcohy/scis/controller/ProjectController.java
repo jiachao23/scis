@@ -9,6 +9,8 @@ import com.jcohy.scis.service.ProjectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,7 @@ import java.util.List;
  **/
 @Controller
 @RequestMapping("project")
-public class ProjectController {
+public class ProjectController extends BaseController{
 
 
     private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
@@ -37,8 +39,9 @@ public class ProjectController {
     @GetMapping("/all")
     @ResponseBody
     public PageJson<Project> all(){
-        List<Project> projects = projectService.findAll();
-        for(Project project : projects){
+        PageRequest pageRequest = getPageRequest();
+        Page<Project> projects = projectService.findAll(pageRequest);
+        for(Project project : projects.getContent()){
             Expert expert = allotService.findByProject(project);
             if(expert == null){
                 project.setExpert(null);
@@ -48,8 +51,8 @@ public class ProjectController {
         PageJson<Project> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(projects.size());
-        page.setData(projects);
+        page.setCount(projects.getContent().size());
+        page.setData(projects.getContent());
         return page;
     }
     @DeleteMapping("{id}/del")
