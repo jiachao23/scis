@@ -37,14 +37,16 @@ public class ExpertController {
     private ProjectService projectService;
     @GetMapping("/project/list")
     @ResponseBody
-    public PageJson<Allot> all(@SessionAttribute("user") Expert expert , ModelMap map){
-//        Student student = studentService.findByNum(num);
-//        Allot allots = allotService.findByExpert(expert);
-        PageJson<Allot> page = new PageJson<>();
-//        page.setCode(0);
-//        page.setMsg("成功");
-//        page.setCount(allots.size());
-//        page.setData(allots);
+    public PageJson<Project> all(@SessionAttribute("user") Expert expert , ModelMap map){
+        List<Project> projects = allotService.findByExpert(expert);
+        projects.stream().forEach(string ->{
+            string.setExpert(expert);
+        });
+        PageJson<Project> page = new PageJson<>();
+        page.setCode(0);
+        page.setMsg("成功");
+        page.setCount(projects.size());
+        page.setData(projects);
         return page;
     }
 

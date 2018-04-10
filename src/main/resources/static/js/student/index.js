@@ -87,18 +87,35 @@ layui.define([ 'layer',  'table','common'], function (exports) {
     }
 
     function createHtml(obj) {
+        var packageType;
         var data = obj.data;
+        var expert = data.expert;
+        var ephone,eaddress,eresume,ereason,areason;
+        if(expert == null){
+            ephone ='此项目还未分配专家审核';
+            eaddress = '此项目还未分配专家审核';
+            eresume ='此项目还未分配专家审核';
+            ereason = '此项目还未分配专家审核';
+            areason = '此项目还未通过专家审核';
+        }else{
+            ephone = data.expert.phone;
+            eaddress = data.expert.address;
+            eresume = data.expert.resume;
+            ereason = data.ereason;
+            areason = data.areason;
+        }
         var detailHtml = '';
         detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';
-        detailHtml += '<td colspan="8"><blockquote class="layui-elem-quote" style="line-height: 30px;text-align:left;padding-left: 30px;">';
+        detailHtml += '<td colspan="10"><blockquote class="layui-elem-quote" style="line-height: 30px;text-align:left;padding-left: 30px;">';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师电话:</div>'+data.teacher.phone+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师地址:</div>'+data.teacher.address+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师简历:</div>'+data.teacher.resume+'</br>';
-        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家电话:</div>'+data.expert.phone+'</br>';
-        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家地址:</div>'+data.expert.address+'</br>';
-        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家简历:</div>'+data.expert.resume+'</br>';
-        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家意见:</div>'+data.ereason+'</br>';
-        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">管理员员意见:</div>'+data.areason+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家电话:</div>'+ephone+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家地址:</div>'+eaddress+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家简历:</div>'+eresume+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家意见:</div>'+ereason+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">管理员员意见:</div>'+areason+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">项目描述:</div>'+data.desc+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">创意说明书下载地址:</div><a href="'+data.book.downloadUrl+'">'+data.book.downloadUrl+'</a></br>';
         detailHtml += '</blockquote></td></tr>';
         obj.tr.after(detailHtml);

@@ -23,37 +23,42 @@
             height: 45px;
         }
         .star-so{
-            text-align: center;
-            margin-bottom: 10px;
-            margin-top: 40px;
+             text-align: center;
+             margin-bottom: 10px;
+             margin-top: 40px;
         }
         .star-so input.layui-input{
             width: 200px;
             display: inline-block;
         }
-
     </style>
 </head>
 <body>
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
-    <legend style="text-align:center;">历史项目</legend>
+    <legend style="text-align:center;">我的消息</legend>
 
     <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
         <i class="layui-icon">&#x1002;</i>
     </button>
-    <div class="layui-row">
-        <div class="layui-form layui-col-md12 star-so">
-            <input class="layui-input" placeholder="请输入关键字" name="keyword" id="keyword">
+    <#--<div class="layui-row">-->
+        <#--<div class="layui-form layui-col-md12 star-so">-->
+            <#--<input class="layui-input" placeholder="请输入关键字" name="keyword">-->
 
-            <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
-        </div>
-    </div>
+            <#--<button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>-->
+        <#--</div>-->
+    <#--</div>-->
+
 
 
     <div class="layui-field-box">
         <div id="dataContent" class="">
-            <table class="layui-hide" id="history" lay-filter="table"></table>
+
+            <table class="layui-hide" id="student" lay-filter="table"></table>
+            <script type="text/html" id="operator">
+                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
+                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
+            </script>
             <script type="text/html" id="status">
                 <form class="layui-form" action="">
                     <div class="layui-form-item" style="margin:0;">
@@ -67,14 +72,9 @@
                         {{#  } else { }}
                         <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary"  disabled/>
                         {{#  } }}
-
                     </div>
                 </form>
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
-            </script>
-
-            <script type="text/html" id="operator">
-                <a class="layui-btn layui-btn-normal" lay-event="detail">查看详情</a>
             </script>
         </div>
     </div>

@@ -79,22 +79,11 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public void changeStatus(Integer id,String role,String advise) {
         Project project = projectRepository.findById(id).get();
-//        switch (role){
-//            case "admin" :
-//                project.setAStatus(project.getAStatus() == 0 ? 1:0);
-//                project.setAReason(advise);
-//                break;
-//            case "expert":
-//                project.setEStatus(project.getAStatus() == 0 ? 1:0);
-//                project.setEReason(advise);
-//            default:
-//                break;
-//        }
         switch (role){
             case "admin" :
                 projectRepository.changeAdminStatus(project.getAStatus() == 0 ? 1:0,advise,project.getId());
             case "expert":
-                projectRepository.changeAdminStatus(project.getAStatus() == 0 ? 1:0,advise,project.getId());
+                projectRepository.changeExpertStatus(project.getAStatus() == 0 ? 1:0,advise,project.getId());
             default:
                 break;
         }

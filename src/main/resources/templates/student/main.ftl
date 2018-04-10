@@ -95,7 +95,7 @@
     <script type="text/javascript">
         layui.config({
             base: '${ctx!}/js/'
-        }).use('main');
+        }).use('student/main');
     </script>
 </body>
 </html>

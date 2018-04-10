@@ -3,6 +3,7 @@ package com.jcohy.scis.controller;
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.*;
+import com.jcohy.scis.repository.NoticeRepository;
 import com.jcohy.scis.service.AllotService;
 import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.StudentService;
@@ -38,7 +39,19 @@ public class StudentController {
     @Autowired
     private AllotService allotService;
 
+    @Autowired
+    private NoticeRepository noticeRepository;
     private Logger logger = LoggerFactory.getLogger(StudentController.class);
+
+    @GetMapping("/main")
+    public String main(ModelMap map){
+        List<Notice> notices = noticeRepository.findAll();
+        map.put("size",notices.size());
+        map.put("url","/notice/list");
+        return "/student/main";
+    }
+
+
     @GetMapping("/project/list")
     @ResponseBody
     public PageJson<Project> all(@SessionAttribute("user") Student student , ModelMap map){

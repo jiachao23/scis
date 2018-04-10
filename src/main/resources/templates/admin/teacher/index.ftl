@@ -41,11 +41,11 @@
             </div>
         </div>
 
-        <div class="layui-inline">
-            <div class="layui-input-inline" style="width:auto">
-                <a id="deleteAll" class="layui-btn layui-btn-normal">批量删除</a>
-            </div>
-        </div>
+        <#--<div class="layui-inline">-->
+            <#--<div class="layui-input-inline" style="width:auto">-->
+                <#--<a id="deleteAll" class="layui-btn layui-btn-normal">批量删除</a>-->
+            <#--</div>-->
+        <#--</div>-->
     </div>
 
 
