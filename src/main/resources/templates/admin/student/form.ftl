@@ -37,7 +37,7 @@
                     <div class="layui-form-item" style="margin-top: 10px">
                         <label class="layui-form-label">学号</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="num" lay-verify="number"  placeholder="请输入学号" value="${student.num}"
+                            <input type="text" name="num" lay-verify="number"  placeholder="请输入学号" value="${student.num?c}"
                                    autocomplete="off" class="layui-input ">
                         </div>
                     </div>
