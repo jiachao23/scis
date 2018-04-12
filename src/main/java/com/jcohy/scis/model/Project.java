@@ -48,6 +48,16 @@ public class Project implements Serializable{
 
     @Transient
     private Expert expert;
+    @Transient
+    private String operator;
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
 
     public Integer getId() {
         return id;

@@ -98,7 +98,7 @@
                         if (ret.isOk) {
                             layer.msg("操作成功", {time: 2000}, function () {
                                 layer.close(index);
-                                window.location.href = "/student/notice/index";
+                                window.location.href = "/student/notice";
                             });
                         } else {
                             layer.msg(ret.msg, {time: 2000});

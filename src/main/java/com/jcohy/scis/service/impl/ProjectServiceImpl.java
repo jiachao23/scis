@@ -1,11 +1,10 @@
 package com.jcohy.scis.service.impl;
 
+import com.jcohy.date.DateUtils;
 import com.jcohy.scis.exception.ServiceException;
+import com.jcohy.scis.model.Notice;
 import com.jcohy.scis.model.Project;
-import com.jcohy.scis.repository.ExpertsRepository;
-import com.jcohy.scis.repository.ProjectRepository;
-import com.jcohy.scis.repository.StudentRepository;
-import com.jcohy.scis.repository.TeacherRepository;
+import com.jcohy.scis.repository.*;
 import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -23,7 +23,7 @@ import java.util.List;
  * Description:
  **/
 @Service
-public class ProjectServiceImpl implements ProjectService{
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
@@ -35,7 +35,7 @@ public class ProjectServiceImpl implements ProjectService{
     private TeacherRepository teacherRepository;
 
     @Autowired
-    private ExpertsRepository expertsRepository;
+    private NoticeRepository noticeRepository;
 
     @Override
     public List<Project> findAll() {
@@ -69,7 +69,12 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public Project saveOrUpdate(Project project) throws ServiceException {
-
+        if(project.getId() == null){
+            project.setAReason("");
+            project.setEReason("");
+            project.setAStatus(0);
+            project.setEStatus(0);
+        }
         return projectRepository.save(project);
     }
 
@@ -83,16 +88,38 @@ public class ProjectServiceImpl implements ProjectService{
         return projectRepository.findAll(pageable);
     }
 
+    @Transactional
     @Override
-    public void changeStatus(Integer id,String role,String advise) {
-        Project project = projectRepository.findById(id).get();
-        switch (role){
-            case "admin" :
-                projectRepository.changeAdminStatus(project.getAStatus() == 0 ? 1:0,advise,project.getId());
-            case "expert":
-                projectRepository.changeExpertStatus(project.getAStatus() == 0 ? 1:0,advise,project.getId());
-            default:
-                break;
+    public void changeStatus(Integer id, String role, String advise) {
+        try {
+            Project project = projectRepository.findById(id).get();
+            Notice notice = new Notice();
+            switch (role) {
+                case "admin":
+                    notice.setStudentNum(project.getStudent().getNum());
+                    notice.setProjectName(project.getName());
+                    notice.setOperation("项目由管理员审核");
+                    notice.setContent(advise);
+                    notice.setStatus(project.getAStatus() == 0 ? "通过" : "撤回");
+                    notice.setDate(DateUtils.getCurrentDateStr());
+                    projectRepository.changeAdminStatus(project.getAStatus() == 0 ? 1 : 0, advise, project.getId());
+                    noticeRepository.save(notice);
+                    break;
+                case "expert":
+                    notice.setStudentNum(project.getStudent().getNum());
+                    notice.setProjectName(project.getName());
+                    notice.setOperation("项目专家审核");
+                    notice.setContent(advise);
+                    notice.setStatus(project.getAStatus() == 0 ? "通过" : "撤回");
+                    notice.setDate(DateUtils.getCurrentDateStr());
+                    projectRepository.changeExpertStatus(project.getAStatus() == 0 ? 1 : 0, advise, project.getId());
+                    noticeRepository.save(notice);
+                    break;
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -45,6 +45,7 @@ public class ExpertController extends BaseController{
         List<Project> projects = allotService.findByExpert(expert);
         projects.stream().forEach(string ->{
             string.setExpert(expert);
+            string.setOperator("expert");
         });
 
         if(projects.size()>((pageRequest.getPageNumber()+1)*pageRequest.getPageSize())){

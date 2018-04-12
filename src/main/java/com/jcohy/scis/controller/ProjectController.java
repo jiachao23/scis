@@ -46,6 +46,7 @@ public class ProjectController extends BaseController{
             if(expert == null){
                 project.setExpert(null);
             }
+            project.setOperator("admin");
             project.setExpert(expert);
         }
         PageJson<Project> page = new PageJson<>();
