@@ -95,9 +95,7 @@ public class AllotServiceImpl implements AllotService {
                 notice.setStatus("0");
                 notice.setDate(DateUtils.getCurrentDateStr());
             }
-            if (allotRepository.findByProject(dballot.getProject()).size() > 1) {
-                throw new ServiceException("此项目已存在专家");
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,5 +106,16 @@ public class AllotServiceImpl implements AllotService {
     @Override
     public void delete(Integer id) {
         allotRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean check(Allot allot) {
+        if(allot.getId() == null){
+            List<Allot> allots = allotRepository.findByProject(allot.getProject());
+            if (allotRepository.findByProject(allot.getProject()).size() > 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

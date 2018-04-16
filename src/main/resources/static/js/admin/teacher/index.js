@@ -10,8 +10,7 @@
         ,url: '/admin/teacher/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
-            {type: 'checkbox', align:'center',unresize:true}
-            ,{field: 'num', align:'center', title: '工号',unresize:true}
+            {field: 'num', align:'center', title: '工号',unresize:true}
             ,{field: 'name', align:'center', title: '姓名',unresize:true}
             ,{field: 'sex', align:'center', title: '性别',unresize:true}
             ,{field: 'phone', align:'center', title: '电话',unresize:true}

@@ -74,6 +74,8 @@ public class ProjectServiceImpl implements ProjectService {
             project.setEReason("");
             project.setAStatus(0);
             project.setEStatus(0);
+            project.setTStatus(0);
+            project.setTReason("");
         }
         return projectRepository.save(project);
     }
@@ -110,9 +112,19 @@ public class ProjectServiceImpl implements ProjectService {
                     notice.setProjectName(project.getName());
                     notice.setOperation("项目专家审核");
                     notice.setContent(advise);
-                    notice.setStatus(project.getAStatus() == 0 ? "通过" : "撤回");
+                    notice.setStatus(project.getEStatus() == 0 ? "通过" : "撤回");
                     notice.setDate(DateUtils.getCurrentDateStr());
-                    projectRepository.changeExpertStatus(project.getAStatus() == 0 ? 1 : 0, advise, project.getId());
+                    projectRepository.changeExpertStatus(project.getEStatus() == 0 ? 1 : 0, advise, project.getId());
+                    noticeRepository.save(notice);
+                    break;
+                case "teacher":
+                    notice.setStudentNum(project.getStudent().getNum());
+                    notice.setProjectName(project.getName());
+                    notice.setOperation("教师审核");
+                    notice.setContent(advise);
+                    notice.setStatus(project.getTStatus() == 0 ? "通过" : "撤回");
+                    notice.setDate(DateUtils.getCurrentDateStr());
+                    projectRepository.changeTeacherStatus(project.getTStatus() == 0 ? 1 : 0, advise, project.getId());
                     noticeRepository.save(notice);
                     break;
                 default:
