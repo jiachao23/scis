@@ -64,7 +64,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">指导老师</label>
                         <div class="layui-input-inline">
-                            <select name="teacher" lay-filter="teacher">
+                            <select name="teacher" lay-filter="teacher" lay-verify="required">
                                 <option value="">请选择指导老师</option>
                             <#list teachers as x>
                                 <option value="${x.id}"

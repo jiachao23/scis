@@ -35,6 +35,11 @@ public class Project implements Serializable{
     @Column(name = "a_reason")
     private String AReason;
 
+    @Column(name = "t_status")
+    private Integer TStatus;
+    @Column(name = "t_reason")
+    private String TReason;
+
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
@@ -129,6 +134,22 @@ public class Project implements Serializable{
 
     public void setAReason(String AReason) {
         this.AReason = AReason;
+    }
+
+    public Integer getTStatus() {
+        return TStatus;
+    }
+
+    public void setTStatus(Integer TStatus) {
+        this.TStatus = TStatus;
+    }
+
+    public String getTReason() {
+        return TReason;
+    }
+
+    public void setTReason(String TReason) {
+        this.TReason = TReason;
     }
 
     public Student getStudent() {
