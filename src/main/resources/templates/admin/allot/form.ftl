@@ -39,7 +39,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">待评审的项目</label>
                         <div class="layui-input-inline">
-                            <select name="project" lay-filter="teacher">
+                            <select name="project" lay-filter="project" lay-verify="required">
                                 <option value="">请选择项目</option>
                             <#list projects as x>
                                 <option value="${x.id}"
@@ -54,7 +54,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">选择评审老师</label>
                         <div class="layui-input-inline">
-                            <select name="expert" lay-filter="teacher">
+                            <select name="expert" lay-filter="teacher" lay-verify="required">
                                 <option value="">请选择评审老师</option>
                             <#list experts as x>
                                 <option value="${x.id}"
@@ -80,14 +80,14 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">开始时间</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="start" value="${(allot.start)!}" class="layui-input" id="start">
+                            <input type="text" name="start" value="${(allot.start)!}" class="layui-input" id="start" lay-verify="required">
                         </div>
                     </div>
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">结束时间</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="end" value="${(allot.end)!}" class="layui-input" id="end">
+                            <input type="text" name="end" value="${(allot.end)!}" class="layui-input" id="end" lay-verify="required">
                         </div>
                     </div>
 

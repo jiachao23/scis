@@ -10,8 +10,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         ,url: '/admin/allot/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
-            {type: 'checkbox', align:'center',unresize:true}
-            ,{field: 'pname', align:'center', title: '评审的项目名',unresize:true,templet: '<div>{{d.project.name}}</div>'}
+            {field: 'pname', align:'center', title: '评审的项目名',unresize:true,templet: '<div>{{d.project.name}}</div>'}
             ,{field: 'content', align:'center', title: '评审内容',unresize:true}
             ,{field: 'start', align:'center', title: '开始',unresize:true}
             ,{field: 'end', align:'center', title: '结束',unresize:true}

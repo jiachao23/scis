@@ -57,6 +57,11 @@
             <script type="text/html" id="status">
                 <form class="layui-form" action="">
                     <div class="layui-form-item" style="margin:0;">
+                        {{#  if(d.tstatus == 1){ }}
+                        <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-skin="primary" lay-filter="tstatus" checked disabled/>
+                        {{#  } else { }}
+                        <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" disabled/>
+                        {{#  } }}
                         {{#  if(d.estatus == 1){ }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-skin="primary" lay-filter="estatus" checked disabled/>
                         {{#  } else { }}
@@ -72,7 +77,6 @@
                 </form>
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
             </script>
-
             <script type="text/html" id="operator">
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看详情</a>
             </script>

@@ -48,18 +48,19 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>项目管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/teacher/index" data-id="1">我的项目</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/teacher/index" data-id="1">我的工作</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/project/history" data-id="2">往年项目查看</a></dd>
                         </dl>
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-file-text"></i>项目管理</a>
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>我的消息</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/lab/index" data-id="3">实验计划</a></dd>
-                            <dd><a href="javascript:;">黑名单管理</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/student/notice" data-id="3">我的消息</a></dd>
                         </dl>
                     </li>
+
+
                 </ul>
             </div>
         </div>

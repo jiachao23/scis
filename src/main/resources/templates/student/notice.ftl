@@ -74,6 +74,7 @@
                 {type: 'checkbox', align: 'center', unresize: true}
                 , {field: 'projectName', align: 'center', title: '项目名', unresize: true}
                 , {field: 'operation', align: 'center', title: '操作', unresize: true}
+                , {field: 'status', align: 'center', title: '状态', unresize: true}
                 , {field: 'content', align: 'center', title: '内容', unresize: true}
                 , {field: 'date', align: 'center', title: '日期', unresize: true}
                 ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}

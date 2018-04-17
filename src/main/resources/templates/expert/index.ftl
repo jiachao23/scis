@@ -43,6 +43,11 @@
             <script type="text/html" id="status">
                 <form class="layui-form" action="">
                     <div class="layui-form-item" style="margin:0;">
+                        {{#  if(d.tstatus == 1){ }}
+                        <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-skin="primary" lay-filter="tstatus" checked disabled/>
+                        {{#  } else { }}
+                        <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" disabled/>
+                        {{#  } }}
                         {{#  if(d.estatus == 1){ }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-skin="primary" lay-filter="estatus" checked disabled/>
                         {{#  } else { }}
@@ -53,21 +58,22 @@
                         {{#  } else { }}
                         <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary"  disabled/>
                         {{#  } }}
+
                     </div>
                 </form>
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
             </script>
             <script type="text/html" id="operator">
-                {{#  if(d.astatus == 1){ }}
+                {{#  if(d.tstatus == 1 && d.estatus == 1 && d.asatus != 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                {{#  }else if(d.estatus == 0) { }}
+                <a class="layui-btn " lay-event="pass">撤回</a>
+                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
+                {{#  }else if(d.tstatus == 1 && d.estatus != 1 && d.asatus != 1 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 <a class="layui-btn " lay-event="pass">通过</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{#  }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn " lay-event="recall">撤回</a>
-                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{# } }}
             </script>
 

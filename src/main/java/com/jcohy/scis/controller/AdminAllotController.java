@@ -63,6 +63,10 @@ public class AdminAllotController extends BaseController{
     @ResponseBody
     public JsonResult save(Allot allot){
         try {
+            boolean check = allotService.check(allot);
+            if(! check){
+                return JsonResult.fail("此项目已分配专家");
+            }
             allotService.saveOrUpdate(allot);
         } catch (Exception e) {
             e.printStackTrace();

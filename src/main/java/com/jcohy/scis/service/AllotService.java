@@ -36,4 +36,6 @@ public interface AllotService {
     Allot saveOrUpdate(Allot allot) throws ServiceException;
 
     void delete(Integer id);
+
+    boolean check(Allot allot);
 }

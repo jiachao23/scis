@@ -10,8 +10,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         ,url: '/teacher/project/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
-            {type: 'checkbox', align:'center',unresize:true}
-            ,{field: 'name', align:'center', title: '项目名',unresize:true}
+            {field: 'name', align:'center', title: '项目名',unresize:true}
             ,{field: 'proResource', align:'center', title: '项目来源',unresize:true}
             ,{field: 'moneyResource', align:'center', title: '经费来源',unresize:true}
             ,{field: 'desc', align:'center', title: '项目描述',unresize:true}
@@ -26,7 +25,9 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         var data = obj.data;
         if(obj.event === 'del'){
             del(data.id);
-        } else if(obj.event === 'edit'){
+        } else if(obj.event === 'pass'){
+            changeStatus(data.id);
+        }else if(obj.event === 'edit'){
             common.frame_show('编辑','/teacher/form?id='+data.id);
         }
     });
@@ -76,5 +77,26 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             });
         });
     }
+
+    function changeStatus(id) {
+        layer.prompt('请输入意见',function(val, index){
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/project/change/" + id + "?advise="+val,
+                success: function (ret) {
+                    if (ret.isOk) {
+                        layer.msg("操作成功", {time: 2000}, function () {
+                            layer.close(index);
+                            window.location.href = "/teacher/index";
+                        });
+                    } else {
+                        layer.msg(ret.msg, {time: 2000});
+                    }
+                }
+            });
+        });
+    }
+
     exports('teacher/index', datalist);
 });

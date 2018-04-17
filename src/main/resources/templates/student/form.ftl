@@ -62,9 +62,17 @@
                     </div>
 
                     <div class="layui-form-item">
+                        <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block">
+                                <textarea id="description" name="desc" placeholder="请输入内容" lay-verify="required" class="layui-textarea" style="width: 60%">${(project.desc)!}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
                         <label class="layui-form-label">指导老师</label>
                         <div class="layui-input-inline">
-                            <select name="teacher" lay-filter="teacher">
+                            <select name="teacher" lay-filter="teacher" lay-verify="required">
                                 <option value="">请选择指导老师</option>
                             <#list teachers as x>
                                 <option value="${x.id}"

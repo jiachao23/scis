@@ -45,27 +45,43 @@
 
             <table class="layui-hide" id="teacher" lay-filter="table"></table>
             <script type="text/html" id="operator">
-                <a class="layui-btn" lay-event="edit">编辑</a>
+                {{#  if(d.tstatus == 1 && d.estatus != 1 && d.asatus != 1){ }}
+                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
+                <a class="layui-btn " lay-event="pass">撤回</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
+                {{#  }else if(d.tstatus == 0 && d.estatus != 1 && d.asatus != 1 ) { }}
+                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
+                <a class="layui-btn " lay-event="pass">通过</a>
+                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
+                {{#  }else{ }}
+                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
+                {{# } }}
             </script>
+
             <script type="text/html" id="status">
                 <form class="layui-form" action="">
                     <div class="layui-form-item" style="margin:0;">
-                        {{#  if(d.estatus == 1){ }}
-                        <input type="checkbox" name="isTop" title="专家审核" value="{{d.id}}" lay-filter="estatus" checked disabled/>
+                        {{#  if(d.tstatus == 1){ }}
+                        <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-skin="primary" lay-filter="tstatus" checked disabled/>
                         {{#  } else { }}
-                        <input type="checkbox" name="isTop" title="专家审核" value="{{d.id}}" lay-filter="estatus" disabled/>
+                        <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" disabled/>
+                        {{#  } }}
+                        {{#  if(d.estatus == 1){ }}
+                        <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-skin="primary" lay-filter="estatus" checked disabled/>
+                        {{#  } else { }}
+                        <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
                         {{#  } }}
                         {{#  if(d.astatus == 1){ }}
-                        <input type="checkbox" name="isCommend" title="管理员审核" value="{{d.id}}" lay-filter="astatus" checked disabled/>
+                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary" checked disabled/>
                         {{#  } else { }}
-                        <input type="checkbox" name="isCommend" title="管理员审核" value="{{d.id}}" lay-filter="astatus" disabled/>
+                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary"  disabled/>
                         {{#  } }}
 
                     </div>
                 </form>
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
             </script>
+
         </div>
     </div>
 </fieldset>
