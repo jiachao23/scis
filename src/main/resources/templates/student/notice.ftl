@@ -71,8 +71,7 @@
             , url: '/student/notice/all' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
-                {type: 'checkbox', align: 'center', unresize: true}
-                , {field: 'projectName', align: 'center', title: '项目名', unresize: true}
+                {field: 'projectName', align: 'center', title: '项目名', unresize: true}
                 , {field: 'operation', align: 'center', title: '操作', unresize: true}
                 , {field: 'status', align: 'center', title: '状态', unresize: true}
                 , {field: 'content', align: 'center', title: '内容', unresize: true}
