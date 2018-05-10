@@ -47,4 +47,9 @@ public class NoticeServiceImpl implements NoticeService{
     public List<Notice> findbyNum(Integer name) {
         return noticeRepository.findByStudentNum(name);
     }
+
+    @Override
+    public List<Notice> findByLevel(Integer level) {
+        return noticeRepository.findByLevelBetween(level,level+1);
+    }
 }

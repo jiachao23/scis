@@ -84,12 +84,22 @@
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">上传</label>
+                        <label class="layui-form-label">上传资料</label>
                         <div class="layui-input-block">
                             <button type="button" class="layui-btn" id="upload">
                                 <i class="layui-icon">&#xe67c;</i>创业项目申请书
                             </button>
                             <input type="hidden" name="book">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">上传视频</label>
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn" id="uploadVideo">
+                                <i class="layui-icon">&#xe67c;</i>上传参赛视频
+                            </button>
+                            <input type="hidden" name="video">
                         </div>
                     </div>
 

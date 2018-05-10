@@ -15,7 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Copyright  : 2017- www.jcohy.com
@@ -49,11 +52,12 @@ public class ProjectController extends BaseController{
             project.setOperator("admin");
             project.setExpert(expert);
         }
+        List<Project> collect = projects.getContent().stream().filter(x -> x.getEStatus() == 1).collect(Collectors.toList());
         PageJson<Project> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(projects.getContent().size());
-        page.setData(projects.getContent());
+        page.setCount(collect.size());
+        page.setData(collect);
         return page;
     }
     @DeleteMapping("{id}/del")
