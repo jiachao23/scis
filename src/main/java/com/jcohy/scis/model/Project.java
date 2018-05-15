@@ -51,6 +51,10 @@ public class Project implements Serializable{
     @JoinColumn(name = "book_id")
     private Book book;
 
+    @OneToOne
+    @JoinColumn(name = "book_video_id")
+    private Book video;
+
     @Transient
     private Expert expert;
     @Transient
@@ -196,11 +200,24 @@ public class Project implements Serializable{
         sb.append(", EReason='").append(EReason).append('\'');
         sb.append(", AStatus=").append(AStatus);
         sb.append(", AReason='").append(AReason).append('\'');
+        sb.append(", TStatus=").append(TStatus);
+        sb.append(", TReason='").append(TReason).append('\'');
         sb.append(", student=").append(student);
         sb.append(", teacher=").append(teacher);
         sb.append(", book=").append(book);
+        sb.append(", video=").append(video);
         sb.append(", expert=").append(expert);
+        sb.append(", operator='").append(operator).append('\'');
         sb.append('}');
         return sb.toString();
     }
+
+    public Book getVideo() {
+        return video;
+    }
+
+    public void setVideo(Book video) {
+        this.video = video;
+    }
+
 }

@@ -37,7 +37,34 @@
         },
         done: function(res) {
             if (res.isOk) {
-                box.next('div').find('div.imgbox').html('<p>下载地址：<a href="' + res.book.url + '">' + res.book.name + '</a></p>');
+                box.next('div').find('div.imgbox').html('<p>下载地址：<a href="' + res.book.downloadUrl + '">' + res.book.name + '</a></p>');
+                box.find('input[type=hidden]').val(res.book.id);
+            } else {
+                box.next('div').find('p').html('上传失败...')
+            }
+        }
+    });
+
+//上传视频设置
+    upload.render({
+        elem: '#uploadVideo' ,//绑定元素
+        url: '/upload',
+        accept: 'file',
+        size:0,
+        before: function(input) {
+            console.log($(input));
+            box = $("#uploadVideo").parent('.layui-input-block');
+            console.log(box);
+            if (box.next('div').length > 0) {
+                box.next('div').html('<div class="imgbox"><p>上传中...</p></div>');
+            } else {
+                box.after('<div class="layui-input-block"><div class="imgbox"><p>上传中...</p></div></div>');
+            }
+        },
+        done: function(res) {
+            if (res.isOk) {
+                console.log(res);
+                box.next('div').find('div.imgbox').html('<p>下载地址：<a href="' + res.book.downloadUrl + '">' + res.book.name + '</a></p>');
                 box.find('input[type=hidden]').val(res.book.id);
             } else {
                 box.next('div').find('p').html('上传失败...')

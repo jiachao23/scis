@@ -35,6 +35,17 @@ public class Notice {
     @Column(name = "operation_date")
     private String date;
 
+    @Column(name = "level")
+    private Integer level;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
     public Notice() {
     }
 

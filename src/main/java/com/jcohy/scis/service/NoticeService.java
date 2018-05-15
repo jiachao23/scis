@@ -30,4 +30,6 @@ public interface NoticeService {
     void delete(Integer id);
 
     List<Notice> findbyNum(Integer name);
+
+    List<Notice> findByLevel(Integer Level);
 }

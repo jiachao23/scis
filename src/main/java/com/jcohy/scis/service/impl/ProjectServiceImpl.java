@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -76,6 +77,20 @@ public class ProjectServiceImpl implements ProjectService {
             project.setEStatus(0);
             project.setTStatus(0);
             project.setTReason("");
+
+            Notice notice = new Notice();
+            notice.setStatus("创建项目");
+            try {
+                notice.setDate(DateUtils.getCurrentDateStr());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            notice.setContent(project.getStudent().getName()+"创建了"+project.getName()+"项目");
+            notice.setOperation("创建项目");
+            notice.setProjectName(project.getName());
+            notice.setStudentNum(project.getStudent().getNum());
+            notice.setLevel(1);
+            noticeRepository.save(notice);
         }
         return projectRepository.save(project);
     }
@@ -103,6 +118,7 @@ public class ProjectServiceImpl implements ProjectService {
                     notice.setOperation("项目由管理员审核");
                     notice.setContent(advise);
                     notice.setStatus(project.getAStatus() == 0 ? "通过" : "撤回");
+                    notice.setLevel(project.getTStatus() == 0? 3:2);
                     notice.setDate(DateUtils.getCurrentDateStr());
                     projectRepository.changeAdminStatus(project.getAStatus() == 0 ? 1 : 0, advise, project.getId());
                     noticeRepository.save(notice);
@@ -114,6 +130,7 @@ public class ProjectServiceImpl implements ProjectService {
                     notice.setContent(advise);
                     notice.setStatus(project.getEStatus() == 0 ? "通过" : "撤回");
                     notice.setDate(DateUtils.getCurrentDateStr());
+                    notice.setLevel(project.getTStatus() == 0? 4:3);
                     projectRepository.changeExpertStatus(project.getEStatus() == 0 ? 1 : 0, advise, project.getId());
                     noticeRepository.save(notice);
                     break;
@@ -123,6 +140,7 @@ public class ProjectServiceImpl implements ProjectService {
                     notice.setOperation("教师审核");
                     notice.setContent(advise);
                     notice.setStatus(project.getTStatus() == 0 ? "通过" : "撤回");
+                    notice.setLevel(project.getTStatus() == 0? 2:1);
                     notice.setDate(DateUtils.getCurrentDateStr());
                     projectRepository.changeTeacherStatus(project.getTStatus() == 0 ? 1 : 0, advise, project.getId());
                     noticeRepository.save(notice);

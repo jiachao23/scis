@@ -53,6 +53,13 @@
                         </dl>
                     </li>
 
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-user"></i>我的消息</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/expert/notice" data-id="3">我的消息</a></dd>
+                        </dl>
+                    </li>
+
                 </ul>
             </div>
         </div>

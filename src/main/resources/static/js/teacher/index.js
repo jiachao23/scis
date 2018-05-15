@@ -14,6 +14,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             ,{field: 'proResource', align:'center', title: '项目来源',unresize:true}
             ,{field: 'moneyResource', align:'center', title: '经费来源',unresize:true}
             ,{field: 'desc', align:'center', title: '项目描述',unresize:true}
+            ,{field: 'downloadUrl', align:'center', title: '下载地址',unresize:true,templet: '<div>{{d.book.downloadUrl}}</div>'}
             ,{field: 'teacher', title: '指导老师',unresize:true,templet: '<div>{{d.teacher.name}}</div>'}
             ,{title: '项目状态',templet: '#status',unresize:true}
             ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}

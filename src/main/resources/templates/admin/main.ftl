@@ -57,7 +57,16 @@
                         <a href="javascript:;"><i class="fa fa-file-text"></i>项目管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/allot/index" data-id="4">评审分配</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/project/index" data-id="5">项目审核</a></dd>
+                            <#--<dd><a href="javascript:;" data-url="${ctx!}/admin/project/index" data-id="5">项目审核</a></dd>-->
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>消息管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/notice" data-id="5">我的消息</a></dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/circular/index" data-id="6">发布通告</a></dd>
                         </dl>
                     </li>
                 </ul>
