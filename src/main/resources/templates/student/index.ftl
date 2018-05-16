@@ -48,18 +48,17 @@
             <#--<button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>-->
         <#--</div>-->
     <#--</div>-->
-    <div style="padding: 40px 0px 0px 80px;">
-        <div class="layui-inline">
-            <div class="layui-input-inline" style="width:auto">
-                <a id="addProject" class="layui-btn layui-btn-normal">添加</a>
-            </div>
-        </div>
-    </div>
+    <#--<div style="padding: 40px 0px 0px 80px;">-->
+        <#--<div class="layui-inline">-->
+            <#--<div class="layui-input-inline" style="width:auto">-->
+                <#--<a id="addProject" class="layui-btn layui-btn-normal">添加</a>-->
+            <#--</div>-->
+        <#--</div>-->
+    <#--</div>-->
 
 
     <div class="layui-field-box">
         <div id="dataContent" class="">
-
             <table class="layui-hide" id="student" lay-filter="table"></table>
             <script type="text/html" id="operator">
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
@@ -79,12 +78,6 @@
                         {{#  } else { }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
                         {{#  } }}
-                        {{#  if(d.astatus == 1){ }}
-                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary" checked disabled/>
-                        {{#  } else { }}
-                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary"  disabled/>
-                        {{#  } }}
-
                     </div>
                 </form>
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
