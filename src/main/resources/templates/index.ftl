@@ -25,7 +25,9 @@
 
 			<a class="blog-logo" href="/">双创信息</a>
             <!-- 导航菜单 -->
-            <div class="blog-user"></div>
+            <div class="enter">
+                登陆
+            </div>
 
 			<ul class="layui-nav" lay-filter="nav">
 
@@ -50,20 +52,20 @@
         <div class="blog-container">
             <div class="blog-main">
                 <!-- 公告部分 start -->
-                <div class="home-tips shadow">
-                    <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
-                    <div class="home-tips-container">
-                    <@circularList>
-                        <#list list as x>
-                            <#if x.url != null>
-                                <span style="color: red">${(x.content)!}<a href="${x.url}" target="_blank" style="color:#01AAED">&nbsp;&nbsp;点我前往</a></span>
-                            <#else >
-                                <span style="color: #009688">${(x.content)!}</span>
-                            </#if>
-                        </#list>
-                    </@circularList>
-                    </div>
-                </div>
+                <#--<div class="home-tips shadow">-->
+                    <#--<i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>-->
+                    <#--<div class="home-tips-container">-->
+                    <#--<@circularList>-->
+                        <#--<#list list as x>-->
+                            <#--<#if x.url != null>-->
+                                <#--<span style="color: red">${(x.content)!}<a href="${x.url}" target="_blank" style="color:#01AAED">&nbsp;&nbsp;点我前往</a></span>-->
+                            <#--<#else >-->
+                                <#--<span style="color: #009688">${(x.content)!}</span>-->
+                            <#--</#if>-->
+                        <#--</#list>-->
+                    <#--</@circularList>-->
+                    <#--</div>-->
+                <#--</div>-->
                 <!--左边文章列表-->
                 <div class="blog-main-left animated slideInLeft">
 					<@projectList>
@@ -160,7 +162,7 @@
     <script src="${ctx!}/js/plugins/layui/layui.js"></script>
     <!-- 全局脚本 -->
     <script src="${ctx!}/js/global.js"></script>
-    <script src="${ctx!}/js/canvas-particle.js"></script>
+    <#--<script src="${ctx!}/js/canvas-particle.js"></script>-->
     <!-- 本页脚本 -->
     <script src="${ctx!}/js/index.js"></script>
     <script src="${ctx!}/js/video.min.js"></script>
