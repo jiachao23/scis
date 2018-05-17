@@ -42,21 +42,38 @@
     </div>
 
 
+    <#--<div class="layui-form-item">-->
+        <#--<label class="layui-form-label"  style="width: 170px">链接地址</label>-->
+        <#--<div class="layui-input-inline">-->
+            <#--<input type="text" name="url" lay-verify="url" placeholder="请输入公告名称" value="${(circular.url)!}"-->
+                   <#--autocomplete="off" class="layui-input">-->
+        <#--</div>-->
+    <#--</div>-->
+
     <div class="layui-form-item">
-        <label class="layui-form-label"  style="width: 170px">公告链接地址</label>
+        <label class="layui-form-label">上传封面图</label>
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn" id="upload">
+                <i class="layui-icon">&#xe67c;</i>图片上传
+            </button>
+            <input type="hidden" name="book">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"  style="width: 170px">跳转链接</label>
         <div class="layui-input-inline">
             <input type="text" name="url" lay-verify="url" placeholder="请输入公告名称" value="${(circular.url)!}"
                    autocomplete="off" class="layui-input">
         </div>
     </div>
 
-
     <div class="layui-form-item">
         <label class="layui-form-label"  style="width: 170px">开始时间</label>
         <div class="layui-input-inline">
             <input type="text" class="layui-input" name="start" id="start" value="${(circular.start)!}" lay-verify="required">
         </div>
-
     </div>
 
     <div class="layui-form-item">
@@ -81,7 +98,6 @@
 </form>
 
 <script src="${ctx!}/js/plugins/layui/layui.js"></script>
-<script src="${ctx!}/js/jcohy/common.js"></script>
 <!-- layui规范化用法 -->
 <script type="text/javascript">
     layui.config({

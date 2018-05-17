@@ -25,12 +25,13 @@ public class Circular  implements Serializable{
     private String content;
 
     @Column(name = "start")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date start;
+    private String start;
 
     @Column(name = "end")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date end;
+    private String end;
+
+    @Column(name = "target_url")
+    private String targetUrl;
 
     @Column(name = "visible")
     private Integer visible;
@@ -38,15 +39,31 @@ public class Circular  implements Serializable{
     @Column(name = "url")
     private String url;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "create_date")
-    private Date createDate;
+    private String createDate;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_date")
-    private Date updateDate;
+    private String updateDate;
+
+    @OneToOne
+    @JoinColumn(name = "book_circular_id")
+    private Book book;
+
+    public String getTargetUrl() {
+        return targetUrl;
+    }
+
+    public void setTargetUrl(String targetUrl) {
+        this.targetUrl = targetUrl;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
     public String getContent() {
         return content;
@@ -56,19 +73,19 @@ public class Circular  implements Serializable{
         this.content = content;
     }
 
-    public Date getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(Date start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
-    public Date getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 
@@ -96,19 +113,19 @@ public class Circular  implements Serializable{
         this.id = id;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 
@@ -119,10 +136,12 @@ public class Circular  implements Serializable{
         sb.append(", content='").append(content).append('\'');
         sb.append(", start=").append(start);
         sb.append(", end=").append(end);
+        sb.append(", targetUrl='").append(targetUrl).append('\'');
         sb.append(", visible=").append(visible);
         sb.append(", url='").append(url).append('\'');
         sb.append(", createDate=").append(createDate);
         sb.append(", updateDate=").append(updateDate);
+        sb.append(", book=").append(book);
         sb.append('}');
         return sb.toString();
     }

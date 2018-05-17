@@ -1,5 +1,6 @@
 package com.jcohy.scis.service.impl;
 
+import com.jcohy.date.DateUtils;
 import com.jcohy.scis.model.Circular;
 import com.jcohy.scis.repository.CircularRepository;
 import com.jcohy.scis.service.CircularService;
@@ -45,7 +46,13 @@ public class CircularServiceImpl implements CircularService {
     }
 
     @Override
-    public Circular saveOrUpdate(Circular notice) {
+    public Circular saveOrUpdate(Circular notice) throws Exception {
+        notice.setTargetUrl(notice.getUrl());
+        if(notice.getId() != null){
+            notice.setUpdateDate(DateUtils.getCurrentDateStr());
+        }else{
+            notice.setCreateDate(DateUtils.getCurrentDateStr());
+        }
         return circularRepository.save(notice);
     }
 

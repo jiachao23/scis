@@ -1,6 +1,7 @@
-layui.define(['element', 'layer', 'form','laydate'], function (exports) {
+layui.define(['element', 'layer', 'form','laydate','upload'], function (exports) {
     var form = layui.form,
         laydate = layui.laydate,
+        upload = layui.upload,
         $ = layui.jquery;
     //自定义验证
     form.verify({
@@ -10,6 +11,41 @@ layui.define(['element', 'layer', 'form','laydate'], function (exports) {
             }
         }
 
+    });
+    var posterWidth = 560, posterHeight = 300;
+    upload.render({
+        elem: '#upload' ,//绑定元素
+        url: '/upload',
+        size:0,
+        before: function(input) {
+            input.preview(function(index, file, result){
+                var img = new Image();
+                img.onload = function() {
+                    console.log('choose poster', img.width, img.height);
+                    if (posterWidth === img.width && posterHeight === img.height) {
+                        $('#upload_poster_preview').attr('src', result); //图片链接（base64）不支持ie8
+                        input.upload(index, file);
+                    } else {
+                        layer.msg('海报尺寸必须为：' + posterWidth + 'x' + posterHeight + 'px');
+                    }
+                };
+            });
+            box = $("#upload").parent('.layui-input-block');
+            if (box.find('div').length > 0) {
+                box.firstChild('div').html('<div class="imgbox"><p>上传中...</p></div>');
+            } else {
+                box.append('<div class="layui-inline"><div class="imgbox"><p>上传中...</p></div></div>');
+            }
+        },
+        done: function(res) {
+            if (res.isOk) {
+                console.log(res);
+                box.find('div').find('div.imgbox').html('<p>下载地址：<a href="' + res.book.downloadUrl + '">' + res.book.name + '</a></p>');
+                box.find('input[type=hidden]').val(res.book.id);
+            } else {
+                box.next('div').find('p').html('上传失败...')
+            }
+        }
     });
 
     laydate.render({
@@ -46,6 +82,6 @@ layui.define(['element', 'layer', 'form','laydate'], function (exports) {
         return false;
     });
 
-    exports('admin/notice/form', {});
+    exports('admin/circular/form', {});
 });
 

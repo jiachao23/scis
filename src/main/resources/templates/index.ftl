@@ -22,21 +22,39 @@
     <nav class="blog-nav layui-header">
         <div class="blog-container">
             <!-- 用户登陆 -->
-            <div class="blog-search">
-                <form class="layui-form" action="">
-                    <div class="layui-form-item">
-                        <div class="search-keywords  shadow">
-                            <input type="text" name="key" lay-verify="required" placeholder="请输入职位名" autocomplete="off" class="layui-input ">
+			<a class="blog-logo" href="/" style="top: -20px;">双创信息</a>
+
+            <form class="layui-form" action="">
+                <button class="layui-btn  layui-btn-primary" lay-filter="login" style="float: right">登录</button>
+            <#--<div class="layui-form-item">-->
+            <#--<div class="search-keywords  shadow">-->
+            <#--<input type="text" name="keywords" lay-verify="required" placeholder="搜索" autocomplete="off" class="layui-input ">-->
+            <#--</div>-->
+            <#--<div class="search-submit  shadow">-->
+            <#--<a class="search-btn" lay-submit="formSearch" lay-filter="formSearch"><i class="fa fa-search"></i></a>-->
+            <#--</div>-->
+            <#--</div>-->
+            </form>
+
+            <div class="blog-main">
+                <div class="blog-main-right">
+                <div class="blog-search">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item" style="margin-right: 30px">
+                            <div class="search-keywords  shadow">
+                                <input type="text" name="keywords" lay-verify="required" placeholder="搜索" autocomplete="off" class="layui-input ">
+                            </div>
+                            <div class="search-submit  shadow">
+                                <a class="search-btn" lay-submit="formSearch" lay-filter="formSearch"><i class="fa fa-search"></i></a>
+                            </div>
                         </div>
-                        <div class="search-submit  shadow">
-                            <a class="search-btn" lay-submit lay-filter="formSearch"><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-			<a class="blog-logo" href="/">双创信息</a>
+            </div>
             <!-- 导航菜单 -->
-            <div class="blog-user"></div>
+
+
 
 			<ul class="layui-nav" lay-filter="nav">
 
@@ -51,11 +69,16 @@
     <div class="blog-body">
     	<div class="layui-carousel blog-bg" id="carousel">
 		  <div carousel-item>
-		    <div class="bg bg_a"></div>
-		    <div class="bg bg_b"></div>
-		    <div class="bg bg_c"></div>
-		    <div class="bg bg_d"></div>
-		    <div class="bg bg_e"></div>
+              <@circularList>
+                  <#list list as x>
+                      <a href="${(x.url)!}" target="_blank"><div class="bg"><img src="${(x.book.downloadUrl)!}"></div></a>
+                  </#list>
+              </@circularList>
+		    <div class="bg "></div>
+		    <div class="bg "></div>
+		    <div class="bg "></div>
+		    <div class="bg "></div>
+		    <div class="bg "></div>
 		  </div>
 		</div>
         <div class="blog-container">

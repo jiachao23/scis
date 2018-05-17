@@ -16,11 +16,12 @@ layui.define(['laypage', 'layer',  'table','common','util','form'], function (ex
             {type: 'checkbox', align:'center',unresize:true}
             ,{field: 'id', align:'center', title: 'ID', sort: true,unresize:true}
             ,{field: 'content', align:'center', title: '内容',unresize:true}
-            ,{field: 'url', align:'center', title: '链接地址',unresize:true}
-            ,{field: 'start', align:'center', title: '开始时间',sort: true,unresize:true,templet: '<div>{{# if(d.start!=null){ }}{{ layui.util.toDateString(d.start) }}{{# } }}</div>'}
-            ,{field: 'end', align:'center', title: '结束时间',sort: true,unresize:true,templet: '<div>{{# if(d.end!=null){ }}{{ layui.util.toDateString(d.end) }}{{# } }}</div>'}
+            ,{field: 'bookUrl', align:'center', title: '图片链接地址',unresize:true,template:'<div>{{d.book.url}}}</div>'}
+            ,{field: 'url', align:'center', title: '跳转链接',unresize:true}
+            ,{field: 'start', align:'center', title: '开始时间',sort: true,unresize:true}
+            ,{field: 'end', align:'center', title: '结束时间',sort: true,unresize:true}
             ,{title: '是否可见',templet: '#choicesTpl',unresize:true}
-            ,{field: 'createDate', title: '创建日期',unresize:true,templet: '<div>{{# if(d.createDate!=null){ }}{{ layui.util.toDateString(d.createDate) }}{{# } }}</div>'}
+            ,{field: 'createDate', title: '创建日期',unresize:true}
             ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
         ]]
     });

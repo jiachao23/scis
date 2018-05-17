@@ -44,7 +44,7 @@ public interface CircularService {
      * 增加，修改
      * @param circular
      */
-    Circular saveOrUpdate(Circular circular);
+    Circular saveOrUpdate(Circular circular) throws Exception;
 
     /**
      * 删除
