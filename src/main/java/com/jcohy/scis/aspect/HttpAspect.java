@@ -52,8 +52,8 @@ public class HttpAspect {
     @AfterReturning(returning = "object", pointcut = "log()")
     public void doAfterReturning(Object object) {
         // 处理完请求，返回内容
-        logger.info("RESPONSE : " + object.toString());
-        logger.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
+//        logger.info("RESPONSE : " + object.toString());
+//        logger.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
     }
 
 }
