@@ -48,13 +48,13 @@
             <#--<button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>-->
         <#--</div>-->
     <#--</div>-->
-    <#--<div style="padding: 40px 0px 0px 80px;">-->
-        <#--<div class="layui-inline">-->
-            <#--<div class="layui-input-inline" style="width:auto">-->
+    <div style="padding: 40px 0px 0px 80px;">
+        <div class="layui-inline">
+            <div class="layui-input-inline" style="width:auto">
                 <#--<a id="addProject" class="layui-btn layui-btn-normal">添加</a>-->
-            <#--</div>-->
-        <#--</div>-->
-    <#--</div>-->
+            </div>
+        </div>
+    </div>
 
 
     <div class="layui-field-box">

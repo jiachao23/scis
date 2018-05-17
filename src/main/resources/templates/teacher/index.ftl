@@ -34,7 +34,7 @@
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">
             <div class="layui-input-inline" style="width:auto">
-                <a id="addProject" class="layui-btn layui-btn-normal">添加</a>
+                <#--<a id="addProject" class="layui-btn layui-btn-normal">添加</a>-->
             </div>
         </div>
     </div>
@@ -51,7 +51,6 @@
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{#  }else if(d.tstatus == 0 && d.estatus != 1 && d.asatus != 1 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn " lay-event="pass">通过</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{#  }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>

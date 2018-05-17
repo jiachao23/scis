@@ -110,6 +110,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家意见:</div>'+ereason+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">管理员员意见:</div>'+areason+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">项目描述:</div>'+data.desc+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">视频下载地址:</div><a href="'+data.video.downloadUrl+'">'+data.video.downloadUrl+'</a></br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">创意说明书下载地址:</div><a href="'+data.book.downloadUrl+'">'+data.book.downloadUrl+'</a></br>';
         detailHtml += '</blockquote></td></tr>';
         obj.tr.after(detailHtml);

@@ -22,12 +22,21 @@
     <nav class="blog-nav layui-header">
         <div class="blog-container">
             <!-- 用户登陆 -->
-
+            <div class="blog-search">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="search-keywords  shadow">
+                            <input type="text" name="key" lay-verify="required" placeholder="请输入职位名" autocomplete="off" class="layui-input ">
+                        </div>
+                        <div class="search-submit  shadow">
+                            <a class="search-btn" lay-submit lay-filter="formSearch"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
 			<a class="blog-logo" href="/">双创信息</a>
             <!-- 导航菜单 -->
-            <div class="enter">
-                登陆
-            </div>
+            <div class="blog-user"></div>
 
 			<ul class="layui-nav" lay-filter="nav">
 

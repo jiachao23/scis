@@ -33,6 +33,8 @@ public interface AllotService {
 
     Expert findByProject(Project project);
 
+    List<Allot> findByOtherId(Integer id,String type);
+
     Allot saveOrUpdate(Allot allot) throws ServiceException;
 
     void delete(Integer id);

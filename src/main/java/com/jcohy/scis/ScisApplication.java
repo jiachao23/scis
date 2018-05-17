@@ -45,10 +45,12 @@ public class ScisApplication extends WebMvcConfigurerAdapter{
 		//专家主页跳转
 		registry.addViewController("/expert/main").setViewName("/expert/main");
 		registry.addViewController("/expert/index").setViewName("/expert/index");
+		registry.addViewController("/expert/examine").setViewName("/expert/examine");
 		registry.addViewController("/expert/notice").setViewName("/expert/notice");
 		//老师主页跳转
 		registry.addViewController("/teacher/main").setViewName("/teacher/main");
 		registry.addViewController("/teacher/index").setViewName("/teacher/index");
+		registry.addViewController("/teacher/examine").setViewName("/teacher/examine");
 		registry.addViewController("/teacher/notice").setViewName("/teacher/notice");
 		//管理员主页，从登录
 		registry.addViewController("/admin/main").setViewName("/admin/main");

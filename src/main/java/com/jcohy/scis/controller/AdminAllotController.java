@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by jiac on 2018/4/2.
@@ -49,8 +50,11 @@ public class AdminAllotController extends BaseController{
     public String form(@RequestParam(required = false) Integer id, ModelMap map){
         List<Expert> experts = expertService.findAll();
         List<Project> projects = projectService.findAll();
-        map.put("experts",experts);
-        map.put("projects",projects);
+        List<Project> projectList = projects.stream().filter(x -> allotService.findByOtherId(x.getId(), "project").size() == 0).collect(Collectors.toList());
+        List<Expert> expertList = experts.stream().filter(x -> allotService.findByOtherId(x.getId(), "expert").size() > 5).collect(Collectors.toList());
+
+        map.put("experts",projectList);
+        map.put("projects",expertList);
 
         if(id != null){
             Allot allot = allotService.findById(id);

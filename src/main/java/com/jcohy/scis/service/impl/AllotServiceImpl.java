@@ -7,6 +7,8 @@ import com.jcohy.scis.model.*;
 import com.jcohy.scis.repository.AllotRepository;
 import com.jcohy.scis.repository.NoticeRepository;
 import com.jcohy.scis.service.AllotService;
+import com.jcohy.scis.service.ExpertService;
+import com.jcohy.scis.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +33,12 @@ public class AllotServiceImpl implements AllotService {
 
     @Autowired
     private NoticeRepository noticeRepository;
+
+    @Autowired
+    private ProjectService projectService;
+
+    @Autowired
+    private ExpertService expertService;
 
     @Override
     public Page<Allot> findAll(Pageable pageable) {
@@ -64,6 +72,17 @@ public class AllotServiceImpl implements AllotService {
             return new Expert();
         }
         return allots.get(0).getExpert();
+    }
+
+    @Override
+    public List<Allot> findByOtherId(Integer id, String type) {
+        List<Allot> allots = null;
+        if(type.equals("project")){
+            allots = allotRepository.findByProject(projectService.findById(id));
+        }else if(type .equals("expert")){
+            allots =  allotRepository.findByExpert(expertService.findById(id));
+        }
+        return allots;
     }
 
     @Transactional

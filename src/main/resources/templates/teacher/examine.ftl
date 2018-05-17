@@ -7,7 +7,6 @@
     <!-- layui.css -->
     <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <style>
-
         tr td:not(:nth-child(0)),
         tr th:not(:nth-child(0)) {
             text-align: center;
@@ -29,17 +28,33 @@
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
     <legend style="text-align:center;">我的项目</legend>
-
-    <div class="layui-row">
-        <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
-            <i class="layui-icon">&#x1002;</i>
-        </button>
+    <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
+        <i class="layui-icon">&#x1002;</i>
+    </button>
+    <div style="padding: 40px 0px 0px 80px;">
+        <div class="layui-inline">
+            <div class="layui-input-inline" style="width:auto">
+                <#--<a id="addProject" class="layui-btn layui-btn-normal">添加</a>-->
+            </div>
+        </div>
     </div>
+
 
     <div class="layui-field-box">
         <div id="dataContent" class="">
 
-            <table class="layui-hide" id="project" lay-filter="table"></table>
+            <table class="layui-hide" id="teacher" lay-filter="table"></table>
+            <script type="text/html" id="operator">
+                {{#  if(d.tstatus == 1 && d.estatus != 1 && d.asatus != 1){ }}
+                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
+                {{#  }else if(d.tstatus == 0 && d.estatus != 1 && d.asatus != 1 ) { }}
+                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
+                <a class="layui-btn " lay-event="pass">通过</a>
+                {{#  }else{ }}
+                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
+                {{# } }}
+            </script>
+
             <script type="text/html" id="status">
                 <form class="layui-form" action="">
                     <div class="layui-form-item" style="margin:0;">
@@ -57,18 +72,6 @@
                 </form>
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
             </script>
-            <script type="text/html" id="operator">
-                {{#  if(d.tstatus == 1 && d.estatus == 1 && d.asatus != 1){ }}
-                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn " lay-event="pass">撤回</a>
-                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
-                {{#  }else if(d.tstatus == 1 && d.estatus != 1 && d.asatus != 1 ) { }}
-                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
-                {{#  }else{ }}
-                <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                {{# } }}
-            </script>
 
         </div>
     </div>
@@ -80,7 +83,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/'
-    }).use('expert/index');
+    }).use('teacher/index');
 </script>
 </body>
 </html>

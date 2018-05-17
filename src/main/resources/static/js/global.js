@@ -105,7 +105,7 @@
 	        max_conn: 10 	//点到点最大连接数
 	    };
 	    //调用
-	    CanvasParticle(config);
+	    // CanvasParticle(config);
     });
     
     
@@ -125,10 +125,12 @@
     	if (user!=null) {
     		user = JSON.parse(user);
     		$(".blog-user").empty();
-            $(".blog-user").append('登陆');
+            $(".blog-user").append('<a href="/index"><i class="fa fa-user-circle-o"></i></a>'+
+                '<a href="/index">登陆</a>');
     	} else {
     		$(".blog-user").empty();
-    		$(".blog-user").append('登陆');
+    		$(".blog-user").append('<a href="/index"><i class="fa fa-user-circle-o"></i></a>'+
+                	'<a href="/index">登陆</a>');
     	}
     }
 
