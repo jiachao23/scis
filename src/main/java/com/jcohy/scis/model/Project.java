@@ -55,6 +55,12 @@ public class Project implements Serializable{
     @JoinColumn(name = "book_video_id")
     private Book video;
 
+    @Column(name = "create_date")
+    private String createDate;
+
+    @Column(name = "update_date")
+    private String uodateDate;
+
     @Transient
     private Expert expert;
     @Transient
@@ -188,6 +194,22 @@ public class Project implements Serializable{
         this.expert = expert;
     }
 
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getUodateDate() {
+        return uodateDate;
+    }
+
+    public void setUodateDate(String uodateDate) {
+        this.uodateDate = uodateDate;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Project{");
@@ -206,6 +228,8 @@ public class Project implements Serializable{
         sb.append(", teacher=").append(teacher);
         sb.append(", book=").append(book);
         sb.append(", video=").append(video);
+        sb.append(", createDate='").append(createDate).append('\'');
+        sb.append(", uodateDate='").append(uodateDate).append('\'');
         sb.append(", expert=").append(expert);
         sb.append(", operator='").append(operator).append('\'');
         sb.append('}');

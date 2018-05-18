@@ -58,7 +58,7 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>我的消息</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/student/notice" data-id="3">我的消息</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/student/notice" data-id="4">我的消息</a></dd>
                         </dl>
                     </li>
                 </ul>

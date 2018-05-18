@@ -69,7 +69,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project saveOrUpdate(Project project) throws ServiceException {
+    public Project saveOrUpdate(Project project) throws Exception {
         if(project.getId() == null){
             project.setAReason("");
             project.setEReason("");
@@ -77,7 +77,7 @@ public class ProjectServiceImpl implements ProjectService {
             project.setEStatus(0);
             project.setTStatus(0);
             project.setTReason("");
-
+            project.setCreateDate(DateUtils.getCurrentDateStr());
             Notice notice = new Notice();
             notice.setStatus("创建项目");
             try {
@@ -91,6 +91,8 @@ public class ProjectServiceImpl implements ProjectService {
             notice.setStudentNum(project.getStudent().getNum());
             notice.setLevel(1);
             noticeRepository.save(notice);
+        }else{
+            project.setUodateDate(DateUtils.getCurrentDateStr());
         }
         return projectRepository.save(project);
     }
@@ -151,5 +153,10 @@ public class ProjectServiceImpl implements ProjectService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Project> findByNameLike(String name) {
+        return projectRepository.findByName(name);
     }
 }

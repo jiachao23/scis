@@ -62,7 +62,7 @@ public interface ProjectService {
      * 新增或者更新
      * @param project
      */
-    Project saveOrUpdate(Project project) throws ServiceException;
+    Project saveOrUpdate(Project project) throws Exception;
 
     /**
      * 删除
@@ -78,4 +78,11 @@ public interface ProjectService {
     Page<Project> findAll(Pageable pageable);
 
     void changeStatus(Integer id,String role,String advise);
+
+    /**
+     * 模糊查询
+     *
+     * @return
+     */
+    List<Project> findByNameLike(String name);
 }

@@ -24,6 +24,7 @@
         elem: '#upload' ,//绑定元素
         url: '/upload',
         accept: 'file',
+        size:102400,
         before: function(input) {
             console.log($(input));
             box = $("#upload").parent('.layui-input-block');

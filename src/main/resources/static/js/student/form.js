@@ -24,7 +24,7 @@
         elem: '#upload' ,//绑定元素
         url: '/upload',
         accept: 'file',
-        size:0,
+        size:102400,
         before: function(input) {
             console.log($(input));
             box = $("#upload").parent('.layui-input-block');
@@ -49,8 +49,8 @@
     upload.render({
         elem: '#uploadVideo' ,//绑定元素
         url: '/upload',
-        accept: 'file',
-        size:0,
+        accept: 'video',
+        size:102400,
         before: function(input) {
             console.log($(input));
             box = $("#uploadVideo").parent('.layui-input-block');
@@ -83,7 +83,6 @@
                     layer.msg("操作成功", {time: 2000},function(){
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                         parent.layer.close(index);
-                        window.parent.location.href="/student/index";
                     });
                 }else{
                     layer.msg(ret.msg, {time: 2000});

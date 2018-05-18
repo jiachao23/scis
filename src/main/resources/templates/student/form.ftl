@@ -42,7 +42,9 @@
                         <div class="layui-input-inline">
                             <input type="text" name="name" lay-verify="required"  placeholder="请输入项目名" value="${project.name}"
                                    autocomplete="off" class="layui-input ">
+
                         </div>
+                        <span style="color: red">必填</span>
                     </div>
 
                     <div class="layui-form-item">
@@ -50,7 +52,9 @@
                         <div class="layui-input-inline">
                             <input type="text" name="proResource" lay-verify="required" placeholder="请输入项目来源" value="${project.proResource}"
                                    autocomplete="off" class="layui-input">
+
                         </div>
+                        <span style="color: red">必填</span>
                     </div>
 
                     <div class="layui-form-item">
@@ -58,13 +62,15 @@
                         <div class="layui-input-inline">
                             <input type="text" name="moneyResource" lay-verify="required" placeholder="请输入经费来源" value="${project.moneyResource}"
                                    autocomplete="off" class="layui-input">
+
                         </div>
+                        <span style="color: red">必填</span>
                     </div>
 
                     <div class="layui-form-item">
-                        <label class="layui-form-label">描述</label>
+                        <label class="layui-form-label">描述：</label>
                         <div class="layui-input-block">
-                                <textarea id="description" name="desc" placeholder="请输入内容" lay-verify="required" class="layui-textarea" style="width: 60%">${(project.desc)!}</textarea>
+                                <textarea id="description" name="desc" placeholder="请输入内容：必填" lay-verify="required" class="layui-textarea" style="width: 60%">${(project.desc)!}</textarea>
                         </div>
                     </div>
 
@@ -81,6 +87,7 @@
                             </#list>
                             </select>
                         </div>
+                        <span style="color: red">必填</span>
                     </div>
 
                     <div class="layui-form-item">
@@ -89,7 +96,8 @@
                             <button type="button" class="layui-btn" id="upload">
                                 <i class="layui-icon">&#xe67c;</i>创业项目申请书
                             </button>
-                            <input type="hidden" name="book">
+                            <span style="color: red">必填，文件大小为100M</span>
+                            <input type="hidden" name="book" lay-verify="required">
                         </div>
                     </div>
 
@@ -99,14 +107,14 @@
                             <button type="button" class="layui-btn" id="uploadVideo">
                                 <i class="layui-icon">&#xe67c;</i>上传参赛视频
                             </button>
-                            <input type="hidden" name="video">
+                            <input type="hidden" name="video" lay-verify="required">
+                            <span style="color: red">必填，文件大小为100M,格式为MP4</span>
                         </div>
                     </div>
 
                     <div class="layui-form-item">
                         <button class="layui-btn" lay-submit lay-filter="add">立即提交</button>
                     </div>
-
                 </form>
             </section>
         </div>

@@ -49,7 +49,7 @@
                         <a href="javascript:;"><i class="fa fa-user"></i>我的项目</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/expert/index" data-id="1">我的项目</a></dd>
-                            <dd><a href="javascript:;" data-url="${ctx!}/expert/index" data-id="2">项目审核</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/expert/examine" data-id="2">项目审核</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/project/history" data-id="3">往年项目查看</a></dd>
                         </dl>
                     </li>
@@ -57,7 +57,7 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-user"></i>我的消息</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/expert/notice" data-id="3">我的消息</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/expert/notice" data-id="4">我的消息</a></dd>
                         </dl>
                     </li>
 

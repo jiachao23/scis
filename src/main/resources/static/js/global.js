@@ -121,17 +121,18 @@
     
     // 判断用户是否登陆
     function isUser() {
-    	var user = MyLocalStorage.get("user");
-    	if (user!=null) {
-    		user = JSON.parse(user);
-    		$(".blog-user").empty();
-            $(".blog-user").append('<a href="/index"><i class="fa fa-user-circle-o"></i></a>'+
-                '<a href="/index">登陆</a>');
-    	} else {
-    		$(".blog-user").empty();
-    		$(".blog-user").append('<a href="/index"><i class="fa fa-user-circle-o"></i></a>'+
-                	'<a href="/index">登陆</a>');
-    	}
+
+        // var loginHtml = '';
+        // loginHtml += '<div class="layui-form-item">';
+        // loginHtml += '<form class="layui-form">';
+        // loginHtml += '<button class="layui-btn  layui-btn-primary" onclick="javascrtpt:window.location.href='/index'" lay-filter="login" style="float: right">登录</button>';
+        // loginHtml += '</form>';
+        // loginHtml += '</div>';
+        $(".blog-user").empty();
+        // $(".blog-user").append(loginHtml);
+        $(".blog-user").append('<a href="/index"><i class="fa fa-user-circle-o"></i></a>'+
+            '<a href="/index">登陆</a>');
+
     }
 
     //检测键盘按下

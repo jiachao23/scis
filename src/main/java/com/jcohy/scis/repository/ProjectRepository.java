@@ -40,4 +40,7 @@ public interface ProjectRepository extends JpaRepository<Project,Integer>{
     @Modifying
     @Query("update Project p set p.TStatus = ?1,p.TReason = ?2 where p.id = ?3")
     int changeTeacherStatus(Integer status,String advise,Integer id);
+
+    @Query(value = "select * from Project p where p.name like %?1%", nativeQuery = true)
+    List<Project> findByName(String name);
 }

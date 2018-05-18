@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -83,5 +84,27 @@ public class ProjectController extends BaseController{
             return JsonResult.fail("修改失败");
         }
         return JsonResult.ok();
+    }
+    @GetMapping("/{id}")
+    public String detail(@PathVariable Integer id, ModelMap map){
+        Project project = projectService.findById(id);
+        map.put("project",project);
+        Expert expert = allotService.findByProject(project);
+        map.put("expert",expert);
+        return "detail";
+    }
+
+    /**
+     * 搜索模糊查询
+     * @param key
+     * @return
+     */
+    @GetMapping("/search")
+    @ResponseBody
+    public JsonResult searchJob(String key){
+        List<Project> projects = projectService.findByNameLike(key);
+        System.out.println("=============================");
+        projects.forEach(System.out::println);
+        return JsonResult.ok().set("data", projects);
     }
 }
