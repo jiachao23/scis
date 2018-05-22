@@ -45,7 +45,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             $.ajax({
                 type: "DELETE",
                 dataType: "json",
-                url: "/admin/project/" + id + "/del",
+                url: "/project/" + id + "/del",
                 success: function (ret) {
                     if (ret.isOk) {
                         layer.msg("操作成功", {time: 2000}, function () {

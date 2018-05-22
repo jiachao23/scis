@@ -55,12 +55,6 @@
                         {{#  } else { }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
                         {{#  } }}
-                        {{#  if(d.astatus == 1){ }}
-                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary" checked disabled/>
-                        {{#  } else { }}
-                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary"  disabled/>
-                        {{#  } }}
-
                     </div>
                 </form>
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->

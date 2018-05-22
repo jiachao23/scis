@@ -45,12 +45,13 @@
 
             <table class="layui-hide" id="teacher" lay-filter="table"></table>
             <script type="text/html" id="operator">
-                {{#  if(d.tstatus == 1 && d.estatus != 1 && d.asatus != 1){ }}
+                {{# if(d.tstatus == 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                {{#  }else if(d.tstatus == 0 && d.estatus != 1 && d.asatus != 1 ) { }}
+                <a class="layui-btn " lay-event="pass">撤回</a>
+                {{# }else if(d.tstatus == 0 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 <a class="layui-btn " lay-event="pass">通过</a>
-                {{#  }else{ }}
+                {{# }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 {{# } }}
             </script>

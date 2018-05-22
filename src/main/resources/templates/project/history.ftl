@@ -49,8 +49,6 @@
             <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
         </div>
     </div>
-
-
     <div class="layui-field-box">
         <div id="dataContent" class="">
             <table class="layui-hide" id="history" lay-filter="table"></table>
@@ -67,15 +65,8 @@
                         {{#  } else { }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
                         {{#  } }}
-                        {{#  if(d.astatus == 1){ }}
-                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary" checked disabled/>
-                        {{#  } else { }}
-                        <input type="checkbox" name="astatus" title="管理员审核" value="{{d.id}}" lay-filter="astatus" lay-skin="primary"  disabled/>
-                        {{#  } }}
-
                     </div>
                 </form>
-                <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
             </script>
             <script type="text/html" id="operator">
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看详情</a>
@@ -104,7 +95,6 @@
                 ,{field: 'sname', align:'center', title: '学生姓名',unresize:true,templet: '<div>{{d.student.name}}</div>'}
                 ,{field: 'proResource', align:'center', title: '项目来源',unresize:true}
                 ,{field: 'moneyResource', align:'center', title: '经费来源',unresize:true}
-//                ,{field: 'desc', align:'center', title: '项目描述',unresize:true}
                 ,{field: 'teacher', title: '指导老师',unresize:true,templet: '<div>{{d.teacher.name}}</div>'}
                 ,{title: '项目状态',templet: '#status',unresize:true,width:250}
                 ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}

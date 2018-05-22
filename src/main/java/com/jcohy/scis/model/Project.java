@@ -30,11 +30,6 @@ public class Project implements Serializable{
     private Integer EStatus;
     @Column(name = "e_reason")
     private String EReason;
-    @Column(name = "a_status")
-    private Integer AStatus;
-    @Column(name = "a_reason")
-    private String AReason;
-
     @Column(name = "t_status")
     private Integer TStatus;
     @Column(name = "t_reason")
@@ -130,22 +125,6 @@ public class Project implements Serializable{
         this.EReason = EReason;
     }
 
-    public Integer getAStatus() {
-        return AStatus;
-    }
-
-    public void setAStatus(Integer AStatus) {
-        this.AStatus = AStatus;
-    }
-
-    public String getAReason() {
-        return AReason;
-    }
-
-    public void setAReason(String AReason) {
-        this.AReason = AReason;
-    }
-
     public Integer getTStatus() {
         return TStatus;
     }
@@ -208,32 +187,6 @@ public class Project implements Serializable{
 
     public void setUodateDate(String uodateDate) {
         this.uodateDate = uodateDate;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Project{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", proResource='").append(proResource).append('\'');
-        sb.append(", moneyResource='").append(moneyResource).append('\'');
-        sb.append(", desc='").append(desc).append('\'');
-        sb.append(", EStatus=").append(EStatus);
-        sb.append(", EReason='").append(EReason).append('\'');
-        sb.append(", AStatus=").append(AStatus);
-        sb.append(", AReason='").append(AReason).append('\'');
-        sb.append(", TStatus=").append(TStatus);
-        sb.append(", TReason='").append(TReason).append('\'');
-        sb.append(", student=").append(student);
-        sb.append(", teacher=").append(teacher);
-        sb.append(", book=").append(book);
-        sb.append(", video=").append(video);
-        sb.append(", createDate='").append(createDate).append('\'');
-        sb.append(", uodateDate='").append(uodateDate).append('\'');
-        sb.append(", expert=").append(expert);
-        sb.append(", operator='").append(operator).append('\'');
-        sb.append('}');
-        return sb.toString();
     }
 
     public Book getVideo() {

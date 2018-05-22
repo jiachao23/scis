@@ -42,17 +42,17 @@
 
     <div class="layui-field-box">
         <div id="dataContent" class="">
-
             <table class="layui-hide" id="teacher" lay-filter="table"></table>
             <script type="text/html" id="operator">
-                {{#  if(d.tstatus == 1 && d.estatus != 1 && d.asatus != 1){ }}
+                {{# if(d.tstatus == 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 <a class="layui-btn " lay-event="pass">撤回</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
-                {{#  }else if(d.tstatus == 0 && d.estatus != 1 && d.asatus != 1 ) { }}
+                {{# }else if(d.tstatus == 0 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
+                <a class="layui-btn " lay-event="pass">通过</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
-                {{#  }else{ }}
+                {{# }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 {{# } }}
             </script>

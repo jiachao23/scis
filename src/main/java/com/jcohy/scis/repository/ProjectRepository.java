@@ -28,11 +28,6 @@ public interface ProjectRepository extends JpaRepository<Project,Integer>{
 
     @Transactional
     @Modifying
-    @Query("update Project p set p.AStatus = ?1,p.AReason = ?2 where p.id = ?3")
-    int changeAdminStatus(Integer status,String advise,Integer id);
-
-    @Transactional
-    @Modifying
     @Query("update Project p set p.EStatus = ?1,p.EReason = ?2 where p.id = ?3")
     int changeExpertStatus(Integer status,String advise,Integer id);
 

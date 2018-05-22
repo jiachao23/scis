@@ -71,9 +71,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project saveOrUpdate(Project project) throws Exception {
         if(project.getId() == null){
-            project.setAReason("");
             project.setEReason("");
-            project.setAStatus(0);
             project.setEStatus(0);
             project.setTStatus(0);
             project.setTReason("");
@@ -114,17 +112,6 @@ public class ProjectServiceImpl implements ProjectService {
             Project project = projectRepository.findById(id).get();
             Notice notice = new Notice();
             switch (role) {
-                case "admin":
-                    notice.setStudentNum(project.getStudent().getNum());
-                    notice.setProjectName(project.getName());
-                    notice.setOperation("项目由管理员审核");
-                    notice.setContent(advise);
-                    notice.setStatus(project.getAStatus() == 0 ? "通过" : "撤回");
-                    notice.setLevel(project.getTStatus() == 0? 3:2);
-                    notice.setDate(DateUtils.getCurrentDateStr());
-                    projectRepository.changeAdminStatus(project.getAStatus() == 0 ? 1 : 0, advise, project.getId());
-                    noticeRepository.save(notice);
-                    break;
                 case "expert":
                     notice.setStudentNum(project.getStudent().getNum());
                     notice.setProjectName(project.getName());

@@ -29,11 +29,12 @@ import java.util.stream.Collectors;
  * Description:
  **/
 @Controller
-@RequestMapping("project")
+@RequestMapping("/project")
 public class ProjectController extends BaseController{
 
 
     private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
+
     @Autowired
     private ProjectService projectService;
 
@@ -61,7 +62,7 @@ public class ProjectController extends BaseController{
         page.setData(collect);
         return page;
     }
-    @DeleteMapping("{id}/del")
+    @DeleteMapping("/{id}/del")
     @ResponseBody
     public JsonResult del(@PathVariable("id") Integer id){
         try {
