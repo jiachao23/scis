@@ -14,75 +14,77 @@
       ,anim: 'default' //切换动画方式
       
     });
-    // //监听提交
-    // form.on('submit(formSearch)', function (data) {
-    //     $.ajax({
-    //         type: "GET",
-    //         dataType: "json",
-    //         data: data.field,
-    //         url: "/project/search/",
-    //         success:function(result) {
-    //             if (result.isOk) {
-    //                 console.log(result.data);
-    //                 createHtml(result.data);
-    //             } else {
-    //                 layer.msg(result.msg,{anim:6});
-    //             }
-    //         }
-    //     });
-    //     return false;
-    // });
-    //
-    // function createHtml(data) {
-    //     project = $("#project");
-    //     projectRight = $("#projectRight");
-    //     projectLeft = $("#projectLeft");
-    //     projectLeft.empty();
-    //     var detailHtml = '';
-    //     for(var i=0;i<data.length;i++){
-    //         detailHtml += '<div class="article shadow animated fadeInLeft">';
-    //         detailHtml += '<div class="article-left ">';
-    //         detailHtml += '<img src="/images/01.jpg" alt="'+data[i].name+'"/>';
-    //         detailHtml += '</div>';
-    //         detailHtml += '<div class="article-right">';
-    //         detailHtml += '<div class="article-title">';
-    //         detailHtml += '<a href="/project/job/'+data[i].id+'">项目名称：'+data[i].name+'</a></div>';
-    //         detailHtml += '<div class="article-abstract">项目来源：'+data[i].proResource+'</div>';
-    //         detailHtml += '<div class="article-abstract">经费来源：'+data[i].moneyResource+'</div>';
-    //         detailHtml += '<div class="article-abstract">项目描述：'+data[i].desc+'</div>';
-    //         detailHtml += '<div class="article-abstract">指导老师：'+data[i].teacher.name+'</div>';
-    //         detailHtml += '</div>';
-    //         detailHtml += '<div class="clear"></div>';
-    //         detailHtml += '<div class="article-footer">';
-    //         detailHtml += '<span><i class="fa fa-user"></i>&nbsp;&nbsp;'+data[i].student.name+'</span>';
-    //         detailHtml += '<span class="article-author"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;'+data[i].createDate+'</span>';
-    //         detailHtml += '</div></div>';
-    //     }
-    //     projectLeft.append(detailHtml);
-    //     detailHtml = '';
-    //     for(var i=0;i<data.length;i++){
-    //         detailHtml += '<div class="article shadow animated fadeInLeft">';
-    //         if(data[i].video.downloadUrl == null) {
-    //             detailHtml += '<div class="video_div" style="width: 73%">';
-    //             detailHtml += '<img src="/images/01.jpg" alt="' + data[i].name + '"/>';
-    //             detailHtml += '</div>';
-    //             detailHtml += '<div style="float: right;width: 20%">' + data[i].name + "项目无参赛视频";
-    //             detailHtml += '</div>';
-    //         }else{
-    //             detailHtml += '<div class="video_div" style="width: 73%">';
-    //             detailHtml += '<video id="my-video" class="video-js vjs-default-skin" controls preload="none"  data-setup="{}" poster="http://vjs.zencdn.net/v/oceans.png">';
-    //             detailHtml += '<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">';
-    //             detailHtml += '</video>';
-    //             detailHtml += '</div>';
-    //             detailHtml += '<div style="float: right;width: 20%">'+data[i].name + "项目参赛视频";
-    //             detailHtml += '</div>';
-    //         }
-    //         detailHtml += '</div>';
-    //     }
-    //     projectRight.append(detailHtml);
-    //     project.appendChild(projectRight);
-    //     project.appendChild(projectLeft);
-    // }
+
+    //搜索
+    $('#search').click(function () {
+        var keyword = $("#keyword").val();
+        console.log(keyword);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/project/search?keyword="+keyword,
+            success:function(result) {
+                if (result.isOk) {
+                    console.log(result.data);
+                    createHtml(result.data);
+                } else {
+                    layer.msg(result.msg,{anim:6});
+                }
+            }
+        });
+    });
+
+    function createHtml(data) {
+        var project = $("#project");
+        var projectRight = $("#projectRight");
+        var projectLeft = $("#projectLeft");
+        projectLeft.empty();
+        projectRight.empty();
+        var detailHtml = '';
+        for(var i=0;i<data.length;i++){
+            detailHtml += '<div class="article shadow animated fadeInLeft">';
+            detailHtml += '<div class="article-left ">';
+            detailHtml += '<img src="/images/01.jpg" alt="'+data[i].name+'"/>';
+            detailHtml += '</div>';
+            detailHtml += '<div class="article-right">';
+            detailHtml += '<div class="article-title">';
+            detailHtml += '<a href="/project/job/'+data[i].id+'">项目名称：'+data[i].name+'</a></div>';
+            detailHtml += '<div class="article-abstract">项目来源：'+data[i].proResource+'</div>';
+            detailHtml += '<div class="article-abstract">经费来源：'+data[i].moneyResource+'</div>';
+            detailHtml += '<div class="article-abstract">项目描述：'+data[i].desc+'</div>';
+            detailHtml += '<div class="article-abstract">指导老师：'+data[i].teacher.name+'</div>';
+            detailHtml += '</div>';
+            detailHtml += '<div class="clear"></div>';
+            detailHtml += '<div class="article-footer">';
+            detailHtml += '<span><i class="fa fa-user"></i>&nbsp;&nbsp;'+data[i].student.name+'</span>';
+            detailHtml += '<span class="article-author"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;'+data[i].createDate+'</span>';
+            detailHtml += '</div></div>';
+        }
+        projectLeft.append(detailHtml);
+        detailHtml = '';
+        for(var i=0;i<data.length;i++){
+            detailHtml += '<div class="article shadow animated fadeInLeft">';
+            if(data[i].video.downloadUrl == null) {
+                detailHtml += '<div class="video_div" style="width: 73%">';
+                detailHtml += '<img src="/images/01.jpg" alt="' + data[i].name + '"/>';
+                detailHtml += '</div>';
+                detailHtml += '<div style="float: right;width: 20%">' + data[i].name + "项目无参赛视频";
+                detailHtml += '</div>';
+            }else{
+                detailHtml += '<div class="video_div" style="width: 73%">';
+                detailHtml += '<video id="my-video" class="video-js vjs-default-skin" controls preload="none"  data-setup="{}" poster="http://vjs.zencdn.net/v/oceans.png">';
+                detailHtml += '<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">';
+                detailHtml += '</video>';
+                detailHtml += '</div>';
+                detailHtml += '<div style="float: right;width: 20%">'+data[i].name + "项目参赛视频";
+                detailHtml += '</div>';
+            }
+            detailHtml += '</div>';
+        }
+        projectRight.append(detailHtml);
+        project.append(projectRight);
+        project.append(projectLeft);
+    }
 
     $(function () {
         //播放公告

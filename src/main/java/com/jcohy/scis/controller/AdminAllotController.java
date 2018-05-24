@@ -51,7 +51,7 @@ public class AdminAllotController extends BaseController{
         List<Expert> experts = expertService.findAll();
         List<Project> projects = projectService.findAll();
         List<Project> projectList = projects.stream().filter(x -> allotService.findByOtherId(x.getId(), "project").size() == 0).collect(Collectors.toList());
-        List<Expert> expertList = experts.stream().filter(x -> allotService.findByOtherId(x.getId(), "expert").size() > 5).collect(Collectors.toList());
+        List<Expert> expertList = experts.stream().filter(x -> allotService.findByOtherId(x.getId(), "expert").size() < 5).collect(Collectors.toList());
 
         map.put("experts",expertList);
         map.put("projects",projectList);

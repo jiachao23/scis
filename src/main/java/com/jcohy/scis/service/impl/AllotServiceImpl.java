@@ -90,6 +90,7 @@ public class AllotServiceImpl implements AllotService {
     public Allot saveOrUpdate(Allot allot) throws ServiceException {
         Allot dballot = null;
         Notice notice = new Notice();
+        Notice notice1 = new Notice();
         try {
             if (allot.getId() != null) {
                 dballot = findById(allot.getId());
@@ -105,6 +106,13 @@ public class AllotServiceImpl implements AllotService {
                 notice.setContent("你的项目已修改分配至" + dballot.getExpert().getName());
                 notice.setStatus("0");
                 notice.setDate(DateUtils.getCurrentDateStr());
+
+                notice1.setStudentNum(dballot.getProject().getStudent().getNum());
+                notice1.setProjectName(dballot.getProject().getName());
+                notice1.setOperation("项目分配");
+                notice1.setContent("已经为您分配到了项目：" + dballot.getExpert().getName()+"，请及时审核");
+                notice1.setStatus("3");
+                notice1.setDate(DateUtils.getCurrentDateStr());
             } else {
                 dballot = allot;
                 notice.setStudentNum(dballot.getProject().getStudent().getNum());
@@ -113,12 +121,20 @@ public class AllotServiceImpl implements AllotService {
                 notice.setContent("你的项目已被分配至" + dballot.getExpert().getName());
                 notice.setStatus("0");
                 notice.setDate(DateUtils.getCurrentDateStr());
+
+                notice1.setStudentNum(dballot.getProject().getStudent().getNum());
+                notice1.setProjectName(dballot.getProject().getName());
+                notice1.setOperation("项目分配");
+                notice1.setContent("已经为您分配到了项目：" + dballot.getExpert().getName()+"，请及时审核");
+                notice1.setStatus("3");
+                notice1.setDate(DateUtils.getCurrentDateStr());
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         noticeRepository.save(notice);
+        noticeRepository.save(notice1);
         return allotRepository.save(dballot);
     }
 

@@ -16,6 +16,32 @@
     <!-- 本页样式表 -->
     <link href="${ctx!}/css/index.css" rel="stylesheet" />
     <link href="${ctx!}/css/video-js.css" rel="stylesheet" />
+    <style>
+        tr td:not(:nth-child(0)),
+        tr th:not(:nth-child(0)) {
+            text-align: center;
+        }
+        /*可选*/
+        .layui-laypage > * {
+            float: left;
+        }
+        .layui-field-title .layui-field-box{
+            padding: 10px 20px 10px 30px;
+        }
+        .layui-table-cell{
+            padding-top: 4px;
+            height: 45px;
+        }
+        .star-so{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .star-so input.layui-input{
+            width: 200px;
+            display: inline-block;
+        }
+
+    </style>
 </head>
 <body>
     <!-- 导航 -->
@@ -30,21 +56,18 @@
                 <#--<button class="layui-btn  layui-btn-primary" lay-filter="login" style="float: right">登录</button>-->
             <#--</form>-->
 
-            <#--<div class="blog-main">-->
-                <#--<div class="blog-main-right">-->
-                <#--<div class="blog-search">-->
-                    <#--<form class="layui-form">-->
-                        <#--<div class="layui-form-item" style="margin-right: 80px">-->
-                            <#--<div class="search-keywords  shadow">-->
-                                <#--<input type="text" name="key" lay-verify="required" placeholder="搜索" autocomplete="off" class="layui-input ">-->
-                            <#--</div>-->
-                            <#--<div class="search-submit  shadow">-->
-                                <#--<a class="search-btn" lay-filter="formSearch"><i class="fa fa-search"></i></a>-->
-                            <#--</div>-->
-                        <#--</div>-->
-                    <#--</form>-->
-                <#--</div>-->
-            <#--</div>-->
+            <div class="blog-main">
+                <div class="blog-main-right">
+                <div class="blog-search">
+                    <div class="layui-row">
+                        <div class="layui-form layui-col-md12 star-so">
+                            <input class="layui-input" placeholder="请输入关键字" name="keyword" id="keyword">
+
+                            <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <#--</div>-->
             <!-- 导航菜单 -->
 			<ul class="layui-nav" lay-filter="nav">

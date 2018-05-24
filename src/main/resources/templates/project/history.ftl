@@ -50,10 +50,10 @@
         </div>
     </div>
     <div class="layui-field-box">
-        <div id="dataContent" class="">
+        <div id="dataContent">
             <table class="layui-hide" id="history" lay-filter="table"></table>
             <script type="text/html" id="status">
-                <form class="layui-form" action="">
+                <form class="layui-form">
                     <div class="layui-form-item" style="margin:0;">
                         {{#  if(d.tstatus == 1){ }}
                         <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-skin="primary" lay-filter="tstatus" checked disabled/>
@@ -74,7 +74,6 @@
         </div>
     </div>
 </fieldset>
-
 <!-- layui.js -->
 <script src="${ctx!}/js/plugins/layui/layui.js"></script>
 <!-- layui规范化用法 -->

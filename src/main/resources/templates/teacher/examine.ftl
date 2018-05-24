@@ -84,7 +84,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/'
-    }).use('teacher/index');
+    }).use('teacher/examine');
 </script>
 </body>
 </html>

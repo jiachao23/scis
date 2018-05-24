@@ -14,6 +14,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Created by jiac on 2018/4/3.
@@ -53,14 +55,13 @@ public class StudentController extends BaseController{
     @GetMapping("/notice/all")
     @ResponseBody
     public PageJson<Notice> notice(@SessionAttribute("user") Student student , ModelMap map){
-
         List<Notice> notices = noticeService.findbyNum(student.getNum());
-
+        List<Notice> noticeList = notices.stream().filter(x -> x.getLevel() < 3).collect(Collectors.toList());
         PageJson<Notice> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
-        page.setCount(notices.size());
-        page.setData(notices);
+        page.setCount(noticeList.size());
+        page.setData(noticeList);
         return page;
     }
 

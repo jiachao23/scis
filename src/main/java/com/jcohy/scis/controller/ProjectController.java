@@ -15,9 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +38,10 @@ public class ProjectController extends BaseController{
     @Autowired
     private AllotService allotService;
 
+    @GetMapping("/history")
+    public String history(){
+        return "/project/history";
+    }
     @GetMapping("/all")
     @ResponseBody
     public PageJson<Project> all(){
@@ -76,7 +77,7 @@ public class ProjectController extends BaseController{
 
     @GetMapping("/change/{id}")
     @ResponseBody
-    public JsonResult change(@SessionAttribute("role")String role,@PathVariable("id") Integer id,@PathParam("advise") String advise){
+    public JsonResult change(@SessionAttribute("role")String role,@PathVariable("id") Integer id,@RequestParam("advise") String advise){
         logger.error("role:{} id: {} advice: {}",role,id,advise);
         try {
             projectService.changeStatus(id,role,advise);
@@ -97,13 +98,13 @@ public class ProjectController extends BaseController{
 
     /**
      * 搜索模糊查询
-     * @param key
+     * @param keyword
      * @return
      */
-    @GetMapping("/search")
+    @PostMapping("/search")
     @ResponseBody
-    public JsonResult searchJob(String key){
-        List<Project> projects = projectService.findByNameLike(key);
+    public JsonResult searchJob(String keyword){
+        List<Project> projects = projectService.findByNameLike(keyword);
         System.out.println("=============================");
         projects.forEach(System.out::println);
         return JsonResult.ok().set("data", projects);

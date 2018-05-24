@@ -58,13 +58,13 @@
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
             </script>
             <script type="text/html" id="operator">
-                {{#  if(d.tstatus == 1 && d.estatus == 1){ }}
+                {{# if(d.estatus == 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 <a class="layui-btn " lay-event="pass">撤回</a>
-                {{#  }else if(d.tstatus == 1 && d.estatus != 0) { }}
+                {{# }else if(d.estatus == 0 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 <a class="layui-btn " lay-event="pass">通过</a>
-                {{#  }else{ }}
+                {{# }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 {{# } }}
             </script>
@@ -79,7 +79,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/'
-    }).use('expert/index');
+    }).use('expert/examine');
 </script>
 </body>
 </html>

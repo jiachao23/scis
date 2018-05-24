@@ -46,11 +46,9 @@
             <script type="text/html" id="operator">
                 {{# if(d.tstatus == 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn " lay-event="pass">撤回</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{# }else if(d.tstatus == 0 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn " lay-event="pass">通过</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{# }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>

@@ -68,8 +68,8 @@ public class ScisApplication extends WebMvcConfigurerAdapter{
 
 		registry.addViewController("/admin/project/index").setViewName("/admin/project/index");
 
-		//历史项目
-		registry.addViewController("/project/history").setViewName("/project/history");
+
+
 	}
 
 	@Bean
