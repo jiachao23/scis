@@ -48,7 +48,7 @@
             detailHtml += '</div>';
             detailHtml += '<div class="article-right">';
             detailHtml += '<div class="article-title">';
-            detailHtml += '<a href="/project/job/'+data[i].id+'">项目名称：'+data[i].name+'</a></div>';
+            detailHtml += '<a href="/project/'+data[i].id+'">项目名称：'+data[i].name+'</a></div>';
             detailHtml += '<div class="article-abstract">项目来源：'+data[i].proResource+'</div>';
             detailHtml += '<div class="article-abstract">经费来源：'+data[i].moneyResource+'</div>';
             detailHtml += '<div class="article-abstract">项目描述：'+data[i].desc+'</div>';
