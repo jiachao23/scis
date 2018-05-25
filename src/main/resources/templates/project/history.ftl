@@ -135,16 +135,13 @@
             var detailHtml = '';
             detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';
             detailHtml += '<td colspan="10"><blockquote class="layui-elem-quote" style="line-height: 30px;text-align:left;padding-left: 30px;">';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师电话:</div>'+data.teacher.phone+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师地址:</div>'+data.teacher.address+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师简历:</div>'+data.teacher.resume+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家电话:</div>'+ephone+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家地址:</div>'+eaddress+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家简历:</div>'+eresume+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家意见:</div>'+ereason+'</br>';
-            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">管理员员意见:</div>'+areason+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师工号:</div>'+data.teacher.num+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导老师姓名:</div>'+data.teacher.name+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">评审专家工号:</div>'+expert.num+'</br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">评审专家姓名:</div>'+expert.name+'</br>';
             detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">项目描述:</div>'+data.desc+'</br>';
             detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">创意说明书下载地址:</div><a href="'+data.book.downloadUrl+'">'+data.book.downloadUrl+'</a></br>';
+            detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">展示视频下载地址:</div><a href="'+data.video.downloadUrl+'">'+data.video.downloadUrl+'</a></br>';
             detailHtml += '</blockquote></td></tr>';
             obj.tr.after(detailHtml);
         }
