@@ -46,7 +46,13 @@ public interface TypeService {
      * 修改数量
      * @param name
      */
-    void saveByName(String name);
+    void addCount(Integer num);
+
+    /**
+     * 修改数量
+     * @param num
+     */
+    void reduceCount(Integer num);
 
     /**
      *

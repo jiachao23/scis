@@ -48,6 +48,21 @@
                     </div>
 
                     <div class="layui-form-item">
+                        <label class="layui-form-label">项目类型</label>
+                        <div class="layui-input-inline">
+                            <select name="type" lay-filter="required" lay-verify="required">
+                                <option value="">请选择项目类型</option>
+                            <#list types as x>
+                                <option value="${x.id}"
+                                    <#if (project.type.name == x.name)> selected="selected" </#if>
+                                >${x.name}</option>
+                            </#list>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
                         <label class="layui-form-label">项目来源</label>
                         <div class="layui-input-inline">
                             <input type="text" name="proResource" lay-verify="required" placeholder="请输入项目来源" value="${project.proResource}"

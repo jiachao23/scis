@@ -49,14 +49,30 @@ public class TypeServiceImpl implements TypeService {
             dbType.setUpdateDate(DateUtils.getCurrentDateStr());
         }else{
             dbType = type;
+            dbType.setNumber(0);
             dbType.setCreateDate(DateUtils.getCurrentDateStr());
         }
         return typeRepository.save(dbType);
     }
 
     @Override
-    public void saveByName(String name) {
+    public void addCount(Integer num) {
+        List<Type> types = typeRepository.findByNum(num);
+        for(Type type:types){
+            type.setNumber(type.getNumber()+1);
+            typeRepository.save(type);
+        }
+    }
 
+    @Override
+    public void reduceCount(Integer num) {
+        List<Type> types = typeRepository.findByNum(num);
+        for(Type type:types){
+            if(type.getNumber()>0){
+                type.setNumber(type.getNumber()-1);
+                typeRepository.save(type);
+            }
+        }
     }
 
     @Override

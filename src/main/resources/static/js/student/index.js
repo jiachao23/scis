@@ -14,6 +14,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             ,{field: 'proResource', align:'center', title: '项目来源',unresize:true}
             ,{field: 'moneyResource', align:'center', title: '经费来源',unresize:true}
             // ,{field: 'desc', align:'center', title: '项目描述',unresize:true}
+            ,{field: 'type', title: '类型',unresize:true,templet: '<div>{{d.type.name}}</div>'}
             ,{field: 'teacher', title: '指导老师',unresize:true,templet: '<div>{{d.teacher.name}}</div>'}
             ,{title: '项目状态',templet: '#status',unresize:true}
             ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}
@@ -70,7 +71,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             $.ajax({
                 type: "DELETE",
                 dataType: "json",
-                url: "/project/" + id + "/del",
+                url: "/student/project/" + id + "/del",
                 success: function (ret) {
                     if (ret.isOk) {
                         layer.msg("操作成功", {time: 2000}, function () {

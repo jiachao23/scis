@@ -42,6 +42,9 @@ public class StudentController extends BaseController{
     @Autowired
     private NoticeService noticeService;
 
+    @Autowired
+    private TypeService typeService;
+
     private Logger logger = LoggerFactory.getLogger(StudentController.class);
 
     @GetMapping("/main")
@@ -100,6 +103,8 @@ public class StudentController extends BaseController{
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map){
         List<Teacher> teachers = teacherService.findAll();
+        List<Type> types = typeService.findAll();
+        map.put("types",types);
         map.put("teachers",teachers);
         if(id != null){
             Project project = projectService.findById(id);
@@ -110,7 +115,7 @@ public class StudentController extends BaseController{
 
 
     /**
-     * 获取教师信息
+     *
      * @return
      */
     @PostMapping("/save")
@@ -130,4 +135,19 @@ public class StudentController extends BaseController{
         return JsonResult.ok();
     }
 
+    @DeleteMapping("/project/{id}/del")
+    @ResponseBody
+    public JsonResult delproject(@PathVariable("id") Integer id){
+        try {
+            List<Allot> allots = allotService.findByOtherId(id, "project");
+            if(allots.size()>0){
+                return JsonResult.fail("此项目已被分配，无法删除");
+            }
+            projectService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.fail("");
+        }
+        return JsonResult.ok();
+    }
 }

@@ -25,7 +25,7 @@ public class Type implements Serializable {
     private String name;
     //院系主任
     @Column(name = "number")
-    private String number;
+    private Integer number;
 
     @Column(name = "create_date")
     private String createDate;
@@ -58,11 +58,11 @@ public class Type implements Serializable {
         this.name = name;
     }
 
-    public String getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 

@@ -65,6 +65,14 @@ public class Project implements Serializable{
     @Transient
     private String operator;
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public String getOperator() {
         return operator;
     }

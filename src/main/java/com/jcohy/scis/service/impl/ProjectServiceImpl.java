@@ -7,6 +7,7 @@ import com.jcohy.scis.model.Project;
 import com.jcohy.scis.repository.*;
 import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.TeacherService;
+import com.jcohy.scis.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +38,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private NoticeRepository noticeRepository;
+
+    @Autowired
+    private TypeService typeService;
 
     @Override
     public List<Project> findAll() {
@@ -88,6 +92,9 @@ public class ProjectServiceImpl implements ProjectService {
             notice.setProjectName(project.getName());
             notice.setStudentNum(project.getStudent().getNum());
             notice.setLevel(1);
+
+            typeService.addCount(project.getType().getNum());
+
             noticeRepository.save(notice);
         }else{
             project.setUodateDate(DateUtils.getCurrentDateStr());
@@ -97,7 +104,13 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void delete(Integer id) {
+        Project project = projectRepository.findById(id).get();
 
+        if(project.getType().getNumber()>0){
+            typeService.reduceCount(project.getType().getNum());
+        }
+
+        projectRepository.delete(project);
     }
 
     @Override
