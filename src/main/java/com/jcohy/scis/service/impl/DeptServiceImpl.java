@@ -1,5 +1,6 @@
 package com.jcohy.scis.service.impl;
 
+import com.jcohy.date.DateUtils;
 import com.jcohy.scis.model.Dept;
 import com.jcohy.scis.repository.DeptRepository;
 import com.jcohy.scis.service.DeptService;
@@ -37,5 +38,38 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public Dept findById(Integer id) {
         return deptRepository.findById(id).get();
+    }
+
+    @Override
+    public Dept save(Dept dept) throws Exception {
+        Dept dbDept = null;
+        if(dept.getId() != null){
+            dbDept = deptRepository.findById(dept.getId()).get();
+            if(dept.getNum() != null) dbDept.setNum(dept.getNum());
+            if(dept.getName() != null) dbDept.setName(dept.getName());
+            if(dept.getChairman() != null) dbDept.setChairman(dept.getChairman());
+            if(dept.getDesc() != null) dbDept.setDesc(dept.getDesc());
+            if(dept.getTel() != null) dbDept.setTel(dept.getTel());
+            dbDept.setUpdateDate(DateUtils.getCurrentDateStr());
+        }else{
+            dbDept = dept;
+            dbDept.setCreateDate(DateUtils.getCurrentDateStr());
+        }
+        return deptRepository.save(dbDept);
+    }
+
+    @Override
+    public void delete(Integer id) {
+            deptRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Dept> findByName(String name) {
+        return deptRepository.findByName(name);
+    }
+
+    @Override
+    public List<Dept> findByNum(Integer num) {
+        return deptRepository.findByNum(num);
     }
 }

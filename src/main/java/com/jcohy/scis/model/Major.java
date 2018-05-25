@@ -32,6 +32,28 @@ public class Major implements Serializable{
     @JoinColumn(name = "dept_id")
     private Dept dept;
 
+    @Column(name = "create_date")
+    private String createDate;
+
+    @Column(name = "update_date")
+    private String updateDate;
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(String updateDate) {
+        this.updateDate = updateDate;
+    }
+
     public Integer getId() {
         return id;
     }

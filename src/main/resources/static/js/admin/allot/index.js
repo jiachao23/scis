@@ -11,10 +11,10 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         ,page: true //开启分页
         ,cols: [[ //表头
             {field: 'pname', align:'center', title: '评审的项目名',unresize:true,templet: '<div>{{d.project.name}}</div>'}
+            ,{field: 'ename', title: '评审专家',unresize:true,templet: '<div>{{d.expert.name}}</div>'}
             ,{field: 'content', align:'center', title: '评审内容',unresize:true}
             ,{field: 'start', align:'center', title: '开始',unresize:true}
             ,{field: 'end', align:'center', title: '结束',unresize:true}
-            ,{field: 'ename', title: '评审专家',unresize:true,templet: '<div>{{d.expert.name}}</div>'}
             ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}
         ]]
     });

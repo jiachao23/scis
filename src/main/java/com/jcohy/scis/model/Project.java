@@ -47,6 +47,10 @@ public class Project implements Serializable{
     private Book book;
 
     @OneToOne
+    @JoinColumn(name = "type_id")
+    private Type type;
+
+    @OneToOne
     @JoinColumn(name = "book_video_id")
     private Book video;
 

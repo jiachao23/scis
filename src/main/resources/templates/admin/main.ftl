@@ -56,17 +56,50 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>项目管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/allot/index" data-id="4">评审分配</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/project/index" data-id="4">我的项目</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/allot/index" data-id="5">评审分配</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/project/history" data-id="6">历史项目</a></dd>
                             <#--<dd><a href="javascript:;" data-url="${ctx!}/admin/project/index" data-id="5">项目审核</a></dd>-->
                         </dl>
                     </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>学院管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/dept/index" data-id="7">学院信息</a></dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/major/index" data-id="8">系所信息</a></dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>类别管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/type/index" data-id="5">类别信息</a></dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/type/update" data-id="9">类别管理</a></dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>统计信息</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/notice" data-id="10">统计信息</a></dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/circular/index" data-id="11">类别管理</a></dd>
+                        </dl>
+                    </li>
+
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>消息管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/notice" data-id="5">我的消息</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/notice" data-id="12">我的消息</a></dd>
                         </dl>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/admin/circular/index" data-id="6">发布通告</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/circular/index" data-id="13">发布通告</a></dd>
                         </dl>
                     </li>
                 </ul>

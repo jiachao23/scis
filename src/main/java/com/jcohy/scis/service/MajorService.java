@@ -29,4 +29,12 @@ public interface MajorService {
     Major findById(Integer id);
 
     List<Major> findByDept(Dept dept);
+
+    Major save(Major dept) throws Exception;
+
+    void delete(Integer id);
+
+    List<Major> findByName(String name);
+
+    List<Major> findByNum(Integer num);
 }

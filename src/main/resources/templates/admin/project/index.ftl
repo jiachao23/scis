@@ -30,7 +30,7 @@
 <body>
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
-    <legend style="text-align:center;">评审分配列表</legend>
+    <legend style="text-align:center;">我的项目列表</legend>
 
     <div class="layui-row">
         <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
@@ -89,11 +89,9 @@
             <script type="text/html" id="operator">
                 {{#  if(d.tstatus == 1 && d.estatus == 1 && d.asatus == 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn " lay-event="pass">撤回</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{#  }else if(d.tstatus == 1 && d.estatus == 1 && d.asatus != 1 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn " lay-event="pass">通过</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{#  }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>

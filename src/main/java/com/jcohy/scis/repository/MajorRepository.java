@@ -14,4 +14,8 @@ import java.util.List;
 public interface MajorRepository  extends JpaRepository<Major,Integer> {
 
     List<Major>  findAllByDept(Dept dept);
+
+    List<Major> findByName(String name);
+
+    List<Major> findByNum(Integer num);
 }

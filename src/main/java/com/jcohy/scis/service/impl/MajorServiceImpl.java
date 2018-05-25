@@ -1,5 +1,6 @@
 package com.jcohy.scis.service.impl;
 
+import com.jcohy.date.DateUtils;
 import com.jcohy.scis.model.Dept;
 import com.jcohy.scis.model.Major;
 import com.jcohy.scis.repository.MajorRepository;
@@ -43,5 +44,38 @@ public class MajorServiceImpl implements MajorService {
     @Override
     public List<Major> findByDept(Dept dept) {
         return majorRepository.findAllByDept(dept);
+    }
+
+    @Override
+    public Major save(Major major) throws Exception {
+        Major dbMajor = null;
+        if(major.getId() != null){
+            dbMajor = majorRepository.findById(major.getId()).get();
+            if(major.getNum() != null) dbMajor.setNum(major.getNum());
+            if(major.getName() != null) dbMajor.setName(major.getName());
+            if(major.getAssistant() != null) dbMajor.setAssistant(major.getAssistant());
+            if(major.getDept() != null) dbMajor.setDept(major.getDept());
+            if(major.getTel() != null) dbMajor.setTel(major.getTel());
+            dbMajor.setUpdateDate(DateUtils.getCurrentDateStr());
+        }else{
+            dbMajor = major;
+            dbMajor.setCreateDate(DateUtils.getCurrentDateStr());
+        }
+        return majorRepository.save(dbMajor);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        majorRepository.deleteById(id);
+    }
+
+    @Override
+    public  List<Major> findByName(String name) {
+        return majorRepository.findByName(name);
+    }
+
+    @Override
+    public  List<Major> findByNum(Integer num) {
+        return majorRepository.findByNum(num);
     }
 }

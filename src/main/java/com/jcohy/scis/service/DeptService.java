@@ -25,4 +25,12 @@ public interface DeptService {
     List<Dept> findAll();
 
     Dept findById(Integer id);
+
+    Dept save(Dept dept) throws Exception;
+
+    void delete(Integer id);
+
+    List<Dept> findByName(String name);
+
+    List<Dept> findByNum(Integer num);
 }
