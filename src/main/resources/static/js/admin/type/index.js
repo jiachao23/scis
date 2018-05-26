@@ -21,7 +21,7 @@ layui.define(['laypage', 'layer','table','common','util','form'], function (expo
             // ,{field: 'type', align:'center', title: '类型',sort: true,unresize:true,templet: '<div>{{d.type.name}}</div>'}
             // ,{field: 'status', align:'center', title: '是否可见',unresize:true,templet: '#choicesTpl'}
             ,{field: 'createDate', title: '创建日期',unresize:true,templet: '<div>{{# if(d.createDate!=null){ }}{{ layui.util.toDateString(d.createDate) }}{{# } }}</div>'}
-            ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
+            // ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
         ]]
     });
 

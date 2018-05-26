@@ -45,6 +45,12 @@ public class StudentController extends BaseController{
     @Autowired
     private TypeService typeService;
 
+    @Autowired
+    private ExpertService expertService;
+
+    @Autowired
+    private DeptService deptService;
+
     private Logger logger = LoggerFactory.getLogger(StudentController.class);
 
     @GetMapping("/main")
@@ -149,5 +155,41 @@ public class StudentController extends BaseController{
             return JsonResult.fail("");
         }
         return JsonResult.ok();
+    }
+
+    @GetMapping("/teacher")
+    public String teacher(@RequestParam(required = false) Integer id, ModelMap map){
+        List<Teacher> teachers = teacherService.findAll();
+        List<Dept> depts = deptService.findAll();
+        map.put("depts",depts);
+        map.put("teachers",teachers);
+        if(id != null){
+            Student student = studentService.findById(id);
+            map.put("student",student);
+        }
+        return "teacher/teacher";
+    }
+
+    @GetMapping("/expert")
+    public String expert(@RequestParam(required = false) Integer id, ModelMap map){
+        List<Expert> experts = expertService.findAll();
+        map.put("experts",experts);
+        if(id != null){
+            Student student = studentService.findById(id);
+            map.put("student",student);
+        }
+        return "expert/expert";
+    }
+
+    @GetMapping("/list")
+    @ResponseBody
+    public PageJson<Student> student(@SessionAttribute("user") Student student , ModelMap map){
+        List<Student> students = studentService.findAll();
+        PageJson<Student> page = new PageJson<>();
+        page.setCode(0);
+        page.setMsg("成功");
+        page.setCount(students.size());
+        page.setData(students);
+        return page;
     }
 }

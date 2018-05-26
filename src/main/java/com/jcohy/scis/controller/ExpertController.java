@@ -1,17 +1,16 @@
 package com.jcohy.scis.controller;
 
+import com.jcohy.lang.StringUtils;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.*;
-import com.jcohy.scis.service.AllotService;
-import com.jcohy.scis.service.ProjectService;
-import com.jcohy.scis.service.StudentService;
-import com.jcohy.scis.service.TeacherService;
+import com.jcohy.scis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,6 +36,10 @@ public class ExpertController extends BaseController{
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private ExpertService expertService;
+
     @GetMapping("/project/list")
     @ResponseBody
     public PageJson<Project> all(@SessionAttribute("user") Expert expert , ModelMap map){
@@ -71,4 +74,47 @@ public class ExpertController extends BaseController{
         }
         return "student/form";
     }
+
+    @GetMapping("/list")
+    @ResponseBody
+    public PageJson<Expert> teacher(@SessionAttribute("user") Expert expert , ModelMap map){
+        List<Expert> experts = expertService.findAll();
+        PageJson<Expert> page = new PageJson<>();
+        page.setCode(0);
+        page.setMsg("成功");
+        page.setCount(experts.size());
+        page.setData(experts);
+        return page;
+    }
+
+//    @GetMapping("/search")
+//    @ResponseBody
+//    public PageJson search(String keyword,String dept){
+//        List<Teacher> teachers = new ArrayList<>();
+//        if(!StringUtils.isEmpty(keyword)){
+//            boolean isNum = keyword.matches("[0-9]+");
+//            if(isNum){
+//                Teacher teacher = teacherService.findByNum(Integer.parseInt(keyword));
+//                teachers.add(teacher);
+//            }else{
+//                Teacher teacher = teacherService.findByName(keyword);
+//                teachers.add(teacher);
+//            }
+//        }else{
+//            List<Teacher> teacherList = teacherService.findAll();
+//            if(!StringUtils.isEmpty(dept)){
+//                List<Teacher> list = teacherList.stream().filter(x -> x.getDept().getName().equals(dept)).collect(Collectors.toList());
+//                teachers = list;
+//            }else{
+//                teachers = teacherList;
+//            }
+//        }
+//
+//        PageJson<Teacher> page = new PageJson<>();
+//        page.setCode(0);
+//        page.setMsg("成功");
+//        page.setCount(teachers.size());
+//        page.setData(teachers);
+//        return page;
+//    }
 }

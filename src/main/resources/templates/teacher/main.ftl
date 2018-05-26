@@ -55,6 +55,21 @@
                     </li>
 
                     <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>学生管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/teacher/student" data-id="5">学生信息</a></dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>专家管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/student/expert" data-id="6">专家信息</a></dd>
+                        </dl>
+                    </li>
+
+
+                    <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-file-text"></i>我的消息</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/teacher/notice" data-id="4">我的消息</a></dd>

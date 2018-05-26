@@ -72,7 +72,7 @@ public class ScisApplication extends WebMvcConfigurerAdapter{
 		registry.addViewController("/admin/major/index").setViewName("/admin/major/index");
 		registry.addViewController("/admin/type/index").setViewName("/admin/type/index");
 		registry.addViewController("/admin/type/update").setViewName("/admin/type/update");
-//		registry.addViewController("/admin/circular/index").setViewName("/admin/circular/index");
+		registry.addViewController("/admin/graph/index").setViewName("/admin/graph/index");
 
 	}
 

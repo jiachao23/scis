@@ -30,7 +30,7 @@
 <body>
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
-    <legend style="text-align:center;">分类列表</legend>
+    <legend style="text-align:center;">类别列表</legend>
 
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">

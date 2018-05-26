@@ -30,12 +30,12 @@
 <body>
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
-    <legend style="text-align:center;">分类列表</legend>
+    <legend style="text-align:center;">类别列表</legend>
 
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">
             <div class="layui-input-inline" style="width:auto">
-                <a id="addType" class="layui-btn layui-btn-normal">添加类型</a>
+                <a id="addType" class="layui-btn layui-btn-normal">添加类别</a>
             </div>
         </div>
     </div>
@@ -45,10 +45,10 @@
         <div id="dataContent" class="">
 
             <table class="layui-hide" id="type" lay-filter="table"></table>
-            <script type="text/html" id="operator">
-                <#--<a class="layui-btn" lay-event="edit">编辑</a>-->
-                <#--<a class="layui-btn layui-btn-danger " lay-event="del">删除</a>-->
-            </script>
+            <#--<script type="text/html" id="operator">-->
+                <#--&lt;#&ndash;<a class="layui-btn" lay-event="edit">编辑</a>&ndash;&gt;-->
+                <#--&lt;#&ndash;<a class="layui-btn layui-btn-danger " lay-event="del">删除</a>&ndash;&gt;-->
+            <#--</script>-->
         </div>
     </div>
 </fieldset>
