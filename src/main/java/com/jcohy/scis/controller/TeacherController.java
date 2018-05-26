@@ -4,10 +4,7 @@ import com.jcohy.lang.StringUtils;
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.*;
-import com.jcohy.scis.service.MajorService;
-import com.jcohy.scis.service.ProjectService;
-import com.jcohy.scis.service.StudentService;
-import com.jcohy.scis.service.TeacherService;
+import com.jcohy.scis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,7 +33,7 @@ public class TeacherController extends BaseController{
     private ProjectService projectService;
 
     @Autowired
-    private MajorService majorService;
+    private DeptService deptService;
 
     @GetMapping("/project/list")
     @ResponseBody
@@ -78,14 +75,37 @@ public class TeacherController extends BaseController{
     @ResponseBody
     public PageJson search(String keyword,String dept){
         List<Teacher> teachers = new ArrayList<>();
+        PageJson<Teacher> page = new PageJson<>();
+
+        if(StringUtils.isAllEmpty(keyword,dept)){
+            teachers = teacherService.findAll();
+            page.setCode(0);
+            page.setMsg("成功");
+            page.setCount(teachers.size());
+            page.setData(teachers);
+            return page;
+        }
+
         if(!StringUtils.isEmpty(keyword)){
             boolean isNum = keyword.matches("[0-9]+");
             if(isNum){
                 Teacher teacher = teacherService.findByNum(Integer.parseInt(keyword));
-                teachers.add(teacher);
+                if(dept != null && !dept.equals("")){
+                    if(teacher != null && teacher.getDept().getName().equals(dept)){
+                        teachers.add(teacher);
+                    }
+                }else{
+                    teachers.add(teacher);
+                }
             }else{
                 Teacher teacher = teacherService.findByName(keyword);
-                teachers.add(teacher);
+                if(dept != null && !dept.equals("")){
+                    if(teacher.getDept().getName().equals(dept)){
+                        teachers.add(teacher);
+                    }
+                }else{
+                    teachers.add(teacher);
+                }
             }
         }else{
             List<Teacher> teacherList = teacherService.findAll();
@@ -96,8 +116,6 @@ public class TeacherController extends BaseController{
                 teachers = teacherList;
             }
         }
-
-        PageJson<Teacher> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");
         page.setCount(teachers.size());
@@ -107,8 +125,8 @@ public class TeacherController extends BaseController{
 
     @GetMapping("/student")
     public String teacher(@RequestParam(required = false) Integer id, ModelMap map){
-        List<Major> majors = majorService.findAll();
-        map.put("majors",majors);
+        List<Dept> depts = deptService.findAll();
+        map.put("depts",depts);
         return "student/student";
     }
 }

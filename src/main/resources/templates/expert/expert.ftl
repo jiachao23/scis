@@ -44,19 +44,7 @@
     </button>
     <div class="layui-row">
         <div class="layui-form layui-col-md12 star-so">
-
-            
             <input class="layui-input" placeholder="请输入姓名或者工号" name="keyword" id="keyword">
-
-            <div class="layui-input-inline">
-                <select name="displayName" id="dept" lay-filter="dept" placeholder="请选择院系">
-                    <option value="">请选择院系</option>
-                <#list depts as x>
-                    <option >${x.name}</option>
-                </#list>
-                </select>
-            </div>
-
             <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
         </div>
     </div>
@@ -78,7 +66,7 @@
                 form = layui.form,
                 table  = layui.table ;
 
-        var dept,keyword='';
+        var keyword='';
 
         table.render({
             elem: '#expertinfo'
@@ -129,17 +117,12 @@
         //搜索
         $('#search').click(function () {
             keyword = $("#keyword").val();
-            table.reload('teacherinfo', {
-                url: "/teacher/search"
-                ,where: {keyword:keyword,dept:dept} //设定异步数据接口的额外参数
+            table.reload('expertinfo', {
+                url: "/expert/search"
+                ,where: {keyword:keyword} //设定异步数据接口的额外参数
                 //,height: 300
             });
         });
-
-        form.on('select(dept)', function(data){
-            dept = data.value;
-        });
-
     });
 </script>
 </body>

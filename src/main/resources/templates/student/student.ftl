@@ -45,27 +45,38 @@
     <div class="layui-row">
         <div class="layui-form layui-col-md12 star-so">
 
+            <#--<form id="form1" class="layui-form "  lay-filter="form">-->
+                <#--<input class="layui-input" placeholder="请输入姓名或者工号" name="keyword" id="keyword">-->
 
+                <#--<div class="layui-input-inline">-->
+                    <#--<select name="displayName" id="dept" lay-filter="depts" placeholder="请选择院系">-->
+                        <#--<option value="">请选择院系</option>-->
+                    <#--<#list depts as x>-->
+                        <#--<option value="${x.id}">${x.name}</option>-->
+                    <#--</#list>-->
+                    <#--</select>-->
+                <#--</div>-->
+
+                <#--<div class="layui-input-inline">-->
+                    <#--<select name="major" lay-filter="majors" placeholder="请选择专业">-->
+                        <#--<option value="">请选择专业</option>-->
+                        <#--<#list majors as x>-->
+                            <#--<option value="${x.id}"-->
+                                <#--<#if (student.major.name == x.name)> selected="selected" </#if>-->
+                            <#-->${x.name}</option>-->
+                        <#--</#list>-->
+                    <#--</select>-->
+                <#--</div>-->
+                <#--<button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>-->
+            <#--</form>-->
             <input class="layui-input" placeholder="请输入姓名或者工号" name="keyword" id="keyword">
-
-            <div class="layui-input-inline">
-                <select name="displayName" id="dept" lay-filter="dept" placeholder="请选择院系">
-                    <option value="">请选择院系</option>
-                <#list depts as x>
-                    <option >${x.name}</option>
-                </#list>
-                </select>
-            </div>
-
             <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
+
         </div>
     </div>
     <div class="layui-field-box">
         <div id="dataContent">
             <table class="layui-hide" id="studentinfo" lay-filter="table"></table>
-            <script type="text/html" id="operator">
-                <a class="layui-btn layui-btn-normal" lay-event="detail">查看详情</a>
-            </script>
         </div>
     </div>
 </fieldset>
@@ -78,7 +89,7 @@
                 form = layui.form,
                 table  = layui.table ;
 
-        var dept,keyword='';
+        var dept,keyword,major='';
 
         table.render({
             elem: '#studentinfo'
@@ -98,51 +109,42 @@
                 ,{field: 'chairman', align:'center', title: '辅导员',unresize:true,templet: '<div>{{d.major.dept.chairman}}</div>'}
             ]]
         });
-        // function createHtml(obj) {
-        //     var packageType;
-        //     var data = obj.data;
-        //     var expert = data.expert;
-        //     var ephone,eaddress,eresume,ereason,areason;
-        //     if(expert == null){
-        //         ephone ='此项目还未分配专家审核';
-        //         eaddress = '此项目还未分配专家审核';
-        //         eresume ='此项目还未分配专家审核';
-        //         ereason = '此项目还未分配专家审核';
-        //         areason = '此项目还未通过专家审核';
-        //     }else{
-        //         ephone = data.expert.phone;
-        //         eaddress = data.expert.address;
-        //         eresume = data.expert.resume;
-        //         ereason = data.ereason;
-        //         areason = data.areason;
-        //     }
-        //     var detailHtml = '';
-        //     detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';
-        //     detailHtml += '<td colspan="10"><blockquote class="layui-elem-quote" style="line-height: 30px;text-align:left;padding-left: 30px;">';
-        //     detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导学生工号:</div>'+data.teacher.num+'</br>';
-        //     detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导学生姓名:</div>'+data.teacher.name+'</br>';
-        //     detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">评审专家工号:</div>'+expert.num+'</br>';
-        //     detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">评审专家姓名:</div>'+expert.name+'</br>';
-        //     detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">项目描述:</div>'+data.desc+'</br>';
-        //     detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">创意说明书下载地址:</div><a href="'+data.book.downloadUrl+'">'+data.book.downloadUrl+'</a></br>';
-        //     detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">展示视频下载地址:</div><a href="'+data.video.downloadUrl+'">'+data.video.downloadUrl+'</a></br>';
-        //     detailHtml += '</blockquote></td></tr>';
-        //     obj.tr.after(detailHtml);
-        // }
+
+        // form.on('select(depts)', function(data) {
+        //     var select = $("[name='major']");
+        //     dept = data.value;
+        //     select.empty();
+        //     $.ajax({
+        //         type: "GET",
+        //         data: {"id": data.value},
+        //         url: "/major/dept",
+        //         async: false,
+        //         success: function (ret) {
+        //             var option = '';
+        //             var data = ret.majors;
+        //             for (var i = 0; i < data.length; i++) {
+        //                 option += '<option value="' + data[i].name + '">' + data[i].name + '</option></br>';
+        //             }
+        //             select.append(option);
+        //             form.render('select', 'form');
+        //         }
+        //     });
+        //
+        // });
         //搜索
         $('#search').click(function () {
             keyword = $("#keyword").val();
-            table.reload('teacherinfo', {
-                url: "/teacher/search"
-                ,where: {keyword:keyword,dept:dept} //设定异步数据接口的额外参数
+            table.reload('studentinfo', {
+                url: "/student/search"
+                ,where: {keyword:keyword} //设定异步数据接口的额外参数
+                // ,where: {keyword:keyword,dept:dept,major:major} //设定异步数据接口的额外参数
                 //,height: 300
             });
         });
 
-        form.on('select(dept)', function(data){
-            dept = data.value;
-        });
-
+        // form.on('select(majors)', function(data){
+        //     major = data.value;
+        // });
     });
 </script>
 </body>

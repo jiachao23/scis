@@ -1,5 +1,6 @@
 package com.jcohy.scis.controller;
 
+import com.jcohy.lang.StringUtils;
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
 import com.jcohy.scis.model.*;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -186,6 +188,60 @@ public class StudentController extends BaseController{
     public PageJson<Student> student(@SessionAttribute("user") Student student , ModelMap map){
         List<Student> students = studentService.findAll();
         PageJson<Student> page = new PageJson<>();
+        page.setCode(0);
+        page.setMsg("成功");
+        page.setCount(students.size());
+        page.setData(students);
+        return page;
+    }
+
+
+    @GetMapping("/search")
+    @ResponseBody
+    public PageJson search(String keyword,String dept,String major){
+        List<Student> students = new ArrayList<>();
+        PageJson<Student> page = new PageJson<>();
+        if(StringUtils.isAllEmpty(keyword,dept,major)){
+            students = studentService.findAll();
+            page.setCode(0);
+            page.setMsg("成功");
+            page.setCount(students.size());
+            page.setData(students);
+            return page;
+        }
+
+        if(!StringUtils.isEmpty(keyword)){
+            boolean isNum = keyword.matches("[0-9]+");
+            if(isNum){
+                Student student = studentService.findByNum(Integer.parseInt(keyword));
+                if(dept != null && !dept.equals("")){
+                    if(major != null && major.equals("")){
+                        if(student != null && student.getMajor().getName().equals(major)){
+                            students.add(student);
+                        }
+                    }
+                }else{
+                    students.add(student);
+                }
+            }else{
+                Student student = studentService.findByName(keyword);
+                if(dept != null && !dept.equals("")){
+                    if(student != null && student.getMajor().getName().equals(major)){
+                        students.add(student);
+                    }
+                }else{
+                    students.add(student);
+                }
+            }
+        }else{
+            List<Student> teacherList = studentService.findAll();
+            if(!StringUtils.isEmpty(dept)){
+                List<Student> list = teacherList.stream().filter(x -> x.getMajor().getName().equals(major)).collect(Collectors.toList());
+                students = list;
+            }else{
+                students = teacherList;
+            }
+        }
         page.setCode(0);
         page.setMsg("成功");
         page.setCount(students.size());
