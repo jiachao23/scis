@@ -129,6 +129,15 @@ public class StudentController extends BaseController{
     @PostMapping("/save")
     @ResponseBody
     public JsonResult saveOrUpdate(@SessionAttribute("user") Student student,Project project){
+
+        String groups = project.getGroups();
+        String[] group = groups.split(",");
+        for(String num:group){
+            Student stu = studentService.findByNum(Integer.parseInt(num));
+            if(stu==null){
+                return JsonResult.fail("学号："+num+"的学生不存在");
+            }
+        }
         Project ret = projectService.findByName(project.getName());
         if(ret != null){
             return JsonResult.fail("此项目已经申报，请不要重复申报！");

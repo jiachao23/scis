@@ -64,7 +64,7 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-file-text"></i>学院管理</a>
+                        <a href="javascript:;"><i class="fa fa-graduation-cap"></i>学院管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/dept/index" data-id="7">学院信息</a></dd>
                         </dl>
@@ -74,7 +74,7 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-file-text"></i>类别管理</a>
+                        <a href="javascript:;"><i class="fa fa-plus-square"></i>类别管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/type/index" data-id="5">类别信息</a></dd>
                         </dl>
@@ -91,7 +91,7 @@
                     <#--</li>-->
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-file-text"></i>消息管理</a>
+                        <a href="javascript:;"><i class="fa fa-comment"></i>消息管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/admin/notice" data-id="12">我的消息</a></dd>
                         </dl>

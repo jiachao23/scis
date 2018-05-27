@@ -79,6 +79,9 @@ public class ProjectServiceImpl implements ProjectService {
             project.setEStatus(0);
             project.setTStatus(0);
             project.setTReason("");
+            if(project.getGroups() == null){
+                project.setGroups("个人赛无团队");
+            }
             project.setCreateDate(DateUtils.getCurrentDateStr());
             Notice notice = new Notice();
             notice.setStatus("创建项目");
@@ -97,7 +100,7 @@ public class ProjectServiceImpl implements ProjectService {
 
             noticeRepository.save(notice);
         }else{
-            project.setUodateDate(DateUtils.getCurrentDateStr());
+            project.setUpdateDate(DateUtils.getCurrentDateStr());
         }
         return projectRepository.save(project);
     }

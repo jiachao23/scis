@@ -183,13 +183,14 @@ body {background: #eee;color: #444;}
         position: absolute;
         z-index: 10;
     }
-	
-		.blog-nav .blog-user a{
-			font-size: 14px;
-			color: #c2c2c2;
-			line-height: 64px;
-			padding-right: 20px;
-		}
+
+        .blog-nav .blog-user a{
+            font-size: 18px;
+            color: #c2c2c2;
+            line-height: 64px;
+            /* padding-right: 20px; */
+            margin-top: -13px;
+        }
 		
 		.blog-nav .blog-user a:nth-child(2) {
 			display: none

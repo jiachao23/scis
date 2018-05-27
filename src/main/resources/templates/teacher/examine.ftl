@@ -51,6 +51,7 @@
                 {{# }else if(d.tstatus == 0 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 <a class="layui-btn " lay-event="pass">通过</a>
+                <a class="layui-btn " lay-event="reject">拒绝</a>
                 {{# }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 {{# } }}

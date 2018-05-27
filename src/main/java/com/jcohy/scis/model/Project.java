@@ -58,12 +58,43 @@ public class Project implements Serializable{
     private String createDate;
 
     @Column(name = "update_date")
-    private String uodateDate;
+    private String updateDate;
+
+    @Column(name = "genre")
+    private String genre;
+
+    @Column(name = "groups")
+    private String groups;
+
 
     @Transient
     private Expert expert;
     @Transient
     private String operator;
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(String updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getGroups() {
+        return groups;
+    }
+
+    public void setGroups(String groups) {
+        this.groups = groups;
+    }
 
     public Type getType() {
         return type;
@@ -191,14 +222,6 @@ public class Project implements Serializable{
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
-    }
-
-    public String getUodateDate() {
-        return uodateDate;
-    }
-
-    public void setUodateDate(String uodateDate) {
-        this.uodateDate = uodateDate;
     }
 
     public Book getVideo() {

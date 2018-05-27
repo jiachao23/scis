@@ -47,7 +47,7 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>项目管理</a>
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>项目管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/student/index" data-id="1">我的项目</a></dd>
                             <dd><a href="javascript:;" data-url="${ctx!}/student/form" data-id="2">项目申报</a></dd>
@@ -57,14 +57,14 @@
 
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-file-text"></i>教师管理</a>
+                        <a href="javascript:;"><i class="fa fa-user"></i>教师管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/student/teacher" data-id="5">教师信息</a></dd>
                         </dl>
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-file-text"></i>专家管理</a>
+                        <a href="javascript:;"><i class="fa fa-user"></i>专家管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/student/expert" data-id="6">专家信息</a></dd>
                         </dl>
@@ -72,7 +72,7 @@
 
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-file-text"></i>我的消息</a>
+                        <a href="javascript:;"><i class="fa fa-comment"></i>我的消息</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;" data-url="${ctx!}/student/notice" data-id="4">我的消息</a></dd>
                         </dl>

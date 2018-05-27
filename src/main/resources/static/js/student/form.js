@@ -1,9 +1,10 @@
-﻿layui.define(['element', 'layer', 'form','laydate','upload'], function (exports) {
+﻿layui.define(['element', 'layer', 'form','laydate','upload','tags'], function (exports) {
     var form = layui.form,
         laydate = layui.laydate,
         upload = layui.upload,
+        tags = layui.tags,
         $ = layui.jquery;
-
+    tags.init();
     //自定义验证
     form.verify({
         name: function (value) {
@@ -93,6 +94,17 @@
         return false;
     });
 
+    form.on('select(genre)', function(data){
+
+        // console.log(data.elem); //得到select原始DOM对象
+        console.log(data.value); //得到被选中的值
+        // console.log(data.othis); //得到美化后的DOM对象
+        if(data.value =="团体赛"){
+            $("#group").show();
+        }else{
+            $("#group").hide();
+        }
+    });
     exports('student/form', {});
 });
 

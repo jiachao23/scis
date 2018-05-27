@@ -14,10 +14,56 @@
         .layui-form-item{
             margin: 20px 0 0 200px
         }
+        p{
+            margin: 0;
+            padding: 0;
+        }
+        .layui-input-block {
+            margin-left: 150px;
+        }
+        .tag,
+        .tag-defined {
+            display: inline-block;
+            position: relative;
+            padding: 0 20px;
+            border: 1px solid #DDD;
+            border-radius: 2px;
+            cursor: pointer;
+            line-height: 36px;
+            margin: 0 10px 10px 0;
+        }
+
+        .tag-selected {
+            border: 1px solid #5FB878;
+            color: #5FB878;
+        }
+
+        .tick-box {
+            display: none;
+        }
+
+        .tag .tick-bg {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 10px solid;
+            border-color: transparent #5FB878 #5FB878 transparent;
+        }
+
+        .tag .tick {
+            position: absolute;
+            right: 0;
+            bottom: -12px;
+            font-size: 10px;
+            color: #FFF;
+        }
         .imgbox{
             margin-top: 20px;
             font-size: 16px;
             color: red;
+        }
+        .layui-input-block{
+            margin-left: 110px;
         }
     </style>
 </head>
@@ -61,7 +107,33 @@
                         </div>
                     </div>
 
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">参赛形式</label>
+                        <div class="layui-input-inline">
+                            <select name="genre" lay-filter="genre" lay-verify="required">
+                                <option value="个人赛" selected="selected">个人赛</option>
+                                <option value="团体赛" >团体赛</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" id="group" style="display: none">
+                        <label class="layui-form-label">组员学号</label>
+                        <div class="layui-input-block">
+                        <#--<#list tags as x>-->
+                            <#--<div class="tag" data-id="${x.id}">-->
+                                <#--<p class="text">${x.name}</p>-->
+                                <#--<p class="tick-box">-->
+                                    <#--<span class="tick-bg"></span>-->
+                                    <#--<i class="layui-icon tick">&#xe618;</i>-->
+                                <#--</p>-->
+                            <#--</div>-->
+                        <#--</#list>-->
 
+                            <div class="tag-defined">添加组员学号</div>
+
+                            <input type="hidden" name="groups" value="" data-count="5">
+                        </div>
+                    </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">项目来源</label>
                         <div class="layui-input-inline">
