@@ -2,7 +2,9 @@ package com.jcohy.scis.controller;
 
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
+import com.jcohy.scis.model.Project;
 import com.jcohy.scis.model.Type;
+import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,8 @@ public class AdminTypeController {
     @Autowired
     private TypeService typeService;
 
+    @Autowired
+    private ProjectService projectService;
 
     @GetMapping("/list")
     @ResponseBody
@@ -70,7 +74,13 @@ public class AdminTypeController {
     @ResponseBody
     public JsonResult del(@PathVariable("id") Integer id){
         try {
-            typeService.delete(id);
+            Type type = typeService.findById(id);
+            List<Project> projects = projectService.findByType(type);
+            if(projects.size()>0){
+                return JsonResult.fail("此类别有项目引用，删除失败！！");
+            }else{
+                typeService.delete(id);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail("删除失败");

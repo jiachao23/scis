@@ -1,9 +1,6 @@
 package com.jcohy.scis.repository;
 
-import com.jcohy.scis.model.Expert;
-import com.jcohy.scis.model.Project;
-import com.jcohy.scis.model.Student;
-import com.jcohy.scis.model.Teacher;
+import com.jcohy.scis.model.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,6 +22,8 @@ public interface ProjectRepository extends JpaRepository<Project,Integer>{
     List<Project> findByStudent(Student student);
 
     List<Project> findByTeacher(Teacher teacher);
+
+    List<Project> findByType(Type type);
 
     @Transactional
     @Modifying

@@ -34,9 +34,9 @@
 
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">
-            <div class="layui-input-inline" style="width:auto">
-                <a id="addType" class="layui-btn layui-btn-normal">添加类别</a>
-            </div>
+            <#--<div class="layui-input-inline" style="width:auto">-->
+                <#--<a id="addType" class="layui-btn layui-btn-normal">添加类别</a>-->
+            <#--</div>-->
         </div>
     </div>
 

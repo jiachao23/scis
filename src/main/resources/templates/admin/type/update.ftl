@@ -34,43 +34,20 @@
 
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">
-            <#--<div class="layui-input-inline" style="width:auto">-->
-                <#--<a id="addType" class="layui-btn layui-btn-normal">添加分类</a>-->
-            <#--</div>-->
+            <div class="layui-input-inline" style="width:auto">
+                <a id="addType" class="layui-btn layui-btn-normal">添加类别</a>
+            </div>
         </div>
-
-        <#--<div class="layui-inline">-->
-            <#--<div class="layui-input-inline" style="width:auto">-->
-                <#--<a id="deleteAll" class="layui-btn layui-btn-normal">批量删除</a>-->
-            <#--</div>-->
-        <#--</div>-->
     </div>
 
 
     <div class="layui-field-box">
         <div id="dataContent" class="">
-
             <table class="layui-hide" id="type" lay-filter="table"></table>
             <script type="text/html" id="operator">
                 <a class="layui-btn" lay-event="edit">编辑</a>
                 <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
             </script>
-
-            <#--<script type="text/html" id="choicesTpl">-->
-
-                <#--<form class="layui-form" action="">-->
-                    <#--<div class="layui-form-item" style="margin:0;">-->
-                        <#--{{#  if(d.status == 1){ }}-->
-                        <#--<input type="checkbox" name="status" title="是" value="{{d.id}}" lay-filter="status"  checked  />-->
-                        <#--{{#  } else { }}-->
-                        <#--<input type="checkbox" name="status" title="否" value="{{d.id}}" lay-filter="status" />-->
-                        <#--{{#  } }}-->
-                    <#--</div>-->
-                <#--</form>-->
-                <#--&lt;#&ndash;<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>&ndash;&gt;-->
-            <#--</script>-->
-
-
         </div>
     </div>
 </fieldset>
@@ -81,7 +58,7 @@
 <script type="text/javascript">
     layui.config({
         base: '${ctx}/js/admin/'
-    }).use('type/index');
+    }).use('type/update');
 </script>
 </body>
 </html>

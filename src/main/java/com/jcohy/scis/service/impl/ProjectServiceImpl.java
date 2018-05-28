@@ -4,6 +4,7 @@ import com.jcohy.date.DateUtils;
 import com.jcohy.scis.exception.ServiceException;
 import com.jcohy.scis.model.Notice;
 import com.jcohy.scis.model.Project;
+import com.jcohy.scis.model.Type;
 import com.jcohy.scis.repository.*;
 import com.jcohy.scis.service.ProjectService;
 import com.jcohy.scis.service.TeacherService;
@@ -161,5 +162,10 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> findByNameLike(String name) {
         return projectRepository.findByName(name);
+    }
+
+    @Override
+    public List<Project> findByType(Type type) {
+        return projectRepository.findByType(type);
     }
 }

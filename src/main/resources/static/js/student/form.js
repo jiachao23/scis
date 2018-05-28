@@ -100,8 +100,11 @@
         console.log(data.value); //得到被选中的值
         // console.log(data.othis); //得到美化后的DOM对象
         if(data.value =="团体赛"){
+
             $("#group").show();
         }else{
+            $("#group").find(".tag").remove();
+            $("#group").find("[name='groups']").val("");
             $("#group").hide();
         }
     });

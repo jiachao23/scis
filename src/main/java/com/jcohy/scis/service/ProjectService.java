@@ -3,6 +3,7 @@ package com.jcohy.scis.service;
 import com.jcohy.scis.exception.ServiceException;
 import com.jcohy.scis.model.Allot;
 import com.jcohy.scis.model.Project;
+import com.jcohy.scis.model.Type;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -85,4 +86,6 @@ public interface ProjectService {
      * @return
      */
     List<Project> findByNameLike(String name);
+
+    List<Project> findByType(Type type);
 }

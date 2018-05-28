@@ -130,18 +130,26 @@ public class StudentController extends BaseController{
     @ResponseBody
     public JsonResult saveOrUpdate(@SessionAttribute("user") Student student,Project project){
 
-        String groups = project.getGroups();
-        String[] group = groups.split(",");
-        for(String num:group){
-            Student stu = studentService.findByNum(Integer.parseInt(num));
-            if(stu==null){
-                return JsonResult.fail("学号："+num+"的学生不存在");
+        System.out.println(project.getGroups());
+        if(!project.getGroups().equals("")&&project.getGroups()!=null){
+
+            String groups = project.getGroups();
+            String[] group = groups.split(",");
+            for(String num:group){
+                Student stu = studentService.findByNum(Integer.parseInt(num));
+                if(stu==null){
+                    return JsonResult.fail("学号："+num+"的学生不存在");
+                }
             }
+        }else{
+            project.setGroups("个人赛无团队");
         }
+
         Project ret = projectService.findByName(project.getName());
         if(ret != null){
             return JsonResult.fail("此项目已经申报，请不要重复申报！");
         }
+
         project.setStudent(student);
         try {
             projectService.saveOrUpdate(project);
