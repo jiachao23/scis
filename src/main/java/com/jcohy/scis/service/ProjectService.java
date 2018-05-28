@@ -80,6 +80,7 @@ public interface ProjectService {
 
     void changeStatus(Integer id,String role,String advise);
 
+    void reject(Integer id,String role,String advise);
     /**
      * 模糊查询
      *

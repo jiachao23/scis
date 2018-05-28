@@ -160,6 +160,42 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public void reject(Integer id, String role, String advise) {
+        try {
+            Project project = projectRepository.findById(id).get();
+            Notice notice = new Notice();
+            switch (role) {
+                case "expert":
+                    notice.setStudentNum(project.getStudent().getNum());
+                    notice.setProjectName(project.getName());
+                    notice.setOperation("项目专家审核");
+                    notice.setContent(advise);
+                    notice.setStatus(project.getEStatus() == 0 ? "通过" : "拒绝");
+                    notice.setDate(DateUtils.getCurrentDateStr());
+                    notice.setLevel(project.getTStatus() == 0? 4:3);
+                    projectRepository.changeExpertStatus(project.getEStatus() == 0 ? 2 : 0, advise, project.getId());
+                    noticeRepository.save(notice);
+                    break;
+                case "teacher":
+                    notice.setStudentNum(project.getStudent().getNum());
+                    notice.setProjectName(project.getName());
+                    notice.setOperation("教师审核");
+                    notice.setContent(advise);
+                    notice.setStatus(project.getTStatus() == 0 ? "通过" : "拒绝");
+                    notice.setLevel(project.getTStatus() == 0? 2:1);
+                    notice.setDate(DateUtils.getCurrentDateStr());
+                    projectRepository.changeTeacherStatus(project.getTStatus() == 0 ? 2 : 0, advise, project.getId());
+                    noticeRepository.save(notice);
+                    break;
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public List<Project> findByNameLike(String name) {
         return projectRepository.findByName(name);
     }

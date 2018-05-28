@@ -39,6 +39,8 @@ layui.define([ 'layer',  'table','common'], function (exports) {
                 $("#detail-view-"+data.id).show();
             }
 
+        }else if(obj.event === 'reject'){
+           reject(id);
         }
     });
 
@@ -107,6 +109,27 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             });
         });
     }
+
+    function reject(id) {
+        layer.prompt('请输入意见',function(val, index){
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/project/reject/" + id + "?advise="+val,
+                success: function (ret) {
+                    if (ret.isOk) {
+                        layer.msg("操作成功", {time: 2000}, function () {
+                            layer.close(index);
+                            window.location.href = "/teacher/examine";
+                        });
+                    } else {
+                        layer.msg(ret.msg, {time: 2000});
+                    }
+                }
+            });
+        });
+    }
+
     function createHtml(obj) {
         var packageType;
         var data = obj.data;
