@@ -83,12 +83,12 @@
                         </dl>
                     </li>
 
-                    <#--<li class="layui-nav-item">-->
-                        <#--<a href="javascript:;"><i class="fa fa-file-text"></i>统计信息</a>-->
-                        <#--<dl class="layui-nav-child">-->
-                            <#--<dd><a href="javascript:;" data-url="${ctx!}/admin/graph/index" data-id="10">统计信息</a></dd>-->
-                        <#--</dl>-->
-                    <#--</li>-->
+                    <li class="layui-nav-item">
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>统计信息</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/graph/index" data-id="10">统计信息</a></dd>
+                        </dl>
+                    </li>
 
                     <li class="layui-nav-item">
                         <a href="javascript:;"><i class="fa fa-comment"></i>消息管理</a>
