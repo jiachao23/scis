@@ -80,5 +80,15 @@
             });
         });
     }
+    var keyword='';
+    //搜索
+    $('#search').click(function () {
+        keyword = $("#keyword").val();
+        table.reload('expert', {
+            url: "/expert/search"
+            ,where: {keyword:keyword} //设定异步数据接口的额外参数
+            //,height: 300
+        });
+    });
     exports('admin/expert/index', datalist);
 });

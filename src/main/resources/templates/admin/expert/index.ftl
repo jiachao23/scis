@@ -7,12 +7,10 @@
     <!-- layui.css -->
     <link href="${ctx!}/js/plugins/layui/css/layui.css" rel="stylesheet" />
     <style>
-
         tr td:not(:nth-child(0)),
         tr th:not(:nth-child(0)) {
             text-align: center;
         }
-
         /*可选*/
         .layui-laypage > * {
             float: left;
@@ -24,6 +22,15 @@
             padding-top: 4px;
             height: 45px;
         }
+        .star-so{
+            text-align: center;
+            margin-bottom: 10px;
+            margin-top: 40px;
+        }
+        .star-so input.layui-input{
+            width: 200px;
+            display: inline-block;
+        }
 
     </style>
 </head>
@@ -34,6 +41,14 @@
     <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
         <i class="layui-icon">&#x1002;</i>
     </button>
+
+    <div class="layui-row">
+        <div class="layui-form layui-col-md12 star-so">
+            <input class="layui-input" placeholder="请输入姓名或者工号" name="keyword" id="keyword">
+            <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
+        </div>
+    </div>
+
     <div style="padding: 40px 0px 0px 80px;">
         <div class="layui-inline">
             <div class="layui-input-inline" style="width:auto">

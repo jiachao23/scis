@@ -80,5 +80,19 @@
             });
         });
     }
+    var dept,keyword='';
+    $('#search').click(function () {
+        keyword = $("#keyword").val();
+        table.reload('teacher', {
+            url: "/teacher/search"
+            ,where: {keyword:keyword,dept:dept} //设定异步数据接口的额外参数
+            //,height: 300
+        });
+    });
+
+    form.on('select(dept)', function(data){
+        dept = data.value;
+    });
+
     exports('admin/teacher/index', datalist);
 });

@@ -25,41 +25,41 @@ body {background: #eee;color: #444;}
     position: relative;
 }
 
-    .blog-main > .home-tips {
-        padding: 10px 10px;
-        background: #fff;
-        font-size: 13px;
-        margin-bottom: 15px;
-    }
+.blog-main > .home-tips {
+    padding: 10px 10px;
+    background: #fff;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
 
-        .blog-main > .home-tips > i {
-            color: #009688;
-            font-size: 15px;
-        }
+.blog-main > .home-tips > i {
+    color: #009688;
+    font-size: 15px;
+}
 
-        .blog-main > .home-tips > .home-tips-container {
-            margin-left: 20px;
-            height: 17px;
-            overflow: hidden;
-        }
+.blog-main > .home-tips > .home-tips-container {
+    margin-left: 20px;
+    height: 17px;
+    overflow: hidden;
+}
 
-            .blog-main > .home-tips > .home-tips-container > span {
-                display: block;
-            }
+.blog-main > .home-tips > .home-tips-container > span {
+    display: block;
+}
 
-    .blog-main > .blog-main-left {
-        width: 100%;
-        float: left;
-    }
+.blog-main > .blog-main-left {
+    width: 100%;
+    float: left;
+}
 
-    .blog-main > .blog-main-right {
-        width: 100%;
-        float: right;
-    }
+.blog-main > .blog-main-right {
+    width: 100%;
+    float: right;
+}
 
 /* 小屏幕（平板，大于等于 768px） */
 @media (min-width: 768px) {
-		
+
     .blog-container {
         width: 738px;
         margin: 0 auto;
@@ -70,21 +70,21 @@ body {background: #eee;color: #444;}
         margin-bottom: 15px;
     }
 
-        .blog-main > .blog-main-right > .blog-module:nth-child(odd) {
-            float: left;
-            clear: left;
-        }
+    .blog-main > .blog-main-right > .blog-module:nth-child(odd) {
+        float: left;
+        clear: left;
+    }
 
-            .blog-main > .blog-main-right > .blog-module:nth-child(odd).blog-module:last-child {
-                width: auto;
-                float: none;
-                clear: both;
-            }
+    .blog-main > .blog-main-right > .blog-module:nth-child(odd).blog-module:last-child {
+        width: auto;
+        float: none;
+        clear: both;
+    }
 
-        .blog-main > .blog-main-right > .blog-module:nth-child(even) {
-            float: right;
-            clear: right;
-        }
+    .blog-main > .blog-main-right > .blog-module:nth-child(even) {
+        float: right;
+        clear: right;
+    }
 }
 
 /* 中等屏幕（桌面显示器，大于等于 992px） */
@@ -94,17 +94,17 @@ body {background: #eee;color: #444;}
     }
 
     .blog-main > .blog-main-left {
-        width: 60%;
+        width: 66%;
     }
 
     .blog-main > .blog-main-right {
-        width: 38%;
+        width: 32%;
     }
 
-        .blog-main > .blog-main-right > .blog-module {
-            width: auto;
-            float: none !important;
-        }
+    .blog-main > .blog-main-right > .blog-module {
+        width: auto;
+        float: none !important;
+    }
 }
 
 /* 大屏幕（大桌面显示器，大于等于 1200px） */
@@ -114,6 +114,7 @@ body {background: #eee;color: #444;}
     }
 }
 /*全局样式END*/
+
 
 /*面包屑导航*/
 .sitemap {
@@ -428,7 +429,7 @@ body {background: #eee;color: #444;}
 
     .article > .article-right {
         width: 60%;
-        float: right;
+        /*float: right;*/
         padding-left: 2%;
     }
 

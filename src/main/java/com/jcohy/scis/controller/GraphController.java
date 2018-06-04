@@ -1,5 +1,6 @@
 package com.jcohy.scis.controller;
 
+import com.jcohy.scis.common.Data;
 import com.jcohy.scis.common.Graph;
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.model.Dept;
@@ -14,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Copyright  : 2017- www.jcohy.com
@@ -47,42 +46,65 @@ public class GraphController {
         List<Project> projects = projectService.findAll();
         List<Type> types = typeService.findAll();
         List<Dept> depts = deptService.findAll();
-        Map<String,Integer> typeMap = new HashMap<>();
-        Map<String,Integer> deptMap = new HashMap<>();
-        Map<String,Integer> yearMap = new HashMap<>();
+        List<Data> typeMap = new ArrayList<>();
+        List<Data> deptMap = new ArrayList<>();
+        List<Data> yearMap = new ArrayList<>();
         for(Type type:types){
+            Data data = new Data();
             List<Project> service = projectService.findByType(type);
             if(service.size() == 0){
-                typeMap.put(type.getName(),0);
+                data.setLabel(type.getName());
+                data.setValue(0);
             }else{
-                typeMap.put(type.getName(),(projects.size()/service.size()));
+                data.setLabel(type.getName());
+                data.setValue(service.size());
             }
+            typeMap.add(data);
         }
 
-        for(Project project:projects){
-            int count = 0;
-            for(Dept dept:depts){
 
-                if(project.getStudent().getMajor().getDept().getName().equals(dept.getName())){
+        for(Dept dept:depts){
+            Data data = new Data();
+            String deptName = dept.getName();
+            int count = 0;
+            for(Project project:projects){
+                if(project.getStudent().getMajor().getDept().getName().equals(deptName)){
                     count++;
                 }
-                if(count == 0){
-                    deptMap.put(dept.getName(),0);
-                }else{
-                    deptMap.put(dept.getName(),(projects.size()/count));
-                }
-
             }
+            if(count == 0){
+                data.setLabel(deptName);
+                data.setValue(0);
+            }else{
+                data.setLabel(deptName);
+                data.setValue(count);
+            }
+            deptMap.add(data);
         }
 
-//        for(Project project:projects){
-//            int count = 0;
-//            if(project.getCreateDate().indexOf("2016") == 0){
-//
-//            }
-//        }
+        int count2015 = 0;
+        int count2016 = 0;
+        int count2017 = 0;
+        int count2018 = 0;
+        for(Project project:projects){
+
+            if(project.getCreateDate().indexOf("2015") == 0){
+                count2015++;
+            }else if(project.getCreateDate().indexOf("2016") == 0){
+                count2016++;
+            }else if(project.getCreateDate().indexOf("2017") == 0){
+                count2017++;
+            }else if(project.getCreateDate().indexOf("2018") == 0){
+                count2018++;
+            }
+        }
+        yearMap.add(new Data("2015",count2015));
+        yearMap.add(new Data("2016",count2016));
+        yearMap.add(new Data("2017",count2017));
+        yearMap.add(new Data("2018",count2018));
         graph.setType(typeMap);
         graph.setDeptMap(deptMap);
+        graph.setYear(yearMap);
         System.out.println(graph);
 
         return JsonResult.ok("msg",graph);

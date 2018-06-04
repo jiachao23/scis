@@ -122,4 +122,16 @@ public class ProjectController extends BaseController{
         }
         return JsonResult.ok();
     }
+
+    @GetMapping("/video/{id}")
+    public String video(@PathVariable("id") Integer id,ModelMap map){
+        logger.error("id: {}",id);
+        try {
+//            projectService.changeStatus(id,role,advise);
+            Project project = projectService.findById(id);
+            map.put("url",project.getVideo().getDownloadUrl());
+        } catch (Exception e) {
+        }
+        return "video";
+    }
 }

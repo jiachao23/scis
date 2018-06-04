@@ -46,6 +46,17 @@ layui.define([ 'layer',  'table','common'], function (exports) {
 
     });
 
+    var dept,keyword,major='';
+    $('#search').click(function () {
+        keyword = $("#keyword").val();
+        table.reload('student', {
+            url: "/student/search"
+            ,where: {keyword:keyword} //设定异步数据接口的额外参数
+            // ,where: {keyword:keyword,dept:dept,major:major} //设定异步数据接口的额外参数
+            //,height: 300
+        });
+    });
+
     //输出接口，主要是两个函数，一个删除一个编辑
     var datalist = {
         deleteData: function (id) {

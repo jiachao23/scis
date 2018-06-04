@@ -1,5 +1,6 @@
 package com.jcohy.scis.common;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,33 +12,33 @@ import java.util.Map;
  **/
 public class Graph {
 
-    private Map<String,Integer> type;
+    private List<Data> type;
 
-    private Map<String,Integer> deptMap;
+    private List<Data> deptMap;
 
-    private Map<String,Integer> year;
+    private List<Data> year;
 
-    public Map<String, Integer> getType() {
+    public List<Data> getType() {
         return type;
     }
 
-    public void setType(Map<String, Integer> type) {
+    public void setType(List<Data> type) {
         this.type = type;
     }
 
-    public Map<String, Integer> getDeptMap() {
+    public List<Data> getDeptMap() {
         return deptMap;
     }
 
-    public void setDeptMap(Map<String, Integer> deptMap) {
+    public void setDeptMap(List<Data> deptMap) {
         this.deptMap = deptMap;
     }
 
-    public Map<String, Integer> getYear() {
+    public List<Data> getYear() {
         return year;
     }
 
-    public void setYear(Map<String, Integer> year) {
+    public void setYear(List<Data> year) {
         this.year = year;
     }
 

@@ -24,7 +24,7 @@
         <!-- <!-- DONUT CHART -->
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Donut Chart</h3>
+                <h3 class="box-title">类别统计</h3>
             </div>
 
             <div class="box-body chart-responsive">
@@ -38,10 +38,10 @@
         <!-- <!-- DONUT CHART -->
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Donut Chart</h3>
+                <h3 class="box-title">学院统计</h3>
             </div>
             <div class="box-body chart-responsive">
-                <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+                <div class="chart" id="sales-chart2" style="height: 300px; position: relative;"></div>
             </div>
             <!-- /.box-body -->
         </div>
@@ -49,6 +49,35 @@
 
 </section>
 
+<section class="row">
+    <div class="col-md-6">
+        <!-- <!-- DONUT CHART -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">年份统计</h3>
+            </div>
+
+            <div class="box-body chart-responsive">
+                <div class="chart" id="sales-chart3" style="height: 300px; position: relative;"></div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+    <#--<div class="col-md-6">-->
+        <#--<!-- <!-- DONUT CHART &ndash;&gt;-->
+        <#--<div class="box box-info">-->
+            <#--<div class="box-header with-border">-->
+                <#--<h3 class="box-title">Donut Chart</h3>-->
+            <#--</div>-->
+            <#--<div class="box-body chart-responsive">-->
+                <#--<div class="chart" id="sales-chart2" style="height: 300px; position: relative;"></div>-->
+            <#--</div>-->
+            <#--<!-- /.box-body &ndash;&gt;-->
+        <#--</div>-->
+    <#--</div>-->
+
+</section>
 <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -65,33 +94,46 @@
 
 <!-- page script -->
 <script>
-    $(function () {
-        "use strict";
-        var data = getDate();
-        //DONUT CHART
-        var donut = new Morris.Donut({
-            element: 'sales-chart',
-            resize: true,
-            colors: ["#3c8dbc", "#f56954", "#00a65a"],
-            data: [
-                {label: "Download Sales", value: 12},
-                {label: "In-Store Sales", value: 30},
-                {label: "Mail-Order Sales", value: 20}
-            ],
-            hideHover: 'auto'
-        });
+    $(document).ready(function(){
+       getData();
+    });
 
+    function initChart(data) {
+        console.log(data);
+        var chart1 = data.type;
+        var chart2 = data.deptMap;
+        var chart3 = data.year;
+        console.log(chart1);
+        console.log(chart2);
+        console.log(chart3);
         //DONUT CHART
         var donut = new Morris.Donut({
             element: 'sales-chart1',
             resize: true,
             colors: ["#3c8dbc", "#f56954", "#00a65a"],
-            data: data,
+            data:chart1,
             hideHover: 'auto'
         });
-    });
 
-    function getDate() {
+        //DONUT CHART
+        var donut = new Morris.Donut({
+            element: 'sales-chart2',
+            resize: true,
+            colors: ["#3c8dbc", "#f56954", "#00a65a"],
+            data: chart2,
+            hideHover: 'auto'
+        });
+
+        var donut = new Morris.Donut({
+            element: 'sales-chart3',
+            resize: true,
+            colors: ["#3c8dbc", "#f56954", "#00a65a"],
+            data: chart3,
+            hideHover: 'auto'
+        });
+    }
+
+   function getData() {
         layui.define([ 'layer'], function (exports) {
             var $ = layui.jquery;
             $.ajax({
@@ -101,17 +143,16 @@
                 success: function(ret){
                     if(ret.isOk){
                         console.log(ret.msg);
-                        layer.msg("操作成功", {time: 2000},function(){
-                            return ret.msg;
-                        });
+                        // layer.msg("操作成功", {time: 2000},function(){
+                        //     return ret.msg;
+                        // });
+                        initChart(ret.msg);
                     }else{
                         layer.msg(ret.msg, {time: 2000});
                     }
                 }
             });
-
         });
-
     }
 </script>
 </body>

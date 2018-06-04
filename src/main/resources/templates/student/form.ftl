@@ -119,27 +119,20 @@
                     <div class="layui-form-item" id="group" style="display: none">
                         <label class="layui-form-label">组员学号</label>
                         <div class="layui-input-block">
-                        <#--<#list tags as x>-->
-                            <#--<div class="tag" data-id="${x.id}">-->
-                                <#--<p class="text">${x.name}</p>-->
-                                <#--<p class="tick-box">-->
-                                    <#--<span class="tick-bg"></span>-->
-                                    <#--<i class="layui-icon tick">&#xe618;</i>-->
-                                <#--</p>-->
-                            <#--</div>-->
-                        <#--</#list>-->
-
                             <div class="tag-defined">添加组员学号</div>
-
                             <input type="hidden" name="groups" value="" data-count="5">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">项目来源</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="proResource" lay-verify="required" placeholder="请输入项目来源" value="${project.proResource}"
-                                   autocomplete="off" class="layui-input">
+                            <#--<input type="text" name="proResource" lay-verify="required" placeholder="请输入项目来源" value="${project.proResource}"-->
+                                   <#--autocomplete="off" class="layui-input">-->
 
+                            <select name="proResource" lay-filter="proResource" lay-verify="required">
+                                <option value="个人" selected="selected">个人</option>
+                                <option value="学校" >学校</option>
+                            </select>
                         </div>
                         <span style="color: red">必填</span>
                     </div>
@@ -147,9 +140,12 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">经费来源</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="moneyResource" lay-verify="required" placeholder="请输入经费来源" value="${project.moneyResource}"
-                                   autocomplete="off" class="layui-input">
-
+                            <#--<input type="text" name="moneyResource" lay-verify="required" placeholder="请输入经费来源" value="${project.moneyResource}"-->
+                                   <#--autocomplete="off" class="layui-input">-->
+                            <select name="moneyResource" lay-filter="proResource" lay-verify="required">
+                                <option value="个人" selected="selected">个人</option>
+                                <option value="学校" >学校</option>
+                            </select>
                         </div>
                         <span style="color: red">必填</span>
                     </div>

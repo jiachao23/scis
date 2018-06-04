@@ -62,11 +62,11 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;"><i class="fa fa-user"></i>专家管理</a>
+                        <a href="javascript:;"><i class="fa fa-file-text"></i>统计信息</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;" data-url="${ctx!}/student/expert" data-id="6">专家信息</a></dd>
+                            <dd><a href="javascript:;" data-url="${ctx!}/admin/graph/index" data-id="10">统计信息</a></dd>
                         </dl>
-                    </li>
+                    </li>-->
 
 
                     <li class="layui-nav-item">
