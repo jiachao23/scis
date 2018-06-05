@@ -94,7 +94,7 @@ public class ExpertController extends BaseController{
         if(!StringUtils.isEmpty(keyword)){
             boolean isNum = keyword.matches("[0-9]+");
             if(isNum){
-                Expert teacher = expertService.findByNum(Integer.parseInt(keyword));
+                Expert teacher = expertService.findByNum(Long.parseLong(keyword));
                 experts.add(teacher);
             }else{
                 Expert teacher = expertService.findByName(keyword);

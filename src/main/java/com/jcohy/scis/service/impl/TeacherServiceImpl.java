@@ -25,7 +25,7 @@ public class TeacherServiceImpl implements TeacherService{
 
 
     @Override
-    public Teacher login(Integer num, String password) throws Exception {
+    public Teacher login(Long num, String password) throws Exception {
         return teacherRepository.findTeacherByNum(num);
     }
 
@@ -40,7 +40,7 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public Teacher findByNum(Integer num) {
+    public Teacher findByNum(Long num) {
         return teacherRepository.findTeacherByNum(num);
     }
 
@@ -61,7 +61,7 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public boolean checkUser(Integer num) {
+    public boolean checkUser(Long num) {
         Teacher dbUser = teacherRepository.findTeacherByNum(num);
         return dbUser != null;
     }

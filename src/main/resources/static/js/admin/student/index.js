@@ -10,12 +10,15 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         ,url: '/admin/student/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
-            {field: 'num', align:'center', title: '学号',unresize:true}
-            ,{field: 'name', align:'center', title: '姓名',unresize:true}
+            {type: 'checkbox', align:'center',unresize:true}
+            ,{field: 'num', align:'center', title: '学生编号',unresize:true}
+            ,{field: 'name', align:'center', title: '学生姓名',unresize:true}
             ,{field: 'sex', align:'center', title: '性别',unresize:true}
             ,{field: 'phone', align:'center', title: '电话',unresize:true}
-            ,{field: 'major', title: '专业',unresize:true,templet: '<div>{{d.major.name}}</div>'}
-            ,{field: 'sclass', title: '班级',unresize:true}
+            ,{field: 'dept', align:'center', title: '所属院系',unresize:true,templet: '<div>{{d.major.dept.name}}</div>'}
+            ,{field: 'major', align:'center', title: '所属专业',unresize:true,templet: '<div>{{d.major.name}}</div>'}
+            ,{field: 'sclass', align:'center', title: '班级',unresize:true}
+            ,{field: 'chairman', align:'center', title: '辅导员',unresize:true,templet: '<div>{{d.major.dept.chairman}}</div>'}
             ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}
         ]]
     });

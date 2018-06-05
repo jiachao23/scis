@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  **/
 public interface ExpertsRepository extends JpaRepository<Expert,Integer> {
 
-    Expert findByNum(Integer num);
+    Expert findByNum(Long num);
 
     Expert findByName(String name);
 }

@@ -59,33 +59,7 @@
                 </form>
                 <#--<button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData({{d.id}})"><i class="layui-icon">&#xe642;</i></button>-->
             </script>
-            <#--<script type="text/html" id="operator">-->
-                <#--{{#  if (d.operator =="admin") { }}-->
-                    <#--{{#  if(d.estatus == 1 && d.astatus == 1){ }}-->
-                    <#--<a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>-->
-                    <#--<a class="layui-btn " lay-event="recall">撤回</a>-->
-                    <#--<a class="layui-btn layui-btn-danger " lay-event="del">删除</a>-->
-                    <#--{{#  }else if(d.estatus == 1 && d.astatus == 0) { }}-->
-                    <#--<a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>-->
-                    <#--<a class="layui-btn " lay-event="pass">通过</a>-->
-                    <#--<a class="layui-btn layui-btn-danger " lay-event="del">删除</a>-->
-                    <#--{{#  }else{ }}-->
-                    <#--<a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>-->
-                    <#--{{# } }}-->
-                <#--{{#  } else {  }}-->
-                    <#--{{#  if(d.astatus == 1){ }}-->
-                    <#--<a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>-->
-                    <#--{{#  }else if(d.estatus == 1 && d.astatus == 0) { }}-->
-                    <#--<a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>-->
-                    <#--<a class="layui-btn " lay-event="recall">撤回</a>-->
-                    <#--<a class="layui-btn layui-btn-danger " lay-event="del">删除</a>-->
-                    <#--{{#  }else{ }}-->
-                    <#--<a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>-->
-                    <#--<a class="layui-btn " lay-event="pass">通过</a>-->
-                    <#--<a class="layui-btn layui-btn-danger " lay-event="del">删除</a>-->
-                    <#--{{# } }}-->
-                <#--{{#  } }}-->
-            <#--</script>-->
+
             <script type="text/html" id="operator">
                 {{#  if(d.tstatus == 1 && d.estatus == 1 && d.asatus == 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>

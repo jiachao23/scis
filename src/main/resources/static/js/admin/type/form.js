@@ -26,7 +26,7 @@ layui.define(['element', 'layer', 'form'], function (exports) {
                     layer.msg("操作成功", {time: 2000},function(){
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                         parent.layer.close(index);
-                        window.parent.location.href="/admin/type/index";
+                        window.parent.location.href="/admin/type/update";
                     });
                 }else{
                     layer.msg(ret.msg, {time: 2000});
@@ -37,4 +37,3 @@ layui.define(['element', 'layer', 'form'], function (exports) {
     });
     exports('type/form', {});
 });
-

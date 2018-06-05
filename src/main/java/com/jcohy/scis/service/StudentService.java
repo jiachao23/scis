@@ -22,7 +22,7 @@ public interface StudentService {
      * @return
      * @throws Exception
      */
-    Student login(Integer num, String password) throws Exception;
+    Student login(Long num, String password) throws Exception;
 
 
     /**
@@ -52,7 +52,7 @@ public interface StudentService {
      * @param num
      * @return
      */
-    Student findByNum(Integer num);
+    Student findByNum(Long num);
 
     /**
      * 根据name查询
@@ -72,7 +72,7 @@ public interface StudentService {
      * @param num
      * @return
      */
-    boolean checkUser(Integer num);
+    boolean checkUser(Long num);
 
     /**
      * 删除用户

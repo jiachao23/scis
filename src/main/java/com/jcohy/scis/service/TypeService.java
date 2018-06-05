@@ -44,15 +44,15 @@ public interface TypeService {
 
     /**
      * 修改数量
-     * @param name
+     * @param num
      */
-    void addCount(Integer num);
+    void addCount(Long num);
 
     /**
      * 修改数量
      * @param num
      */
-    void reduceCount(Integer num);
+    void reduceCount(Long num);
 
     /**
      *
@@ -61,5 +61,5 @@ public interface TypeService {
      */
     void delete(Integer id);
 
-    List<Type> findByNum(Integer num);
+    List<Type> findByNum(Long num);
 }

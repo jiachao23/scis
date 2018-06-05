@@ -52,9 +52,9 @@
             <div class="layui-input-inline">
                 <select name="displayName" id="dept" lay-filter="dept" placeholder="请选择院系">
                     <option value="">请选择院系</option>
-                <#list depts as x>
-                    <option >${x.name}</option>
-                </#list>
+                        <#list depts as x>
+                            <option >${x.name}</option>
+                        </#list>
                 </select>
             </div>
 

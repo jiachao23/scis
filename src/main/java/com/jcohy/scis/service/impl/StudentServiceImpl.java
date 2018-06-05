@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService{
     private StudentRepository studentRepository;
 
     @Override
-    public Student login(Integer num, String password) throws Exception {
+    public Student login(Long num, String password) throws Exception {
         return studentRepository.findAdminByNum(num);
     }
 
@@ -45,7 +45,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public Student findByNum(Integer num) {
+    public Student findByNum(Long num) {
         return studentRepository.findAdminByNum(num);
     }
 
@@ -75,7 +75,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public boolean checkUser(Integer num) {
+    public boolean checkUser(Long num) {
         Student dbUser = studentRepository.findAdminByNum(num);
         return dbUser != null;
     }

@@ -22,7 +22,7 @@ public interface AdminService {
      * @return
      * @throws Exception
      */
-    Admin login(Integer num, String password) throws Exception;
+    Admin login(Long num, String password) throws Exception;
 
 
     /**
@@ -52,7 +52,7 @@ public interface AdminService {
      * @param num
      * @return
      */
-    Admin findByNum(Integer num);
+    Admin findByNum(Long num);
     /**
      * 根据name查询
      * @param name
@@ -71,7 +71,7 @@ public interface AdminService {
      * @param num
      * @return
      */
-    boolean checkUser(Integer num);
+    boolean checkUser(Long num);
 
     /**
      * 删除用户

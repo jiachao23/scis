@@ -44,31 +44,6 @@
     </button>
     <div class="layui-row">
         <div class="layui-form layui-col-md12 star-so">
-
-            <#--<form id="form1" class="layui-form "  lay-filter="form">-->
-                <#--<input class="layui-input" placeholder="请输入姓名或者工号" name="keyword" id="keyword">-->
-
-                <#--<div class="layui-input-inline">-->
-                    <#--<select name="displayName" id="dept" lay-filter="depts" placeholder="请选择院系">-->
-                        <#--<option value="">请选择院系</option>-->
-                    <#--<#list depts as x>-->
-                        <#--<option value="${x.id}">${x.name}</option>-->
-                    <#--</#list>-->
-                    <#--</select>-->
-                <#--</div>-->
-
-                <#--<div class="layui-input-inline">-->
-                    <#--<select name="major" lay-filter="majors" placeholder="请选择专业">-->
-                        <#--<option value="">请选择专业</option>-->
-                        <#--<#list majors as x>-->
-                            <#--<option value="${x.id}"-->
-                                <#--<#if (student.major.name == x.name)> selected="selected" </#if>-->
-                            <#-->${x.name}</option>-->
-                        <#--</#list>-->
-                    <#--</select>-->
-                <#--</div>-->
-                <#--<button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>-->
-            <#--</form>-->
             <input class="layui-input" placeholder="请输入姓名或者工号" name="keyword" id="keyword">
             <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
 

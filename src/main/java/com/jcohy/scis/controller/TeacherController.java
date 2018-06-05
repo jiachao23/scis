@@ -89,7 +89,7 @@ public class TeacherController extends BaseController{
         if(!StringUtils.isEmpty(keyword)){
             boolean isNum = keyword.matches("[0-9]+");
             if(isNum){
-                Teacher teacher = teacherService.findByNum(Integer.parseInt(keyword));
+                Teacher teacher = teacherService.findByNum(Long.parseLong(keyword));
                 if(dept != null && !dept.equals("")){
                     if(teacher != null && teacher.getDept().getName().equals(dept)){
                         teachers.add(teacher);

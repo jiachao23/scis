@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface TypeRepository extends JpaRepository<Type,Integer> {
 
-    List<Type> findByNum(Integer num);
+    List<Type> findByNum(Long num);
 }

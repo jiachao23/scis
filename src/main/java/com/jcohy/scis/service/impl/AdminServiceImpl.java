@@ -24,7 +24,7 @@ public class AdminServiceImpl implements AdminService{
     private AdminRepository adminRepository;
 
     @Override
-    public Admin login(Integer num, String password) throws Exception {
+    public Admin login(Long num, String password) throws Exception {
         return adminRepository.findAdminByNum(num);
     }
 
@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public Admin findByNum(Integer num) {
+    public Admin findByNum(Long num) {
         return adminRepository.findAdminByNum(num);
     }
 
@@ -60,7 +60,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public boolean checkUser(Integer num) {
+    public boolean checkUser(Long num) {
         Admin dbUser = adminRepository.findAdminByNum(num);
         return dbUser != null;
     }

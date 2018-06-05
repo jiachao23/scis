@@ -59,17 +59,17 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<Project> findByStudent(Integer num) {
+    public List<Project> findByStudent(Long num) {
         return projectRepository.findByStudent(studentRepository.findAdminByNum(num));
     }
 
     @Override
-    public List<Project> findByTeacher(Integer num) {
+    public List<Project> findByTeacher(Long num) {
         return projectRepository.findByTeacher(teacherRepository.findTeacherByNum(num));
     }
 
     @Override
-    public List<Project> findByExpert(Integer num) {
+    public List<Project> findByExpert(Long num) {
         return null;
     }
 

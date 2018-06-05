@@ -14,5 +14,5 @@ public interface DeptRepository  extends JpaRepository<Dept,Integer> {
 
     List<Dept> findByName(String name);
 
-    List<Dept> findByNum(Integer num);
+    List<Dept> findByNum(Long num);
 }

@@ -36,5 +36,5 @@ public interface MajorService {
 
     List<Major> findByName(String name);
 
-    List<Major> findByNum(Integer num);
+    List<Major> findByNum(Long num);
 }

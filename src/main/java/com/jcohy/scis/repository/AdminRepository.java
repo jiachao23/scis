@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface AdminRepository extends JpaRepository<Admin,Integer> {
 
-    Admin findAdminByNum(Integer num);
+    Admin findAdminByNum(Long num);
 
     Admin findAdminByName(String name);
 

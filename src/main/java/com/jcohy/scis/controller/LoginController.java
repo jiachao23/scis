@@ -52,7 +52,7 @@ public class LoginController {
      */
     @PostMapping("/login")
     @ResponseBody
-    public JsonResult login(Integer num, String password,
+    public JsonResult login(Long num, String password,
                             @RequestParam(required = false) String role, HttpServletRequest request){
         try {
             if(num == null || StringUtils.isEmpty(password)){
@@ -125,7 +125,7 @@ public class LoginController {
 
     @PostMapping("/admin/update/")
     @ResponseBody
-    public JsonResult updatePassword(@SessionAttribute("role") String role,@RequestParam Integer num,@RequestParam String oldPassword, @RequestParam String newPassword,
+    public JsonResult updatePassword(@SessionAttribute("role") String role,@RequestParam Long num,@RequestParam String oldPassword, @RequestParam String newPassword,
                                  @RequestParam String rePassword, ModelMap map){
         logger.error("role:{}",role);
         if(StringUtils.isEmpty(role)){

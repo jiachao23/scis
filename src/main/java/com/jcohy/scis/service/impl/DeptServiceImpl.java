@@ -69,7 +69,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public List<Dept> findByNum(Integer num) {
+    public List<Dept> findByNum(Long num) {
         return deptRepository.findByNum(num);
     }
 }

@@ -30,6 +30,14 @@ public class AdminTeacherController extends BaseController{
     @Autowired
     private DeptService deptService;
 
+
+    @GetMapping("/index")
+    public String index(ModelMap map){
+        List<Dept> depts = deptService.findAll();
+        map.put("depts",depts);
+        return "admin/teacher/index";
+    }
+
     @GetMapping("/list")
     @ResponseBody
     public PageJson<Teacher> all(ModelMap map){

@@ -64,15 +64,15 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">性别</label>
                         <div class="layui-input-inline">
-                            <input type="radio" name="sex" title="男" value="男" <#if teacher.sex == "男">checked</#if> />
-                            <input type="radio" name="sex" title="女" value="女" <#if teacher.sex == "女">checked</#if> />
+                            <input type="radio" name="sex" required title="男" value="男" <#if teacher.sex == "男">checked</#if> />
+                            <input type="radio" name="sex" required title="女" value="女" <#if teacher.sex == "女">checked</#if> />
                         </div>
                     </div>
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">请选择院系</label>
                         <div class="layui-input-inline">
-                            <select name="dept" lay-filter="depts">
+                            <select name="dept" lay-filter="depts" required>
                                 <option value="">请选择院系</option>
                             <#list depts as x>
                                 <option value="${x.id}"

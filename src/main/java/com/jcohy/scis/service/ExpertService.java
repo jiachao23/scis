@@ -23,7 +23,7 @@ public interface ExpertService {
      * @return
      * @throws Exception
      */
-    Expert login(Integer num, String password) throws Exception;
+    Expert login(Long num, String password) throws Exception;
 
 
     /**
@@ -45,7 +45,7 @@ public interface ExpertService {
      * @param num
      * @return
      */
-    Expert findByNum(Integer num);
+    Expert findByNum(Long num);
     /**
      * 根据ID查询
      * @param id
@@ -71,7 +71,7 @@ public interface ExpertService {
      * @param num
      * @return
      */
-    boolean checkUser(Integer num);
+    boolean checkUser(Long num);
 
     /**
      * 删除用户

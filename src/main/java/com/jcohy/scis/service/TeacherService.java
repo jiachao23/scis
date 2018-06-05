@@ -22,7 +22,7 @@ public interface TeacherService {
      * @return
      * @throws Exception
      */
-    Teacher login(Integer num, String password) throws Exception;
+    Teacher login(Long num, String password) throws Exception;
 
 
     /**
@@ -44,7 +44,7 @@ public interface TeacherService {
      * @param num
      * @return
      */
-    Teacher findByNum(Integer num);
+    Teacher findByNum(Long num);
     /**
      * 根据ID查询
      * @param id
@@ -70,7 +70,7 @@ public interface TeacherService {
      * @param num
      * @return
      */
-    boolean checkUser(Integer num);
+    boolean checkUser(Long num);
 
     /**
      * 删除用户

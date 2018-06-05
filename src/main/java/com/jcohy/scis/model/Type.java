@@ -19,7 +19,7 @@ public class Type implements Serializable {
     private Integer id;
     //编号
     @Column(name = "num")
-    private Integer num;
+    private Long num;
     //名字
     @Column(name = "name")
     private String name;
@@ -42,11 +42,11 @@ public class Type implements Serializable {
         this.id = id;
     }
 
-    public Integer getNum() {
+    public Long getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(Long num) {
         this.num = num;
     }
 

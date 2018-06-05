@@ -18,7 +18,7 @@ public class Expert implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "num")
-    private Integer num;
+    private Long num;
     @Column(name = "name")
     private String name;
     @Column(name = "password")
@@ -42,11 +42,11 @@ public class Expert implements Serializable {
         this.id = id;
     }
 
-    public Integer getNum() {
+    public Long getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(Long num) {
         this.num = num;
     }
 

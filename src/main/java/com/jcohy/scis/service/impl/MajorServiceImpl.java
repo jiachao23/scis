@@ -75,7 +75,7 @@ public class MajorServiceImpl implements MajorService {
     }
 
     @Override
-    public  List<Major> findByNum(Integer num) {
+    public  List<Major> findByNum(Long num) {
         return majorRepository.findByNum(num);
     }
 }

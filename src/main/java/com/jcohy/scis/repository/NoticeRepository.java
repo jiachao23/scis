@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface NoticeRepository extends JpaRepository<Notice,Integer> {
 
-    List<Notice> findByStudentNum(Integer studentName);
+    List<Notice> findByStudentNum(Long num);
     @Query("select n from Notice n  where n.level between ?1 and  ?2")
     List<Notice> findByLevelBetween(Integer min,Integer max);
 }

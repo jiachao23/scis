@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface TeacherRepository  extends JpaRepository<Teacher,Integer> {
 
-    Teacher findTeacherByNum(Integer num);
+    Teacher findTeacherByNum(Long num);
 
     Teacher findTeacherByName(String name);
 }

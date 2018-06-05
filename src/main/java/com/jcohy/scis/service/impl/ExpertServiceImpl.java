@@ -26,7 +26,7 @@ public class ExpertServiceImpl implements ExpertService {
     private ExpertsRepository expertsRepository;
 
     @Override
-    public Expert login(Integer num, String password) throws Exception {
+    public Expert login(Long num, String password) throws Exception {
         return expertsRepository.findByNum(num);
     }
 
@@ -41,7 +41,7 @@ public class ExpertServiceImpl implements ExpertService {
     }
 
     @Override
-    public Expert findByNum(Integer num) {
+    public Expert findByNum(Long num) {
         return expertsRepository.findByNum(num);
     }
 
@@ -61,7 +61,7 @@ public class ExpertServiceImpl implements ExpertService {
     }
 
     @Override
-    public boolean checkUser(Integer num) {
+    public boolean checkUser(Long num) {
         Expert dbUser = expertsRepository.findByNum(num);
         return dbUser != null;
 

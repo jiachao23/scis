@@ -32,5 +32,5 @@ public interface DeptService {
 
     List<Dept> findByName(String name);
 
-    List<Dept> findByNum(Integer num);
+    List<Dept> findByNum(Long num);
 }

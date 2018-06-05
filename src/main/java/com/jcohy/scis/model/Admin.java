@@ -18,7 +18,7 @@ public class Admin implements Serializable{
     private Integer id;
     //编号，使用此信息登录
     @Column(name = "num")
-    private Integer num;
+    private Long num;
     //名字
     @Column(name = "name")
     private String name;
@@ -41,11 +41,11 @@ public class Admin implements Serializable{
         this.id = id;
     }
 
-    public Integer getNum() {
+    public Long getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(Long num) {
         this.num = num;
     }
 

@@ -17,7 +17,7 @@ public class Major implements Serializable{
     private Integer id;
     //专业编号
     @Column(name = "num")
-    private Integer num;
+    private Long num;
     //专业名
     @Column(name = "name")
     private String name;
@@ -62,11 +62,11 @@ public class Major implements Serializable{
         this.id = id;
     }
 
-    public Integer getNum() {
+    public Long getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(Long num) {
         this.num = num;
     }
 

@@ -18,7 +18,7 @@ public class Notice {
     private Integer id;
 
     @Column(name = "student_num")
-    private Integer studentNum;
+    private Long studentNum;
 
     @Column(name = "project_name")
     private String projectName;
@@ -49,7 +49,7 @@ public class Notice {
     public Notice() {
     }
 
-    public Notice(Integer studentNum, String projectName, String operation, String status, String content, String date) {
+    public Notice(Long studentNum, String projectName, String operation, String status, String content, String date) {
         this.studentNum = studentNum;
         this.projectName = projectName;
         this.operation = operation;
@@ -66,11 +66,11 @@ public class Notice {
         this.id = id;
     }
 
-    public Integer getStudentNum() {
+    public Long getStudentNum() {
         return studentNum;
     }
 
-    public void setStudentNum(Integer studentNum) {
+    public void setStudentNum(Long studentNum) {
         this.studentNum = studentNum;
     }
 

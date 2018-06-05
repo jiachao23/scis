@@ -17,5 +17,5 @@ public interface MajorRepository  extends JpaRepository<Major,Integer> {
 
     List<Major> findByName(String name);
 
-    List<Major> findByNum(Integer num);
+    List<Major> findByNum(Long num);
 }

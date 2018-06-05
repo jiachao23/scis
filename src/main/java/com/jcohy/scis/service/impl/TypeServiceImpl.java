@@ -56,7 +56,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public void addCount(Integer num) {
+    public void addCount(Long num) {
         List<Type> types = typeRepository.findByNum(num);
         for(Type type:types){
             type.setNumber(type.getNumber()+1);
@@ -65,7 +65,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public void reduceCount(Integer num) {
+    public void reduceCount(Long num) {
         List<Type> types = typeRepository.findByNum(num);
         for(Type type:types){
             if(type.getNumber()>0){
@@ -81,7 +81,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public List<Type> findByNum(Integer num) {
+    public List<Type> findByNum(Long num) {
         return typeRepository.findByNum(num);
     }
 }

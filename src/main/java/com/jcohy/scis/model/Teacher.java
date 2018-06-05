@@ -21,7 +21,7 @@ public class Teacher implements Serializable{
     private Integer id;
     //编号
     @Column(name = "num")
-    private Integer num;
+    private Long num;
     //密码
     @Column(name = "password")
     private String password;
@@ -57,11 +57,11 @@ public class Teacher implements Serializable{
         this.id = id;
     }
 
-    public Integer getNum() {
+    public Long getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(Long num) {
         this.num = num;
     }
 

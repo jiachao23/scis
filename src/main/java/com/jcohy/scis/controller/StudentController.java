@@ -136,7 +136,7 @@ public class StudentController extends BaseController{
             String groups = project.getGroups();
             String[] group = groups.split(",");
             for(String num:group){
-                Student stu = studentService.findByNum(Integer.parseInt(num));
+                Student stu = studentService.findByNum(Long.parseLong(num));
                 if(stu==null){
                     return JsonResult.fail("学号："+num+"的学生不存在");
                 }
@@ -230,7 +230,7 @@ public class StudentController extends BaseController{
         if(!StringUtils.isEmpty(keyword)){
             boolean isNum = keyword.matches("[0-9]+");
             if(isNum){
-                Student student = studentService.findByNum(Integer.parseInt(keyword));
+                Student student = studentService.findByNum(Long.parseLong(keyword));
                 if(dept != null && !dept.equals("")){
                     if(major != null && major.equals("")){
                         if(student != null && student.getMajor().getName().equals(major)){

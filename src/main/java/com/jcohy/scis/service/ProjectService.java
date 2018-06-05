@@ -44,21 +44,21 @@ public interface ProjectService {
      * @param num
      * @return
      */
-    List<Project> findByStudent(Integer num);
+    List<Project> findByStudent(Long num);
 
     /**
      * 根据老师查询
      * @param num
      * @return
      */
-    List<Project> findByTeacher(Integer num);
+    List<Project> findByTeacher(Long num);
 
     /**
      * 根据专家查询
      * @param num
      * @return
      */
-    List<Project> findByExpert(Integer num);
+    List<Project> findByExpert(Long num);
     /**
      * 新增或者更新
      * @param project

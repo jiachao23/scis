@@ -1,7 +1,8 @@
-﻿layui.define([ 'layer',  'table','common'], function (exports) {
+﻿layui.define([ 'layer',  'table','common','form'], function (exports) {
     var $ = layui.jquery,
         layer = layui.layer,
         common = layui.common,
+        form = layui.form,
         table  = layui.table ;
     table.render({
         elem: '#teacher'
@@ -10,12 +11,13 @@
         ,url: '/admin/teacher/list' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
-            {field: 'num', align:'center', title: '工号',unresize:true}
-            ,{field: 'name', align:'center', title: '姓名',unresize:true}
+            {field: 'num', align:'center', title: '老师编号',unresize:true}
+            ,{field: 'name', align:'center', title: '老师姓名',unresize:true}
             ,{field: 'sex', align:'center', title: '性别',unresize:true}
             ,{field: 'phone', align:'center', title: '电话',unresize:true}
-            ,{field: 'address', title: '地址',unresize:true}
-            ,{field: 'resume', title: '简介',unresize:true}
+            ,{field: 'dept', align:'center', title: '所属院系',unresize:true,templet: '<div>{{d.dept.name}}</div>'}
+            ,{field: 'title', align:'center', title: '职位',unresize:true}
+            ,{field: 'address', align:'center', title: '地址',unresize:true}
             ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}
         ]]
     });
