@@ -39,14 +39,15 @@
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
     <legend style="text-align:center;">学生列表</legend>
-    <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
-        <i class="layui-icon">&#x1002;</i>
-    </button>
+
 
     <div class="layui-row">
         <div class="layui-form layui-col-md12 star-so">
             <input class="layui-input" placeholder="请输入姓名或者工号" name="keyword" id="keyword">
             <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
+            <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
+                <i class="layui-icon">&#x1002;</i>
+            </button>
         </div>
     </div>
 

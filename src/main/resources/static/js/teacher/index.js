@@ -111,19 +111,24 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         var packageType;
         var data = obj.data;
         var expert = data.expert;
-        var ephone,eaddress,eresume,ereason,areason;
+        var groups = data.groups;
+        var ephone,eaddress,eresume,ereason,group;
         if(expert == null){
             ephone ='此项目还未分配专家审核';
             eaddress = '此项目还未分配专家审核';
             eresume ='此项目还未分配专家审核';
             ereason = '此项目还未分配专家审核';
-            areason = '此项目还未通过专家审核';
         }else{
             ephone = data.expert.phone;
             eaddress = data.expert.address;
             eresume = data.expert.resume;
             ereason = data.ereason;
-            areason = data.areason;
+        }
+        if(groups ==="个人赛无团队"){
+            group = "此项目为个人赛";
+        }else{
+            group ="组员学号："+groups;
+
         }
         var detailHtml = '';
         detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';
@@ -136,7 +141,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家地址:</div>'+eaddress+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家简历:</div>'+eresume+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家意见:</div>'+ereason+'</br>';
-        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">管理员员意见:</div>'+areason+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">项目类型：</div>'+groups+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">项目描述:</div>'+data.desc+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">视频下载地址:</div><a href="'+data.video.downloadUrl+'">'+data.video.downloadUrl+'</a></br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">创意说明书下载地址:</div><a href="'+data.book.downloadUrl+'">'+data.book.downloadUrl+'</a></br>';

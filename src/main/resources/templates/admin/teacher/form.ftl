@@ -70,6 +70,28 @@
                     </div>
 
                     <div class="layui-form-item">
+                        <label class="layui-form-label">请选择院系</label>
+                        <div class="layui-input-inline">
+                            <select name="dept" lay-filter="depts">
+                                <option value="">请选择院系</option>
+                            <#list depts as x>
+                                <option value="${x.id}"
+                                    <#if (student.major.dept.name == x.name)> selected="selected" </#if>
+                                >${x.name}</option>
+                            </#list>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">职位</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title" lay-verify="required" placeholder="请输入职位" value="${teacher.title}"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
                         <label class="layui-form-label">电话</label>
                         <div class="layui-input-inline">
                             <input type="text" name="phone" lay-verify="phone" placeholder="请输入电话" value="${teacher.phone}"

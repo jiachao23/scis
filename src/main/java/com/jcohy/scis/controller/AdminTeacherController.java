@@ -2,6 +2,7 @@ package com.jcohy.scis.controller;
 
 import com.jcohy.scis.common.JsonResult;
 import com.jcohy.scis.common.PageJson;
+import com.jcohy.scis.model.Dept;
 import com.jcohy.scis.model.Teacher;
 import com.jcohy.scis.service.DeptService;
 import com.jcohy.scis.service.MajorService;
@@ -26,6 +27,8 @@ public class AdminTeacherController extends BaseController{
 
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private DeptService deptService;
 
     @GetMapping("/list")
     @ResponseBody
@@ -42,7 +45,8 @@ public class AdminTeacherController extends BaseController{
 
     @GetMapping("/form")
     public String form(@RequestParam(required = false) Integer id, ModelMap map){
-
+        List<Dept> depts = deptService.findAll();
+        map.put("depts",depts);
         if(id != null){
             Teacher teacher = teacherService.findById(id);
             map.put("teacher",teacher);

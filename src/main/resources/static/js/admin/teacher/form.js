@@ -47,30 +47,10 @@
             }
         })
     }
-    // //上传文件设置
-    // upload.render({
-    //     elem: '#upload' ,//绑定元素
-    //     url: '/upload/blog',
-    //     before: function(input) {
-    //         console.log($(input));
-    //         box = $("#upload").parent('.layui-input-block');
-    //         console.log(box);
-    //         // console.log($(input).parent('.layui-input-block'));
-    //         if (box.next('div').length > 0) {
-    //             box.next('div').html('<div class="imgbox"><p>上传中...</p></div>');
-    //         } else {
-    //             box.after('<div class="layui-input-block"><div class="imgbox"><p>上传中...</p></div></div>');
-    //         }
-    //     },
-    //     done: function(res) {
-    //         if (res.isOk) {
-    //             box.next('div').find('div.imgbox').html('<img src="' + res.url + '" alt="..." class="img-thumbnail">');
-    //             box.find('input[type=hidden]').val(res.url);
-    //         } else {
-    //             box.next('div').find('p').html('上传失败...')
-    //         }
-    //     }
-    // });
+    form.on('select(depts)', function(data){
+
+    });
+
 
     form.on('submit(add)', function(data){
         console.log(data.elem); //被执行事件的元素DOM对象，一般为button对象

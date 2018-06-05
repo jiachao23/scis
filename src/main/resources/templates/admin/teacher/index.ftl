@@ -38,9 +38,9 @@
 
 <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field">
     <legend style="text-align:center;">教师列表</legend>
-    <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
-        <i class="layui-icon">&#x1002;</i>
-    </button>
+    <#--<button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">-->
+        <#--<i class="layui-icon">&#x1002;</i>-->
+    <#--</button>-->
 
 
     <div class="layui-row">
@@ -59,6 +59,9 @@
             </div>
 
             <button class="layui-btn" id="search" "><i class="layui-icon">&#xe615;</i></button>
+            <button class="layui-btn" style="position: relative;float: right;right: 100px;" onclick="javascript:location.replace(location.href)">
+                <i class="layui-icon">&#x1002;</i>
+            </button>
         </div>
     </div>
 
@@ -68,12 +71,6 @@
                 <a id="addTeacher" class="layui-btn layui-btn-normal">添加</a>
             </div>
         </div>
-
-        <#--<div class="layui-inline">-->
-            <#--<div class="layui-input-inline" style="width:auto">-->
-                <#--<a id="deleteAll" class="layui-btn layui-btn-normal">批量删除</a>-->
-            <#--</div>-->
-        <#--</div>-->
     </div>
 
 

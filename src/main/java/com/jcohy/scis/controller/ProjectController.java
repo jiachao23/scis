@@ -115,7 +115,7 @@ public class ProjectController extends BaseController{
     public JsonResult reject(@SessionAttribute("role")String role,@PathVariable("id") Integer id,@RequestParam("advise") String advise){
         logger.error("role:{} id: {} advice: {}",role,id,advise);
         try {
-            projectService.changeStatus(id,role,advise);
+            projectService.reject(id,role,advise);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonResult.fail("修改失败");
