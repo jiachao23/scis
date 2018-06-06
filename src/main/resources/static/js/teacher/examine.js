@@ -133,7 +133,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         var data = obj.data;
         var expert = data.expert;
         var groups = data.groups;
-        var ereason,group;
+        var ereason,treason,group;
         if(expert == null){
             ereason = '此项目还未分配专家审核';
         }else{
@@ -143,7 +143,11 @@ layui.define([ 'layer',  'table','common'], function (exports) {
             group = "此项目为个人赛";
         }else{
             group ="组员学号："+groups;
-
+        }
+        if(data.treason === null){
+            treason = "教师还未审核";
+        }else{
+            treason = data.treason;
         }
         var detailHtml = '';
         detailHtml += '<tr class="detail-view" style="display: none" id="detail-view-'+data.id+'">';
@@ -154,7 +158,7 @@ layui.define([ 'layer',  'table','common'], function (exports) {
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">展示视频下载地址:</div><a href="'+data.video.downloadUrl+'">'+data.video.downloadUrl+'</a></br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导教师工号:</div>'+data.teacher.num+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导教师姓名:</div>'+data.teacher.name+'</br>';
-        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导教师意见:</div>'+data.teacher.address+'</br>';
+        detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">指导教师意见:</div>'+treason+'</br>';
         detailHtml += '<div class="layui-inline layui-word-aux" style="width: 150px">专家意见:</div>'+ereason+'</br>';
         detailHtml += '</blockquote></td></tr>';
         obj.tr.after(detailHtml);
