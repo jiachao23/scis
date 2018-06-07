@@ -50,6 +50,9 @@
                         {{#  } }}
                         {{#  if(d.estatus == 1){ }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-skin="primary" lay-filter="estatus" checked disabled/>
+                        {{#  } else if(d.estatus == 2) { }}
+                        <input type="checkbox" name="estatus" title="专家拒绝" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" checked disabled/>
+                        {{#  } }}
                         {{#  } else { }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
                         {{#  } }}
@@ -60,10 +63,8 @@
             <script type="text/html" id="operator">
                 {{# if(d.estatus == 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{# }else if(d.estatus == 0 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{# }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 {{# } }}

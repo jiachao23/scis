@@ -46,10 +46,8 @@
             <script type="text/html" id="operator">
                 {{# if(d.tstatus == 1){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{# }else if(d.tstatus == 0 ) { }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
-                <a class="layui-btn layui-btn-danger " lay-event="del">删除</a>
                 {{# }else{ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 {{# } }}
@@ -60,7 +58,9 @@
                     <div class="layui-form-item" style="margin:0;">
                         {{#  if(d.tstatus == 1){ }}
                         <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-skin="primary" lay-filter="tstatus" checked disabled/>
-                        {{#  } else { }}
+                        {{#  } else if (d.tstatus == 2 ){ }}
+                        <input type="checkbox" name="tstatus" title="老师拒绝" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" checked disabled/>
+                        {{# }else { }}
                         <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" disabled/>
                         {{#  } }}
                         {{#  if(d.estatus == 1){ }}
