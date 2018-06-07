@@ -45,7 +45,7 @@
 
             <table class="layui-hide" id="teacher" lay-filter="table"></table>
             <script type="text/html" id="operator">
-                {{# if(d.tstatus == 1 || d.tstatus == 2){ }}
+                {{# if((d.tstatus == 1 || d.tstatus == 2)&& d.estatus == 0){ }}
                 <a class="layui-btn layui-btn-normal" lay-event="detail">查看</a>
                 <a class="layui-btn " lay-event="pass">撤回</a>
                 {{# }else if(d.tstatus == 0 ) { }}
@@ -62,7 +62,9 @@
                     <div class="layui-form-item" style="margin:0;">
                         {{#  if(d.tstatus == 1){ }}
                         <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-skin="primary" lay-filter="tstatus" checked disabled/>
-                        {{#  } else { }}
+                        {{#  } else if (d.tstatus == 2 ){ }}
+                        <input type="checkbox" name="tstatus" title="老师拒绝" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" checked disabled/>
+                        {{# }else { }}
                         <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" disabled/>
                         {{#  } }}
                         {{#  if(d.estatus == 1){ }}

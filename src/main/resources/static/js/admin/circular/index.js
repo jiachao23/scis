@@ -16,13 +16,13 @@ layui.define(['laypage', 'layer',  'table','common','util','form'], function (ex
             {type: 'checkbox', align:'center',unresize:true}
             ,{field: 'id', align:'center', title: 'ID', sort: true,unresize:true}
             ,{field: 'content', align:'center', title: '内容',unresize:true}
-            ,{field: 'bookUrl', align:'center', title: '图片链接地址',unresize:true,template:'<div>{{d.book.url}}}</div>'}
+            ,{field: 'bookUrl', align:'center', title: '图片链接地址',unresize:true,templet: '<div>{{d.book.downloadUrl}}</div>'}
             ,{field: 'url', align:'center', title: '跳转链接',unresize:true}
             ,{field: 'start', align:'center', title: '开始时间',sort: true,unresize:true}
             ,{field: 'end', align:'center', title: '结束时间',sort: true,unresize:true}
             ,{title: '是否可见',templet: '#choicesTpl',unresize:true}
             ,{field: 'createDate', title: '创建日期',unresize:true}
-            ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
+            ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}
         ]]
     });
     //监听工具条

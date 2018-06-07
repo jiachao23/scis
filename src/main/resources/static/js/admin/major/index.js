@@ -22,7 +22,7 @@ layui.define(['laypage', 'layer',  'table','common','util','form'], function (ex
             // ,{field: 'desc', align:'center', title: '描述',sort: true,unresize:true}
             // ,{field: 'status', align:'center', title: '是否可见', templet: '#choicesTpl'}
             ,{field: 'createDate', title: '创建日期',unresize:true}
-            ,{fixed: 'right',  align:'center', toolbar: '#operator',unresize:true}
+            ,{fixed: 'right',  title:'操作',align:'center', toolbar: '#operator',unresize:true}
         ]]
     });
     //监听工具条
