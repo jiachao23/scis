@@ -62,14 +62,15 @@
                                 <p>经费来源：${project.moneyResource}</p>
                                 <p>项目老师负责人：${project.teacher.name}</p>
                                 <p>项目专家审核者：${expert.name}</p>
+
+                                <div class="article-detail-content">
+                                    <p>项目描述：</p>
+                                ${project.desc}
+                                </div >
                                 <p>项目资料下载地址：${project.book.downloadUrl}</p>
                                 <p>项目视频下载地址： ${project.video.downloadUrl}</p>
                             </div>
 
-                            <div class="article-detail-content">
-                                 <p>职位描述：</p>
-                                 ${project.desc}
-                            </div >
 
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
@@ -105,9 +106,9 @@
     </div>
 
     <!-- 底部 -->
-    <footer class="blog-footer">
-        <p><span>Copyright</span><span>&copy;</span><span>2018</span><a href="http://www.lyblogs.cn">RecruitManagement</a></p>
-    </footer>
+    <#--<footer class="blog-footer">-->
+        <#--<p><span>Copyright</span><span>&copy;</span><span>2018</span><a href="localhost">SCIS</a></p>-->
+    <#--</footer>-->
 
     <!--遮罩-->
     <div class="blog-mask animated layui-hide"></div>
