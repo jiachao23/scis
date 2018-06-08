@@ -67,7 +67,7 @@ public class StudentController extends BaseController{
     @ResponseBody
     public PageJson<Notice> notice(@SessionAttribute("user") Student student , ModelMap map){
         List<Notice> notices = noticeService.findbyNum(student.getNum());
-        List<Notice> noticeList = notices.stream().filter(x -> x.getLevel() < 3).collect(Collectors.toList());
+        List<Notice> noticeList = notices.stream().filter(x -> x.getLevel() <= 3).collect(Collectors.toList());
         PageJson<Notice> page = new PageJson<>();
         page.setCode(0);
         page.setMsg("成功");

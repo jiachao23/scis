@@ -50,6 +50,8 @@
                         {{#  } }}
                         {{#  if(d.estatus == 1){ }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-skin="primary" lay-filter="estatus" checked disabled/>
+                        {{#  } else if(d.estatus == 2) { }}
+                        <input type="checkbox" name="estatus" title="专家拒绝" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" checked disabled/>
                         {{#  } else { }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
                         {{#  } }}

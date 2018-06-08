@@ -70,11 +70,15 @@
                     <div class="layui-form-item" style="margin:0;">
                         {{#  if(d.tstatus == 1){ }}
                         <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-skin="primary" lay-filter="tstatus" checked disabled/>
-                        {{#  } else { }}
+                        {{#  } else if (d.tstatus == 2 ){ }}
+                        <input type="checkbox" name="tstatus" title="老师拒绝" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" checked disabled/>
+                        {{# }else { }}
                         <input type="checkbox" name="tstatus" title="老师审核" value="{{d.id}}" lay-filter="tstatus" lay-skin="primary" disabled/>
                         {{#  } }}
                         {{#  if(d.estatus == 1){ }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-skin="primary" lay-filter="estatus" checked disabled/>
+                        {{#  } else if(d.estatus == 2) { }}
+                        <input type="checkbox" name="estatus" title="专家拒绝" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" checked disabled/>
                         {{#  } else { }}
                         <input type="checkbox" name="estatus" title="专家审核" value="{{d.id}}" lay-filter="estatus" lay-skin="primary" disabled/>
                         {{#  } }}
