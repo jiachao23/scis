@@ -104,14 +104,14 @@ public class AllotServiceImpl implements AllotService {
                 notice.setProjectName(dballot.getProject().getName());
                 notice.setOperation("项目分配");
                 notice.setContent("你的项目已修改分配至" + dballot.getExpert().getName());
-                notice.setStatus("0");
+                notice.setLevel(0);
                 notice.setDate(DateUtils.getCurrentDateStr());
 
                 notice1.setStudentNum(dballot.getProject().getStudent().getNum());
                 notice1.setProjectName(dballot.getProject().getName());
                 notice1.setOperation("项目分配");
                 notice1.setContent("已经为您分配到了项目：" + dballot.getExpert().getName()+"，请及时审核");
-                notice1.setStatus("3");
+                notice1.setLevel(3);
                 notice1.setDate(DateUtils.getCurrentDateStr());
             } else {
                 dballot = allot;
