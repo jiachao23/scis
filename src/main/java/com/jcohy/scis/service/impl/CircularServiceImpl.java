@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
  * Created by jiac on 2018/1/31 09:25.
  * ClassName  : NoticeServiceImpl
  * Description  :

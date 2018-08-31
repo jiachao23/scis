@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 
 /**
  * Created by jiac on 2018/4/3.
- * ClassName  : com.jcohy.perfectteaching.controller
  * Description  :
  */
 @Controller

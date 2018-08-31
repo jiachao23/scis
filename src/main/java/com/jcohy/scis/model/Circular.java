@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
  * Created by jiac on 2018/1/4 10:31.
  * ClassName  : Notice
  * Description  :日志实体类

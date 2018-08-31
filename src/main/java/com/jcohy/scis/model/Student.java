@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * ClassName  : com.jcohy.perfectteaching.repository
  * Description  :学生表
  */
 @Entity()

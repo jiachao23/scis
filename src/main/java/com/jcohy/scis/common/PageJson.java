@@ -3,7 +3,6 @@ package com.jcohy.scis.common;
 import java.util.List;
 
 /**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
  * Created by jiac on 2017/12/21 15:51.
  * ClassName  : PageJson
  * Description  :

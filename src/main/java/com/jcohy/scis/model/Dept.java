@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * ClassName  : com.jcohy.perfectteaching.repository
  * Description  :院系表
  */
 @Entity
